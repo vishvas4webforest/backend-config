@@ -1,0 +1,29 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+    registerWithEureka: true
+    fetchRegistry: true
+  instance:
+    preferIpAddress: true
+ 
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+        - name: JwtAuthenticationFilter
+          args:
+            secret: ofz8Tz+1GJEJ5efPxvqkTACLqdIGUoreFguLAixE/KI=
+            enableLogging: true
+            publicPaths:
+              - /auth
+              - /auth/**
+              - /swagger-ui/**
+              - /v3/api-docs/**
+  redis:
+    host: redis
+    port: 6379
+
+app:
+  config-source: this is gateway-service-home.yml
