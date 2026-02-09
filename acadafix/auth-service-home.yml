@@ -121,6 +121,9 @@ twilio:
 app:
   oauth2:
     base-url: http://localhost:8081/auth
+  sso:
+    error-page-url: https://yourdomain.com/error
+    token-expiry-minutes: 2
   config-source: this is auth-service-home.yml
   frontend:
     email-verification-url: https://yourdomain.com/verify
