@@ -170,6 +170,11 @@ linkedin:
 facebook:
   client-id: YOUR_FACEBOOK_CLIENT_ID
   client-secret: YOUR_FACEBOOK_CLIENT_SECRET
+
+google: 
+  recaptcha.secret: YOUR_SECRET
+  recaptcha.verify-url: YOUR_URL
+  recaptcha.threshold: 0.5
   
 feign:
   client:
