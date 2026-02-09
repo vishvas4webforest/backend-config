@@ -164,17 +164,15 @@ apple:
 google:
   client-id: YOUR_GOOGLE_CLIENT_ID
   client-secret: YOUR_GOOGLE_CLIENT_SECRET
+  recaptcha.secret: YOUR_SECRET
+  recaptcha.verify-url: YOUR_URL
+  recaptcha.threshold: 0.5
 linkedin:
   client-id: YOUR_LINKEDIN_CLIENT_ID
   client-secret: YOUR_LINKEDIN_CLIENT_SECRET
 facebook:
   client-id: YOUR_FACEBOOK_CLIENT_ID
   client-secret: YOUR_FACEBOOK_CLIENT_SECRET
-
-google: 
-  recaptcha.secret: YOUR_SECRET
-  recaptcha.verify-url: YOUR_URL
-  recaptcha.threshold: 0.5
   
 feign:
   client:
