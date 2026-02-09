@@ -1,0 +1,27 @@
+server:
+  port: 9000
+
+swagger:
+  ui-path: /swagger-ui.html
+  api-docs: /v3/api-docs
+
+spring:
+  flyway:
+    enabled: true
+    table: flyway_schema_history_auth
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+app:
+  registration-token:
+    expiry-minutes: 30
+  phone-verification-token:
+    expiry-minutes: 30
+  email:
+    signup-confirmation-subject: "Confirm your MarketPlug account"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
