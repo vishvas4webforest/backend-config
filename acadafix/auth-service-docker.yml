@@ -117,12 +117,17 @@ twilio:
   sender: ENC(CMsOpIf2vtbV4F2tP8bcOA==)
 
 app:
-  config-source: this is auth-service-docker.yml
+  oauth2:
+    base-url: http://localhost:8081/auth
+  sso:
+    error-page-url: https://yourdomain.com/error
+    token-expiry-minutes: 2
+  config-source: this is auth-service-home.yml
   frontend:
     email-verification-url: https://yourdomain.com/verify
   google:
-    sign-in-redirect-url: https://frontend-parent.bigopia.com/auth/sign-in/google/
-    sign-up-redirect-url: https://frontend-parent.bigopia.com/auth/sign-up/google/
+    sign-in-redirect-url: http://localhost:8081/auth/v1/oauth2/test/google/sign-in
+    sign-up-redirect-url: http://localhost:8081/auth/v1/oauth2/test/google/sign-up
   apple:
     sign-in-redirect-url: https://frontend-parent.bigopia.com/auth/sign-in/apple/
     sign-up-redirect-url: https://frontend-parent.bigopia.com/auth/sign-up/apple/
@@ -133,6 +138,21 @@ app:
     sign-in-redirect-url: https://frontend-parent.bigopia.com/auth/sign-in/facebook/
     sign-up-redirect-url: https://frontend-parent.bigopia.com/auth/sign-up/facebook/
 
+apple:
+  team-id: APPLE_TEAM_ID
+  client-id: APPLE_CLIENT_ID
+  key-id: APPLE_KEY_ID
+  private-key: APPLE_PRIVATE_KEY
+google:
+  client-id: YOUR_GOOGLE_CLIENT_ID
+  client-secret: YOUR_GOOGLE_CLIENT_SECRET
+linkedin:
+  client-id: YOUR_LINKEDIN_CLIENT_ID
+  client-secret: YOUR_LINKEDIN_CLIENT_SECRET
+facebook:
+  client-id: YOUR_FACEBOOK_CLIENT_ID
+  client-secret: YOUR_FACEBOOK_CLIENT_SECRET
+  
 feign:
   client:
     config:
