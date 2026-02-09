@@ -1,6 +1,11 @@
 server:
   base-url: http://localhost:8081/auth
-       
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    
 spring:
   datasource:
     host: localhost
