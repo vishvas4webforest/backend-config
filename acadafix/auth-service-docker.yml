@@ -125,6 +125,14 @@ app:
   config-source: this is auth-service-home.yml
   frontend:
     email-verification-url: https://yourdomain.com/verify
+    lost-phone-login-url: https://yourdomain.com/lost
+    password-restore-url: https://yourdomain.com/password-restore
+  lost-phone-login-token: 
+    expiry-minutes: 15
+    email-subject: Access your account - Lost Phone Login
+  password-restore: 
+    token-expiry-minutes: 30
+    email-subject: Restore your password
   google:
     sign-in-redirect-url: http://localhost:8081/auth/v1/oauth2/test/google/sign-in
     sign-up-redirect-url: http://localhost:8081/auth/v1/oauth2/test/google/sign-up
