@@ -139,6 +139,13 @@ app:
   facebook:
     sign-in-redirect-url: https://frontend-parent.bigopia.com/auth/sign-in/facebook/
     sign-up-redirect-url: https://frontend-parent.bigopia.com/auth/sign-up/facebook/
+  login-otp:
+    expiry-minutes: 5
+  password-reset: 
+    otp-expiry-minutes: 5
+    token-expiry-minutes: 30
+    otp-resend-cooldown-seconds: 60
+    email-subject: Reset your password
 
 apple:
   team-id: APPLE_TEAM_ID
