@@ -55,36 +55,6 @@ spring:
             - Path=/auth/**
           filters:
             - RewritePath=/auth/(?<path>.*), /$\{path}
-        - id: user-service
-          uri: lb://user-service
-          predicates:
-            - Path=/user/**
-          filters:
-            - RewritePath=/user/(?<path>.*), /$\{path}
-        - id: catalog-service
-          uri: lb://catalog-service
-          predicates:
-            - Path=/catalog/**
-          filters:
-            - RewritePath=/catalog/(?<path>.*), /$\{path}
-        - id: bundle-service
-          uri: lb://bundle-service
-          predicates:
-            - Path=/bundle/**
-          filters:
-            - RewritePath=/bundle/(?<path>.*), /$\{path}
-        - id: calendar-service
-          uri: lb://calendar-service
-          predicates:
-            - Path=/calendar/**
-          filters:
-            - RewritePath=/calendar/(?<path>.*), /$\{path}
-        - id: chat-service
-          uri: lb://chat-service
-          predicates:
-            - Path=/chat/**
-          filters:
-            - RewritePath=/chat/(?<path>.*), /$\{path}
         - id: openapi
           uri: http://localhost:${server.port}
           predicates:
@@ -97,13 +67,3 @@ springdoc:
     urls:
       - name: auth
         url: /v3/api-docs/auth
-      - name: user
-        url: /v3/api-docs/user
-      - name: catalog
-        url: /v3/api-docs/catalog
-      - name: calendar
-        url: /v3/api-docs/calendar
-      - name: bundle
-        url: /v3/api-docs/bundle
-      - name: chat
-        url: /v3/api-docs/chat
