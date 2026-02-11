@@ -1,0 +1,19 @@
+server:
+  port: 9001
+
+swagger:
+  ui-path: /swagger-ui.html
+  api-docs: /v3/api-docs
+
+spring:
+  flyway:
+    enabled: true
+    table: flyway_schema_history_hr
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
