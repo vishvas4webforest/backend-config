@@ -1,6 +1,6 @@
 server:
   port: 8081
- 
+
 eureka:
   client:
     serviceUrl:
@@ -9,65 +9,103 @@ eureka:
     fetchRegistry: true
   instance:
     prefer-ip-address: true
- 
+
 logging:
   level:
-    # Suppress route locator debug logs
     org.springframework.cloud.gateway: INFO
     org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: WARN
     org.springframework.cloud.gateway.handler: INFO
     org.springframework.cloud.gateway.filter: INFO
-
-    # Suppress Apache HTTP client verbose logs
     org.apache.hc.client5.http: WARN
     org.apache.hc.core5.http: WARN
-
-    # Suppress Eureka / Discovery logs
     com.netflix.discovery: WARN
-
-    # Suppress RestTemplate logs
     org.springframework.web.client.RestTemplate: WARN
-
-    # Hikari logs
     com.zaxxer.hikari: WARN
-
-    # Your own app logs
     com.marketplug: INFO
 
-
- 
 spring:
   cloud:
     gateway:
+
+      # -----------------------------
+      # GLOBAL CORS
+      # -----------------------------
       globalcors:
         corsConfigurations:
           '[/**]':
-              allowedOrigins: "*"
-              allowedMethods: "*"
-              allowedHeaders: "*"
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+
+      # -----------------------------
+      # ENABLE SERVICE DISCOVERY
+      # -----------------------------
       discovery:
         locator:
           enabled: true
+
+      # -----------------------------
+      # ROUTES
+      # -----------------------------
       routes:
+
+        # ============================
+        # AUTH SERVICE
+        # ============================
         - id: auth-service
           uri: lb://AUTH-SERVICE
           predicates:
             - Path=/auth/**
           filters:
-            - RewritePath=/auth/(?<path>.*), /$\{path}
+            - RewritePath=/auth/(?<path>.*), /${path}
+
+        # ============================
+        # HR SERVICE
+        # ============================
         - id: hr-service
           uri: lb://HR-SERVICE
           predicates:
             - Path=/hr/**
           filters:
-            - RewritePath=/hr/(?<path>.*), /$\{path}
-        - id: openapi
-          uri: http://localhost:${server.port}
+            - RewritePath=/hr/(?<path>.*), /${path}
+
+        # ============================
+        # AUTH OPENAPI
+        # ============================
+        - id: auth-openapi
+          uri: lb://AUTH-SERVICE
           predicates:
-            - Path=/v3/api-docs/**
+            - Path=/v3/api-docs/auth
           filters:
-            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
- 
+            - RewritePath=/v3/api-docs/auth, /v3/api-docs
+
+        # ============================
+        # HR OPENAPI
+        # ============================
+        - id: hr-openapi
+          uri: lb://HR-SERVICE
+          predicates:
+            - Path=/v3/api-docs/hr
+          filters:
+            - RewritePath=/v3/api-docs/hr, /v3/api-docs
+
+      # -----------------------------
+      # DEFAULT FILTERS (JWT etc)
+      # -----------------------------
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+        - name: JwtAuthenticationFilter
+          args:
+            secret: ofz8Tz+1GJEJ5efPxvqkTACLqdIGUoreFguLAixE/KI=
+            enableLogging: true
+            publicPaths:
+              - /auth
+              - /auth/**
+              - /swagger-ui/**
+              - /v3/api-docs/**
+              - /v3/api-docs/auth
+              - /v3/api-docs/hr
+
 springdoc:
   swagger-ui:
     urls:
