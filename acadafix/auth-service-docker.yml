@@ -98,7 +98,7 @@ logging:
     com.zaxxer.hikari: WARN
 
     # Keep your own application logs at INFO
-    com.marketplug: INFO
+    com.acadafix: INFO
 
     # Suppress Spring framework debug logs
     org.springframework: INFO
