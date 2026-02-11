@@ -1,5 +1,5 @@
 server:
-  base-url: http://localhost:8081/hr
+  base-url: http://16.60.15.40:8081/hr
 
 eureka:
   instance:
