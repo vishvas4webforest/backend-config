@@ -60,7 +60,7 @@ spring:
           predicates:
             - Path=/hr/**
           filters:
-            - RewritePath=/auth/(?<path>.*), /$\{path}
+            - RewritePath=/hr/(?<path>.*), /$\{path}
         - id: openapi
           uri: http://localhost:${server.port}
           predicates:
