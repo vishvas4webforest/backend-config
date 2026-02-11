@@ -55,6 +55,12 @@ spring:
             - Path=/auth/**
           filters:
             - RewritePath=/auth/(?<path>.*), /$\{path}
+        - id: hr-service
+          uri: lb://HR-SERVICE
+          predicates:
+            - Path=/hr/**
+          filters:
+            - RewritePath=/auth/(?<path>.*), /$\{path}
         - id: openapi
           uri: http://localhost:${server.port}
           predicates:
@@ -67,3 +73,5 @@ springdoc:
     urls:
       - name: auth
         url: /v3/api-docs/auth
+      - name: hr
+        url: /v3/api-docs/hr
