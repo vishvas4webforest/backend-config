@@ -61,6 +61,12 @@ spring:
             - Path=/hr/**
           filters:
             - RewritePath=/hr/(?<path>.*), /$\{path}
+        - id: payroll-service
+          uri: lb://PAYROLL-SERVICE
+          predicates:
+            - Path=/payroll/**
+          filters:
+            - RewritePath=/payroll/(?<path>.*), /$\{path}
         - id: openapi
           uri: http://localhost:${server.port}
           predicates:
@@ -75,3 +81,5 @@ springdoc:
         url: /v3/api-docs/auth
       - name: hr
         url: /v3/api-docs/hr
+      - name: payroll
+        url: /v3/api-docs/payroll
