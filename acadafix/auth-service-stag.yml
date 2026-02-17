@@ -8,7 +8,7 @@ eureka:
     
 spring:
   datasource:
-    host: acadafix.cnc4uia2cfwa.eu-west-2.rds.amazonaws.com
+    host: acadafix.cdc46co40q9c.eu-west-2.rds.amazonaws.com
     port: 5432   # ✅ Add this line
     username: postgres
     password: AcadafixWebforest$123
