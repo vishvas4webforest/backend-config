@@ -81,7 +81,3 @@ feign:
         connectTimeout: 5000
         readTimeout: 5000
 
-aws:
-  s3:
-    bucket: acadafix-bucket-london
-    region: eu-west-2
