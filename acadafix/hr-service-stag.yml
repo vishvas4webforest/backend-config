@@ -81,3 +81,9 @@ feign:
         connectTimeout: 5000
         readTimeout: 5000
 
+aws:
+  s3:
+    bucket: acadafix-bucket-london
+    region: eu-west-2
+    access-key: AKIAV3OZC4PBD5SFCJEO
+    secret-key: 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
