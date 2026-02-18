@@ -83,7 +83,5 @@ feign:
 
 aws:
   s3:
-    bucket: ${AWS_BUCKET}
-    region: ${AWS_REGION}
-    access-key: ${AWS_ACCESS_KEY}
-    secret-key: ${AWS_SECRET_KEY}
+    bucket: acadafix-bucket-london
+    region: eu-west-2
