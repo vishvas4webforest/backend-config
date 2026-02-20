@@ -1,3 +1,6 @@
+server:
+  forward-headers-strategy: framework 
+
 eureka:
   client:
     service-url:
@@ -6,6 +9,10 @@ eureka:
     fetchRegistry: true
   instance:
     preferIpAddress: true
+    secure-port-enabled: true
+    # Use the variable or hardcode the IP directly
+    status-page-url: https://18.175.102.205
+    health-check-url: https://18.175.102.205
  
 spring:
   cloud:
