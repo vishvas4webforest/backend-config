@@ -1,0 +1,187 @@
+server:
+  base-url: http://18.175.102.205:8081/auth
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: false
+    
+spring:
+  datasource:
+    host: acadafix.cdc46co40q9c.eu-west-2.rds.amazonaws.com
+    port: 5432   # ✅ Add this line
+    username: postgres
+    password: AcadafixWebforest$123
+    url: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/acadafix
+    hikari:
+      maximum-pool-size: 2
+  redis:
+    host: localhost
+    port: 6379
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: YOUR_GOOGLE_CLIENT
+            client-secret: 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
+            redirect-uri: "{baseUrl}/v1/oauth2/callback/{registrationId}"
+            client-authentication-method: client_secret_basic
+            authorization-grant-type: authorization_code
+            scope:
+              - openid
+              - email
+              - profile
+          apple:
+            client-id: com.bigopia
+            client-secret: M3A44R9956  # generated dynamically
+            scope:
+              - email
+              - profile
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/v1/oauth2/callback/apple"
+          linkedin:
+            client-id: 78eboxtwqq091t
+            client-secret: YOUR_LINKEDIN_CLIENT
+            redirect-uri: "{baseUrl}/v1/oauth2/callback/linkedin"
+            authorization-grant-type: authorization_code
+            scope:
+              - r_liteprofile
+              - r_emailaddress
+          facebook:
+            client-id: YOUR_FACEBOOK_APP_ID
+            client-secret: YOUR_FACEBOOK_APP_SECRET
+            redirect-uri: "{baseUrl}/v1/oauth2/callback/facebook"
+            scope:
+              - email
+              - public_profile
+            authorization-grant-type: authorization_code
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+            token-uri: https://oauth2.googleapis.com/token
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+            user-name-attribute: sub
+          apple:
+            authorization-uri: https://appleid.apple.com/auth/authorize
+            token-uri: https://appleid.apple.com/auth/token
+            user-name-attribute: email
+          linkedin:
+            authorization-uri: https://www.linkedin.com/oauth/v2/authorization
+            token-uri: https://www.linkedin.com/oauth/v2/accessToken
+            user-info-uri: https://api.linkedin.com/v2/me
+            user-name-attribute: id
+          facebook:
+            authorization-uri: https://www.facebook.com/v17.0/dialog/oauth
+            token-uri: https://graph.facebook.com/v17.0/oauth/access_token
+            user-info-uri: https://graph.facebook.com/me?fields=id,name,email
+            user-name-attribute: id
+jwt:
+  secret: ofz8Tz+1GJEJ5efPxvqkTACLqdIGUoreFguLAixE/KI=
+  expiration: 3600000           # 1 hour
+  refresh-expiration: 2592000000 # 30 days
+  remember-expiration: 604800000 # 7 days
+
+logging:
+  level:
+    # Keep Flyway migration logs in DEBUG (optional, useful for DB migrations)
+    org.flywaydb.core: DEBUG
+
+    # Suppress all Apache HTTP client debug logs
+    org.apache.hc.client5.http: WARN
+    org.apache.hc.core5.http: WARN
+
+    # Suppress Eureka / Netflix Discovery verbose logs
+    com.netflix.discovery: WARN
+
+    # Suppress Spring RestTemplate HTTP DEBUG logs
+    org.springframework.web.client.RestTemplate: WARN
+
+    # Suppress Hikari connection pool debug logs
+    com.zaxxer.hikari: WARN
+
+    # Keep your own application logs at INFO
+    com.acadafix: INFO
+
+    # Suppress Spring framework debug logs
+    org.springframework: INFO
+
+
+smtp:
+  host: smtp.gmail.com
+  port: 587
+  username: zbD3fZugprJd60HDv9kFvfrA/kP1qcLqKc0C0P5DP9o=
+  password: LFQ03C8bYEUo9eoHF5lU7lViac82eb4vfyiSg8pozZo=
+  from: zbD3fZugprJd60HDv9kFvfrA/kP1qcLqKc0C0P5DP9o=
+
+twilio:
+  sid: ENC(5uLH/UHLUTQLNQfQNYroSv58sHfci8EDz407nl2GaQO51/BtUsnQXhijTaVCSoJo)
+  token: ENC(NtbYwl6C7C0e7nPeEbJ161nuS3xVuYvkWCFJvJAPa55VYmnPNnm+L38okoPKaM2a)
+  sender: ENC(CMsOpIf2vtbV4F2tP8bcOA==)
+
+app:
+  oauth2:
+    base-url: http://localhost:8081/auth
+  sso:
+    error-page-url: https://yourdomain.com/error
+    token-expiry-minutes: 2
+  config-source: this is auth-service-home.yml
+  frontend:
+    email-verification-url: https://yourdomain.com/verify
+    lost-phone-login-url: https://yourdomain.com/lost
+    password-restore-url: https://yourdomain.com/password-restore
+  lost-phone-login-token: 
+    expiry-minutes: 15
+    email-subject: Access your account - Lost Phone Login
+  password-restore: 
+    token-expiry-minutes: 30
+    email-subject: Restore your password
+  google:
+    sign-in-redirect-url: http://localhost:8081/auth/v1/oauth2/test/google/sign-in
+    sign-up-redirect-url: http://localhost:8081/auth/v1/oauth2/test/google/sign-up
+  apple:
+    sign-in-redirect-url: https://frontend-parent.bigopia.com/auth/sign-in/apple/
+    sign-up-redirect-url: https://frontend-parent.bigopia.com/auth/sign-up/apple/
+  linkedin:
+    sign-in-redirect-url: https://frontend-parent.bigopia.com/auth/sign-in/linkedin/
+    sign-up-redirect-url: https://frontend-parent.bigopia.com/auth/sign-up/linkedin/
+  facebook:
+    sign-in-redirect-url: https://frontend-parent.bigopia.com/auth/sign-in/facebook/
+    sign-up-redirect-url: https://frontend-parent.bigopia.com/auth/sign-up/facebook/
+  login-otp:
+    expiry-minutes: 5
+  password-reset: 
+    otp-expiry-minutes: 5
+    token-expiry-minutes: 30
+    otp-resend-cooldown-seconds: 60
+    email-subject: Reset your password
+  
+
+apple:
+  team-id: APPLE_TEAM_ID
+  client-id: APPLE_CLIENT_ID
+  key-id: APPLE_KEY_ID
+  private-key: APPLE_PRIVATE_KEY
+google:
+  client-id: YOUR_GOOGLE_CLIENT_ID
+  client-secret: YOUR_GOOGLE_CLIENT_SECRET
+  recaptcha.secret: YOUR_SECRET
+  recaptcha.verify-url: YOUR_URL
+  recaptcha.threshold: 0.5
+linkedin:
+  client-id: YOUR_LINKEDIN_CLIENT_ID
+  client-secret: YOUR_LINKEDIN_CLIENT_SECRET
+facebook:
+  client-id: YOUR_FACEBOOK_CLIENT_ID
+  client-secret: YOUR_FACEBOOK_CLIENT_SECRET
+  
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
