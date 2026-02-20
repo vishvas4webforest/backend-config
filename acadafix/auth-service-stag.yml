@@ -1,15 +1,10 @@
 server:
-   # Change this to HTTPS and remove :8081
-  base-url: https://18.175.102.205/auth
-  forward-headers-strategy: framework
+  base-url: http://18.175.102.205:8081/auth
 
 eureka:
   instance:
-    prefer-ip-address: true
-    secure-port-enabled: true
-    # Note the /auth prefix because requests go through Gateway
-    status-page-url: https://18.175.102.205
-    health-check-url: https://18.175.102.205
+    hostname: localhost
+    prefer-ip-address: false
     
 spring:
   datasource:
@@ -130,7 +125,7 @@ twilio:
 
 app:
   oauth2:
-    base-url: https://18.175.102.205/auth  # Changed from localhost
+    base-url: http://localhost:8081/auth
   sso:
     error-page-url: https://yourdomain.com/error
     token-expiry-minutes: 2
