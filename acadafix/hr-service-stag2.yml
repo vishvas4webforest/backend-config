@@ -1,0 +1,90 @@
+server:
+  base-url: https://18.175.102.205/hr
+  forward-headers-strategy: framework  # CRITICAL: Tell Spring to trust Nginx headers
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: false
+    
+spring:
+  datasource:
+    host: acadafix.cdc46co40q9c.eu-west-2.rds.amazonaws.com
+    port: 5432   # ✅ Add this line
+    username: postgres
+    password: AcadafixWebforest$123
+    url: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/acadafix
+    hikari:
+      maximum-pool-size: 2
+  redis:
+    host: localhost
+    port: 6379
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+jwt:
+  secret: ofz8Tz+1GJEJ5efPxvqkTACLqdIGUoreFguLAixE/KI=
+  expiration: 3600000           # 1 hour
+  refresh-expiration: 2592000000 # 30 days
+  remember-expiration: 604800000 # 7 days
+
+logging:
+  level:
+    # Keep Flyway migration logs in DEBUG (optional, useful for DB migrations)
+    org.flywaydb.core: DEBUG
+
+    # Suppress all Apache HTTP client debug logs
+    org.apache.hc.client5.http: WARN
+    org.apache.hc.core5.http: WARN
+
+    # Suppress Eureka / Netflix Discovery verbose logs
+    com.netflix.discovery: WARN
+
+    # Suppress Spring RestTemplate HTTP DEBUG logs
+    org.springframework.web.client.RestTemplate: WARN
+
+    # Suppress Hikari connection pool debug logs
+    com.zaxxer.hikari: WARN
+
+    # Keep your own application logs at INFO
+    com.acadafix: INFO
+
+    # Suppress Spring framework debug logs
+    org.springframework: INFO
+
+
+smtp:
+  host: smtp.gmail.com
+  port: 587
+  username: zbD3fZugprJd60HDv9kFvfrA/kP1qcLqKc0C0P5DP9o=
+  password: LFQ03C8bYEUo9eoHF5lU7lViac82eb4vfyiSg8pozZo=
+  from: zbD3fZugprJd60HDv9kFvfrA/kP1qcLqKc0C0P5DP9o=
+
+twilio:
+  sid: ENC(5uLH/UHLUTQLNQfQNYroSv58sHfci8EDz407nl2GaQO51/BtUsnQXhijTaVCSoJo)
+  token: ENC(NtbYwl6C7C0e7nPeEbJ161nuS3xVuYvkWCFJvJAPa55VYmnPNnm+L38okoPKaM2a)
+  sender: ENC(CMsOpIf2vtbV4F2tP8bcOA==)
+
+app:
+  oauth2:
+    base-url: https://18.175.102.205/hr
+  sso:
+    error-page-url: https://yourdomain.com/error
+    token-expiry-minutes: 2
+  config-source: this is hr-service-home.yml
+  
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+
+aws:
+  s3:
+    bucket: acadafix-bucket-london
+    region: eu-west-2
+    access-key: AKIAV3OZC4PBD5SFCJEO
+    secret-key: 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
