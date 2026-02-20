@@ -1,5 +1,5 @@
 server:
-  base-url: https://18.175.102.205/payroll
+  base-url: http://apiacadafix.webcheckdemo.org/payroll
   forward-headers-strategy: framework  # CRITICAL: Tell Spring to trust Nginx headers
 
 eureka:
@@ -69,7 +69,7 @@ twilio:
 
 app:
   oauth2:
-    base-url: https://18.175.102.205/payroll
+    base-url: http://apiacadafix.webcheckdemo.org/payroll
   sso:
     error-page-url: https://yourdomain.com/error
     token-expiry-minutes: 2
