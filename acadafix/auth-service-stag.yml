@@ -1,5 +1,6 @@
 server:
-  base-url: http://18.175.102.205:8081/auth
+  base-url: https://18.175.102.205:8081/auth
+  forward-headers-strategy: framework  # CRITICAL: Tell Spring to trust Nginx headers
 
 eureka:
   instance:
@@ -125,7 +126,7 @@ twilio:
 
 app:
   oauth2:
-    base-url: http://localhost:8081/auth
+    base-url: https://18.175.102.205/auth
   sso:
     error-page-url: https://yourdomain.com/error
     token-expiry-minutes: 2
