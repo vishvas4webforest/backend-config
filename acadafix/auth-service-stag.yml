@@ -1,6 +1,6 @@
 server:
    # Change this to HTTPS and remove :8081
-  base-url: https://18.175.102.205
+  base-url: https://18.175.102.205/auth
   forward-headers-strategy: framework
 
 eureka:
