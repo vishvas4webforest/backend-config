@@ -5,6 +5,8 @@ server:
 
 eureka:
   instance:
+    prefer-ip-address: true
+    secure-port-enabled: true
     # Note the /auth prefix because requests go through Gateway
     status-page-url: https://18.175.102.205
     health-check-url: https://18.175.102.205
