@@ -1,5 +1,5 @@
 server:
-  base-url: https://18.175.102.205:8081/auth
+  base-url: https://18.175.102.205/auth
   forward-headers-strategy: framework  # CRITICAL: Tell Spring to trust Nginx headers
 
 eureka:
