@@ -1,14 +1,10 @@
 server:
-  base-url: https://18.175.102.205/payroll
-  forward-headers-strategy: framework # Add this!
+  base-url: http://18.175.102.205:8081/payroll
 
 eureka:
   instance:
-    prefer-ip-address: true
-    secure-port-enabled: true
-    # Added /payroll prefix and actuator paths
-    status-page-url: https://18.175.102.205
-    health-check-url: https://18.175.102.205
+    hostname: localhost
+    prefer-ip-address: false
     
 spring:
   datasource:
@@ -72,7 +68,7 @@ twilio:
 
 app:
   oauth2:
-    base-url: https://18.175.102.205/payroll
+    base-url: http://localhost:8081/payroll
   sso:
     error-page-url: https://yourdomain.com/error
     token-expiry-minutes: 2
