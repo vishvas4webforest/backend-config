@@ -128,7 +128,7 @@ twilio:
 
 app:
   oauth2:
-    base-url: https://18.175.102.205  # Changed from localhost
+    base-url: https://18.175.102.205/auth  # Changed from localhost
   sso:
     error-page-url: https://yourdomain.com/error
     token-expiry-minutes: 2
