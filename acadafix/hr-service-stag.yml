@@ -1,10 +1,14 @@
 server:
-  base-url: http://18.175.102.205:8081/hr
+  base-url: https://18.175.102.205/hr
+  forward-headers-strategy: framework # Add this!
 
 eureka:
   instance:
-    hostname: localhost
-    prefer-ip-address: false
+    prefer-ip-address: true
+    secure-port-enabled: true
+    # Note the /auth prefix because requests go through Gateway
+    status-page-url: https://18.175.102.205
+    health-check-url: https://18.175.102.205
     
 spring:
   datasource:
@@ -68,7 +72,7 @@ twilio:
 
 app:
   oauth2:
-    base-url: http://localhost:8081/hr
+    base-url: https://18.175.102.205/hr
   sso:
     error-page-url: https://yourdomain.com/error
     token-expiry-minutes: 2
