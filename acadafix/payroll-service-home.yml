@@ -80,3 +80,7 @@ feign:
       default:
         connectTimeout: 5000
         readTimeout: 5000
+
+hmrc:
+  gateway:
+    url: https://test-transaction-engine.tax.service.gov.uk/submissions
