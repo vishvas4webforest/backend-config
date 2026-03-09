@@ -83,7 +83,7 @@ spring:
             user-name-attribute: id
 jwt:
   secret: ofz8Tz+1GJEJ5efPxvqkTACLqdIGUoreFguLAixE/KI=
-  expiration: 3600000           # 1 hour
+  expiration: 604800000           # 7 days
   refresh-expiration: 2592000000 # 30 days
   remember-expiration: 604800000 # 7 days
 
