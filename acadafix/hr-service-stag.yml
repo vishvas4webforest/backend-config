@@ -86,5 +86,5 @@ aws:
   s3:
     bucket: acadafix-bucket-london
     region: eu-west-2
-    access-key: AKIAV3OZC4PBD5SFCJEO
-    secret-key: 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
+    access-key: AKIAV3OZC4PBMDRN3AKF
+    secret-key: 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
