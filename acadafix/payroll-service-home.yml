@@ -84,3 +84,16 @@ feign:
 hmrc:
   gateway:
     url: https://test-transaction-engine.tax.service.gov.uk/submissions
+
+  oauth:
+    token-url: https://test-api.service.hmrc.gov.uk/oauth/token
+
+  client:
+    id: e9WomnRnFlmT3WizVPIYOfnlFksV
+    secret: bc34ff99-7433-4fce-aa15-a16c794b610b
+
+  sandbox: true
+
+  timeouts:
+    connect: 30
+    read: 60
