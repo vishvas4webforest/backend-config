@@ -1,0 +1,77 @@
+server:
+  port: 8081
+ 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+    registerWithEureka: true
+    fetchRegistry: true
+  instance:
+    prefer-ip-address: true
+ 
+logging:
+  level:
+    # Suppress route locator debug logs
+    org.springframework.cloud.gateway: INFO
+    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: WARN
+    org.springframework.cloud.gateway.handler: INFO
+    org.springframework.cloud.gateway.filter: INFO
+
+    # Suppress Apache HTTP client verbose logs
+    org.apache.hc.client5.http: WARN
+    org.apache.hc.core5.http: WARN
+
+    # Suppress Eureka / Discovery logs
+    com.netflix.discovery: WARN
+
+    # Suppress RestTemplate logs
+    org.springframework.web.client.RestTemplate: WARN
+
+    # Hikari logs
+    com.zaxxer.hikari: WARN
+
+    # Your own app logs
+    com.marketplug: INFO
+
+
+ 
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+              allowedOrigins: "*"
+              allowedMethods: "*"
+              allowedHeaders: "*"
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user/**
+          filters:
+            - RewritePath=/user/(?<path>.*), /$\{path}
+        - id: socket-service
+          uri: lb://SOCKET-SERVICE
+          predicates:
+            - Path=/socket/**
+          filters:
+            - RewritePath=/socket/(?<path>.*), /$\{path}
+        - id: openapi
+          uri: http://localhost:${server.port}
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
+ 
+springdoc:
+  swagger-ui:
+    urls:
+      - name: user
+        url: /v3/api-docs/user
+      - name: socket
+        url: /v3/api-docs/socket
