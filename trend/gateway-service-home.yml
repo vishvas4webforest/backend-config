@@ -17,8 +17,8 @@ spring:
             secret: ofz8Tz+1GJEJ5efPxvqkTACLqdIGUoreFguLAixE/KI=
             enableLogging: true
             publicPaths:
-              - /auth
-              - /auth/**
+              - /user
+              - /user/**
               - /swagger-ui/**
               - /v3/api-docs/**
   redis:
