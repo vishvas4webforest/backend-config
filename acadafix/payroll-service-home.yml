@@ -97,3 +97,7 @@ hmrc:
   timeouts:
     connect: 30
     read: 60
+
+  auth:
+    username: 911726909346
+    password: LMR4DQFUwxud
