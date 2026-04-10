@@ -86,11 +86,14 @@ hmrc:
     url: https://test-transaction-engine.tax.service.gov.uk/submission
 
   oauth:
+    authorize-url: https://test-api.service.hmrc.gov.uk/oauth/authorize
     token-url: https://test-api.service.hmrc.gov.uk/oauth/token
 
   client:
     id: e9WomnRnFlmT3WizVPIYOfnlFksV
     secret: bc34ff99-7433-4fce-aa15-a16c794b610b
+
+  redirect-uri: http://localhost:9002/v1/payroll/hmrc/callback
 
   sandbox: true
 
