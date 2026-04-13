@@ -99,6 +99,11 @@ hmrc:
   product:
     code: 9293
 
+  employer:   # ✅ ADD THIS
+    office-no: 635
+    paye-ref: A635
+    accounts-office-ref: 635PA12345678
+
   sandbox: true
 
   timeouts:
