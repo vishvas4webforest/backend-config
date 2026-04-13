@@ -82,25 +82,25 @@ feign:
         readTimeout: 5000
 
 hmrc:
-  gateway:
-    url: https://test-transaction-engine.tax.service.gov.uk/submission
-
   oauth:
-    authorize-url: https://test-api.service.hmrc.gov.uk/oauth/authorize
     token-url: https://test-api.service.hmrc.gov.uk/oauth/token
 
   client:
     id: e9WomnRnFlmT3WizVPIYOfnlFksV
     secret: bc34ff99-7433-4fce-aa15-a16c794b610b
 
-  redirect-uri: http://localhost:9002/v1/payroll/hmrc/callback
+  gateway:
+    url: https://test-transaction-engine.tax.service.gov.uk/submission
+
+  sender:
+    id: ISV635
+    password: fGuR34fAOEJf
+
+  product:
+    code: 9293
 
   sandbox: true
 
   timeouts:
     connect: 30
     read: 60
-
-  auth:
-    username: 911033009670
-    password: EiMEsddlRjcL
