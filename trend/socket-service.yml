@@ -5,13 +5,6 @@ swagger:
   ui-path: /swagger-ui.html
   api-docs: /v3/api-docs
 
-spring:
-  flyway:
-    enabled: true
-    table: flyway_schema_history_socket
-    locations: classpath:db/migration
-    baseline-on-migrate: true
-
 management:
   endpoints:
     web:
