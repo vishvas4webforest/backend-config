@@ -12,7 +12,7 @@ spring:
     port: 5433   # ✅ Add this line
     username: postgres
     password: Test@123
-    url: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/acadafix
+    url: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/trenddb
     hikari:
       maximum-pool-size: 2
   redis:
