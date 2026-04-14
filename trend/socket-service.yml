@@ -10,7 +10,7 @@ spring:
     enabled: true
     table: flyway_schema_history_user
     locations: classpath:db/migration
-    baseline-on-migrate: true
+    baseline-on-migrate: false
     
 management:
   endpoints:
