@@ -185,3 +185,9 @@ feign:
       default:
         connectTimeout: 5000
         readTimeout: 5000
+
+firebase:
+  json: firebase-service-account-dev.json
+  bigQueryJson: trend-ac139-f7b80bd1df0f.json
+  enable: true
+  projectName: Trend
