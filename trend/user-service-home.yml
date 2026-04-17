@@ -191,3 +191,33 @@ firebase:
   bigQueryJson: trend-ac139-f7b80bd1df0f.json
   enable: true
   projectName: Trend
+
+amazonProperties:
+  bucketName:
+    post: trend-ireland-development 
+    userProfile: trend-ireland-development 
+    oneToOneChat: trend-ireland-development 
+    groupChat: trend-ireland-development 
+    globalGroupChat: trend-ireland-development 
+    groupProfile: trend-ireland-development 
+    globalGroupProfile: trend-ireland-development 
+    globalGroupVerification: trend-ireland-development 
+    subGlobalGroupProfile: trend-ireland-development 
+    subGlobalGroupChat: trend-ireland-development 
+    learnToTradeChat: trend-ireland-development 
+    tradingEventChat: trend-ireland-development 
+    tradingEventProfile: trend-ireland-development 
+    signalGroupChat: trend-ireland-development 
+    signalGroupProfile: trend-ireland-development 
+    userStory: trend-ireland-development 
+    advertisement: trend-ireland-development 
+    clip: trend-ireland-development 
+    commonPostComment: trend-ireland-development 
+    commonPostCommentCover: trend-ireland-development 
+  accessKey: xxxxxxxxxxxxxxxxxx
+  secretKey: xxxxxxxxxxxxxxxxxx
+  region: eu-west-3
+  ses:
+    accessKey: xxxxxxxxxxxxxxxxxx
+    secretKey: xxxxxxxxxxxxxxxxxx
+    region: eu-west-3
