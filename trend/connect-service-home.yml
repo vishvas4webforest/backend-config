@@ -1,0 +1,104 @@
+server:
+  base-url: http://localhost:8081/connect
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: false
+    
+spring:
+  datasource:
+    host: localhost
+    port: 5433   # ✅ Add this line
+    username: postgres
+    password: Test@123
+    url: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/trenddb
+    hikari:
+      maximum-pool-size: 2
+  redis:
+    host: localhost
+    port: 6379
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+jwt:
+  secret: ofz8Tz+1GJEJ5efPxvqkTACLqdIGUoreFguLAixE/KI=
+  expiration: 3600000           # 1 hour
+  refresh-expiration: 2592000000 # 30 days
+  remember-expiration: 604800000 # 7 days
+
+logging:
+  level:
+    # Keep Flyway migration logs in DEBUG (optional, useful for DB migrations)
+    org.flywaydb.core: DEBUG
+
+    # Suppress all Apache HTTP client debug logs
+    org.apache.hc.client5.http: WARN
+    org.apache.hc.core5.http: WARN
+
+    # Suppress Eureka / Netflix Discovery verbose logs
+    com.netflix.discovery: WARN
+
+    # Suppress Spring RestTemplate HTTP DEBUG logs
+    org.springframework.web.client.RestTemplate: WARN
+
+    # Suppress Hikari connection pool debug logs
+    com.zaxxer.hikari: WARN
+
+    # Keep your own application logs at INFO
+    com.acadafix: INFO
+
+    # Suppress Spring framework debug logs
+    org.springframework: INFO
+  
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+
+aws:
+  s3:
+    bucket: acadafix-bucket-london
+    region: eu-west-2
+    access-key: xxxx
+    secret-key: xxxx
+
+firebase:
+  json: firebase-service-account-dev.json
+  bigQueryJson: trend-ac139-f7b80bd1df0f.json
+  enable: true
+  projectName: Trend
+
+amazonProperties:
+  bucketName:
+    post: trend-ireland-development 
+    userProfile: trend-ireland-development 
+    oneToOneChat: trend-ireland-development 
+    groupChat: trend-ireland-development 
+    globalGroupChat: trend-ireland-development 
+    groupProfile: trend-ireland-development 
+    globalGroupProfile: trend-ireland-development 
+    globalGroupVerification: trend-ireland-development 
+    subGlobalGroupProfile: trend-ireland-development 
+    subGlobalGroupChat: trend-ireland-development 
+    learnToTradeChat: trend-ireland-development 
+    tradingEventChat: trend-ireland-development 
+    tradingEventProfile: trend-ireland-development 
+    signalGroupChat: trend-ireland-development 
+    signalGroupProfile: trend-ireland-development 
+    userStory: trend-ireland-development 
+    advertisement: trend-ireland-development 
+    clip: trend-ireland-development 
+    commonPostComment: trend-ireland-development 
+    commonPostCommentCover: trend-ireland-development 
+  accessKey: xxxxxxxxxxxxxxxxxx
+  secretKey: xxxxxxxxxxxxxxxxxx
+  region: eu-west-3
+  ses:
+    accessKey: xxxxxxxxxxxxxxxxxx
+    secretKey: xxxxxxxxxxxxxxxxxx
+    region: eu-west-3
