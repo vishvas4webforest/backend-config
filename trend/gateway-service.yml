@@ -61,6 +61,12 @@ spring:
             - Path=/socket/**
           filters:
             - RewritePath=/socket/(?<path>.*), /$\{path}
+        - id: connect-service
+          uri: lb://CONNECT-SERVICE
+          predicates:
+            - Path=/connect/**
+          filters:
+            - RewritePath=/connect/(?<path>.*), /$\{path}
         - id: openapi
           uri: http://localhost:${server.port}
           predicates:
@@ -75,3 +81,5 @@ springdoc:
         url: /v3/api-docs/user
       - name: socket
         url: /v3/api-docs/socket
+      - name: connect
+        url: /v3/api-docs/connect
