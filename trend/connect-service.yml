@@ -8,7 +8,7 @@ swagger:
 spring:
   flyway:
     enabled: true
-    table: flyway_schema_history_connect
+    table: flyway_schema_history_user
     locations: classpath:db/migration
     baseline-on-migrate: false
     
