@@ -221,3 +221,5 @@ amazonProperties:
     accessKey: xxxxxxxxxxxxxxxxxx
     secretKey: xxxxxxxxxxxxxxxxxx
     region: eu-west-3
+
+testName: ${TEST_NAME:defaultName}
