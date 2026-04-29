@@ -123,3 +123,5 @@ amazonProperties:
     accessKey: xxxxxxxxxxxxxxxxxx
     secretKey: xxxxxxxxxxxxxxxxxx
     region: eu-west-3
+
+testSocketName: ${TEST_SOCKET_NAME:defaultName}
