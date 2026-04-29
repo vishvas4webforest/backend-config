@@ -26,5 +26,5 @@ management:
       exposure:
         include: health, info
 
-testName: ${TEST_NAME}
+testName: ${TEST_NAME:defaultName}
  
