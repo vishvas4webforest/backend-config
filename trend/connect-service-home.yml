@@ -23,6 +23,10 @@ spring:
       ddl-auto: validate
     show-sql: true
 
+app:
+  env:
+    base-path: C:/Users/DELL/eclipse-workspace/webforest/trend/4/trend
+
 jwt:
   secret: ofz8Tz+1GJEJ5efPxvqkTACLqdIGUoreFguLAixE/KI=
   expiration: 3600000           # 1 hour
