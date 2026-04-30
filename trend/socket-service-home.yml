@@ -67,6 +67,8 @@ twilio:
   sender: ENC(CMsOpIf2vtbV4F2tP8bcOA==)
 
 app:
+  env:
+    base-path: C:/Users/DELL/eclipse-workspace/webforest/trend/4/trend
   oauth2:
     base-url: http://localhost:8081/socket
   sso:
