@@ -192,4 +192,4 @@ amazonProperties:
     secretKey: ${AWS_SES_SECRET_KEY}
     region: ${AWS_SES_REGION}
 
-testName: ${TEST_NAME:defaultName}
+serviceName: ${USER_SERVICE_NAME:user}
