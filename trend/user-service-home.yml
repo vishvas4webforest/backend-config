@@ -112,7 +112,7 @@ logging:
 
 app:
   env:
-    base-path: ${APP_BASE_PATH}
+    base-path: C:/Users/DELL/eclipse-workspace/webforest/trend/4/trend
   oauth2:
     base-url: ${APP_BASE_URL}
   sso:
