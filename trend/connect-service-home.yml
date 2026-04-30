@@ -1,5 +1,5 @@
 server:
-  base-url: http://localhost:8081/connect
+  base-url: ${CONNECT_APP_BASE_URL:http://localhost:8081/connect}
 
 eureka:
   instance:
@@ -8,11 +8,11 @@ eureka:
     
 spring:
   datasource:
-    host: localhost
-    port: 5433   # ✅ Add this line
-    username: postgres
-    password: Test@123
-    url: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/trenddb
+    host: ${DB_HOST:localhost}
+    port: ${DB_PORT:5433}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:Test@123}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5433}/${DB_NAME:trenddb}
     hikari:
       maximum-pool-size: 2
   redis:
@@ -26,12 +26,14 @@ spring:
 app:
   env:
     base-path: C:/Users/DELL/eclipse-workspace/webforest/trend/4/trend
-
+  oauth2:
+    base-url: ${CONNECT_APP_BASE_URL}
+    
 jwt:
-  secret: ofz8Tz+1GJEJ5efPxvqkTACLqdIGUoreFguLAixE/KI=
-  expiration: 3600000           # 1 hour
-  refresh-expiration: 2592000000 # 30 days
-  remember-expiration: 604800000 # 7 days
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION}
+  refresh-expiration: ${JWT_REFRESH_EXPIRATION}
+  remember-expiration: ${JWT_REMEMBER_EXPIRATION}
 
 logging:
   level:
@@ -64,13 +66,6 @@ feign:
         connectTimeout: 5000
         readTimeout: 5000
 
-aws:
-  s3:
-    bucket: acadafix-bucket-london
-    region: eu-west-2
-    access-key: xxxx
-    secret-key: xxxx
-
 firebase:
   json: firebase-service-account-dev.json
   bigQueryJson: trend-ac139-f7b80bd1df0f.json
@@ -79,30 +74,30 @@ firebase:
 
 amazonProperties:
   bucketName:
-    post: trend-ireland-development 
-    userProfile: trend-ireland-development 
-    oneToOneChat: trend-ireland-development 
-    groupChat: trend-ireland-development 
-    globalGroupChat: trend-ireland-development 
-    groupProfile: trend-ireland-development 
-    globalGroupProfile: trend-ireland-development 
-    globalGroupVerification: trend-ireland-development 
-    subGlobalGroupProfile: trend-ireland-development 
-    subGlobalGroupChat: trend-ireland-development 
-    learnToTradeChat: trend-ireland-development 
-    tradingEventChat: trend-ireland-development 
-    tradingEventProfile: trend-ireland-development 
-    signalGroupChat: trend-ireland-development 
-    signalGroupProfile: trend-ireland-development 
-    userStory: trend-ireland-development 
-    advertisement: trend-ireland-development 
-    clip: trend-ireland-development 
-    commonPostComment: trend-ireland-development 
-    commonPostCommentCover: trend-ireland-development 
-  accessKey: xxxxxxxxxxxxxxxxxx
-  secretKey: xxxxxxxxxxxxxxxxxx
-  region: eu-west-3
+    post: ${AWS_BUCKET}
+    userProfile: ${AWS_BUCKET}
+    oneToOneChat: ${AWS_BUCKET} 
+    groupChat: ${AWS_BUCKET}
+    globalGroupChat: ${AWS_BUCKET}
+    groupProfile: ${AWS_BUCKET}
+    globalGroupProfile: ${AWS_BUCKET} 
+    globalGroupVerification: ${AWS_BUCKET} 
+    subGlobalGroupProfile: ${AWS_BUCKET}
+    subGlobalGroupChat: ${AWS_BUCKET}
+    learnToTradeChat: ${AWS_BUCKET}
+    tradingEventChat: ${AWS_BUCKET} 
+    tradingEventProfile: ${AWS_BUCKET}
+    signalGroupChat: ${AWS_BUCKET}
+    signalGroupProfile: ${AWS_BUCKET}
+    userStory: ${AWS_BUCKET}
+    advertisement: ${AWS_BUCKET}
+    clip: ${AWS_BUCKET}
+    commonPostComment: ${AWS_BUCKET}
+    commonPostCommentCover: ${AWS_BUCKET} 
+  accessKey: ${AWS_ACCESS_KEY}
+  secretKey: ${AWS_SECRET_KEY}
+  region: ${AWS_REGION}
   ses:
-    accessKey: xxxxxxxxxxxxxxxxxx
-    secretKey: xxxxxxxxxxxxxxxxxx
-    region: eu-west-3
+    accessKey: ${AWS_SES_ACCESS_KEY}
+    secretKey: ${AWS_SES_SECRET_KEY}
+    region: ${AWS_SES_REGION}
