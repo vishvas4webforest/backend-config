@@ -1,5 +1,5 @@
 server:
-  base-url: ${APP_BASE_URL:http://localhost:8081/user}
+  base-url: ${USER_APP_BASE_URL:http://localhost:8081/user}
 
 eureka:
   instance:
@@ -114,7 +114,7 @@ app:
   env:
     base-path: C:/Users/DELL/eclipse-workspace/webforest/trend/4/trend
   oauth2:
-    base-url: ${APP_BASE_URL}
+    base-url: ${USER_APP_BASE_URL}
   sso:
     error-page-url: https://yourdomain.com/error
     token-expiry-minutes: 2
