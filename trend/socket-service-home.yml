@@ -106,4 +106,4 @@ amazonProperties:
     secretKey: ${AWS_SES_SECRET_KEY}
     region: ${AWS_SES_REGION}
 
-testSocketName: ${TEST_SOCKET_NAME:defaultName}
+serviceName: ${SOCKET_SERVICE_NAME:socket}
