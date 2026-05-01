@@ -25,4 +25,29 @@ management:
     web:
       exposure:
         include: health, info
- 
+
+
+smtp:
+  from: Trend <no-reply@trendapp.uk>
+  fromName: Trend
+  contactUsEmail: Trend <support@trendapp.uk>
+  fromMario: Mario di Marko <mariodimarko@trendapp.uk>
+  username: AKIAWDRY7TQZ73636CPU   #Paris
+  password: BD0YZmyJKsnmw8CbMH/JXW25H1EEAcNsQdsTnvPVUjNN   #Paris
+  port: 587
+  host: email-smtp.eu-west-3.amazonaws.com
+  contactUsSubject: Contact us
+  restoreAccountEmailSubject: Account Deletion Confirmation - Restore Available
+  verifyEmailSubject: Verify Your Email
+  verifyEmailSuccessSubject : Email is verified
+  forgotEmailSubject: Reset Your Password
+  downloadAppSubject: Download the SFT App
+  loginAlertSubject: New Login Detected on Your Account
+  regardsName: Trend Team
+  headerImageUrl:  https://sft-prod.s3.eu-west-3.amazonaws.com/sft-header.png
+  footerImageUrl: https://sft-prod.s3.eu-west-3.amazonaws.com/sft-footer-latest2.png
+  coverImageUrl: https://sft-prod.s3.eu-west-3.amazonaws.com/sft-cover.png
+  mariodimarkoProfileImageUrl: https://sft-prod.s3.eu-west-3.amazonaws.com/Mariodimarko.png
+  googlePlayImageUrl: https://play.google.com/store/apps/details?id=ch.sft.sftplatform
+  appleStoreImageUrl: https://apps.apple.com/in/app/sft-social-trading/id1633240152
+  appLogoUrl: https://sft-prod.s3.eu-west-3.amazonaws.com/AppLogo.png
