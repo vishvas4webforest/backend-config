@@ -11,6 +11,10 @@ spring:
     table: flyway_schema_history_user
     locations: classpath:db/migration
     baseline-on-migrate: false
+  servlet:
+    multipart:
+      max-file-size: 2000MB
+      max-request-size: 2000MB
     
 management:
   endpoints:
