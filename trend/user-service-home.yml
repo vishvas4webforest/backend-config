@@ -193,3 +193,8 @@ amazonProperties:
     region: ${AWS_SES_REGION}
 
 serviceName: ${USER_SERVICE_NAME:user}
+
+link:
+  userStoryDetailsLink: https://dev.trendapp.io/#/story/
+  restoreAccountLink: https://dev.trendapp.io/#/restore-account
+  contactSupportLink: https://dev.trendapp.io/#/support
