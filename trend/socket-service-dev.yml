@@ -125,3 +125,7 @@ link:
 
 ffmpeg:
   path: ${FFMPEG_PATH}
+
+hugging-face:
+  apiKey: ${HUGGING_FACE_API_KEY}
+  apiUrl: ${HUGGING_FACE_API_URL}
