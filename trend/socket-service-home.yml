@@ -114,6 +114,9 @@ link:
 
 ffmpeg:
   path: ${FFMPEG_PATH}
+
+storage:
+  video-dir: ${STORAGE_VIDEO_DIR}
   
 hugging-face:
   apiKey: ${HUGGING_FACE_API_KEY}
