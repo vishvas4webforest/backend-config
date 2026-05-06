@@ -122,3 +122,6 @@ serviceName: ${SOCKET_SERVICE_NAME:user}
 link:
   commonPostShareLink: ${LINK_COMMON_POST_SHARE}
   userStoryDetailsLink: ${LINK_USER_STORY_DETAILS}
+
+ffmpeg:
+  path: ${FFMPEG_PATH}
