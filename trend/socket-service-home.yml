@@ -55,7 +55,7 @@ logging:
 
 app:
   env:
-    base-path: C:/Users/DELL/eclipse-workspace/webforest/trend/4/trend
+    base-path: D:/git/webforest/trend-backend/trend
   oauth2:
     base-url: ${SOCKET_APP_BASE_URL}
   sso:
