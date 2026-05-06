@@ -197,3 +197,6 @@ link:
   userStoryDetailsLink: ${LINK_USER_STORY_DETAILS}
   restoreAccountLink: ${LINK_RESTORE_ACCOUNT}
   contactSupportLink: ${LINK_CONTACT_SUPPORT}
+
+ffmpeg:
+  path: ${FFMPEG_PATH}
