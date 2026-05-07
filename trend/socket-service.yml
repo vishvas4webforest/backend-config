@@ -21,3 +21,28 @@ management:
     web:
       exposure:
         include: health, info
+
+maxSize:
+  mb:
+    oneToOneChat: 50
+    oneToOneChatErrorMsg: The uploaded image exceeds the maximum allowed size of 50 MB. Please upload an image within the size limit.
+    globalGroupChat: 2000
+    globalGroupChatErrorMsg: The uploaded image exceeds the maximum allowed size of 2 GB. Please upload an image within the size limit.  
+    post: 1000
+    postErrorMsg: The uploaded image exceeds the maximum allowed size of 1 GB. Please upload an image within the size limit.
+    userProfile: 50
+    userProfileErrorMsg: The uploaded image exceeds the maximum allowed size of 50 MB. Please upload an image within the size limit.  
+    clip: 1000
+    clipErrorMsg: The uploaded video exceeds the maximum allowed size of 1 GB. Please upload an video within the size limit.    
+    clipCover: 50
+    clipCoverErrorMsg: The uploaded cover image exceeds the maximum allowed size of 50 MB. Please upload an image within the size limit.
+    postCover: 50
+    postCoverErrorMsg: The uploaded file exceeds the maximum allowed size of 50 MB. Please upload an image within the size limit.
+    commonPostCommentCover: 50
+    commonPostCommentCoverErrorMsg: The uploaded file exceeds the maximum allowed size of 50 MB. Please upload an image within the size limit.
+    commonPostComment: 50
+    commonPostCommentErrorMsg: The uploaded file exceeds the maximum allowed size of 50 MB. Please upload an image within the size limit.
+    groupImage: 50
+    groupImageErrorMsg: The uploaded file exceeds the maximum allowed size of 50 MB. Please upload an image within the size limit.
+    groupMessage: 1000
+    groupMessageErrorMsg: The uploaded video exceeds the maximum allowed size of 1 GB. Please upload an video within the size limit.
