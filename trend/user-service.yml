@@ -61,3 +61,12 @@ smtp:
   googlePlayImageUrl: https://play.google.com/store/apps/details?id=ch.sft.sftplatform
   appleStoreImageUrl: https://apps.apple.com/in/app/sft-social-trading/id1633240152
   appLogoUrl: https://sft-prod.s3.eu-west-3.amazonaws.com/AppLogo.png
+
+maxSize:
+  mb:
+    userProfile: 50
+    userProfileErrorMsg: The uploaded image exceeds the maximum allowed size of 50 MB. Please upload an image within the size limit. 
+    userProfileCover: 50
+    userProfileCoverErrorMsg: The uploaded cover image exceeds the maximum allowed size of 50 MB. Please upload an image within the size limit.
+    ageVerification: 50
+    ageVerificationErrorMsg: The uploaded image exceeds the maximum allowed size of 50 MB. Please upload an image within the size limit. 
