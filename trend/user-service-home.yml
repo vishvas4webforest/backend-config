@@ -148,6 +148,7 @@ app:
     token-expiry-minutes: 30
     otp-resend-cooldown-seconds: 60
     email-subject: Reset your password
+  prefix-link-for-email: https://dev.trendapp.io/
     
 feign:
   client:
