@@ -1,5 +1,5 @@
 server:
-  base-url: https://apiacadafix.webcheckdemo.org/auth
+  base-url: https://devapi.acadafix.co.uk/auth
   forward-headers-strategy: framework  # CRITICAL: Tell Spring to trust Nginx headers
 
 eureka:
@@ -126,7 +126,7 @@ twilio:
 
 app:
   oauth2:
-    base-url: https://apiacadafix.webcheckdemo.org/auth
+    base-url: https://devapi.acadafix.co.uk/auth
   sso:
     error-page-url: https://yourdomain.com/error
     token-expiry-minutes: 2
