@@ -61,7 +61,7 @@ app:
   env:
     base-path: D:/git/webforest/trend-backend/trend
   log: 
-    path: ${SOCKET_LOG_PATH}
+    path: ${SOCKET_LOG_PATH:D:/vishvas/logs/socket}
   oauth2:
     base-url: ${SOCKET_APP_BASE_URL}
   sso:
