@@ -116,6 +116,10 @@ logging:
     org.springframework: INFO
 
 app:
+  env:
+    base-path: /home/ubuntu/webforest/env/trend
+  log: 
+    path: /home/ubuntu/webforest/logs/user
   oauth2:
     base-url: ${USER_APP_BASE_URL}
   sso:
