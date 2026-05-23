@@ -119,7 +119,7 @@ app:
   env:
     base-path: /home/ubuntu/webforest/env/trend
   log: 
-    path: /home/ubuntu/webforest/logs/user
+    path: ${USER_LOG_PATH}
   oauth2:
     base-url: ${USER_APP_BASE_URL}
   sso:
