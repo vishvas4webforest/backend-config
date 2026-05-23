@@ -66,6 +66,8 @@ app:
     error-page-url: https://yourdomain.com/error
     token-expiry-minutes: 2
   config-source: this is socket-service-home.yml
+  log: 
+    path: D:/trend/logs/socket
   
 feign:
   client:
