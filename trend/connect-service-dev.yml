@@ -62,7 +62,7 @@ app:
   env:
     base-path: /home/ubuntu/webforest/env/trend
   log: 
-    path: ${CONNECT_LOG_PATH}
+    path: ${CONNECT_LOG_PATH:/home/ubuntu/webforest/logs/connect}
     
 feign:
   client:
