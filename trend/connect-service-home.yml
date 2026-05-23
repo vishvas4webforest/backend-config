@@ -30,11 +30,12 @@ spring:
 
 app:
   env:
-    base-path: C:/Users/DELL/eclipse-workspace/webforest/trend/4/trend
+    base-path: D:/git/webforest/trend-backend/trend
+  log: 
+    path: ${CONNECT_LOG_PATH}
   oauth2:
     base-url: ${CONNECT_APP_BASE_URL}
-  log: 
-    path: D:/trend/logs/connect
+
     
 jwt:
   secret: ${JWT_SECRET}
