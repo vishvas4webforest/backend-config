@@ -71,6 +71,10 @@ twilio:
   sender: ENC(CMsOpIf2vtbV4F2tP8bcOA==)
 
 app:
+  env:
+    base-path: /home/ubuntu/webforest/env/trend
+  log: 
+    path: /home/ubuntu/webforest/logs/socket
   oauth2:
     base-url: ${SOCKET_APP_BASE_URL}
   sso:
