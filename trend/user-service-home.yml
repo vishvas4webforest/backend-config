@@ -118,7 +118,7 @@ app:
   env:
     base-path: D:/git/webforest/trend-backend/trend
   log: 
-    path: ${USER_LOG_PATH}
+    path: ${USER_LOG_PATH:D:/vishvas/logs/user}
   oauth2:
     base-url: ${USER_APP_BASE_URL}
   sso:
