@@ -57,7 +57,13 @@ logging:
 
     # Suppress Spring framework debug logs
     org.springframework: INFO
-  
+
+app:
+  env:
+    base-path: /home/ubuntu/webforest/env/trend
+  log: 
+    path: /home/ubuntu/webforest/logs/connect
+    
 feign:
   client:
     config:
