@@ -32,7 +32,7 @@ app:
   env:
     base-path: D:/git/webforest/trend-backend/trend
   log: 
-    path: ${CONNECT_LOG_PATH}
+    path: ${CONNECT_LOG_PATH:D:/vishvas/logs/connect}
   oauth2:
     base-url: ${CONNECT_APP_BASE_URL}
 
