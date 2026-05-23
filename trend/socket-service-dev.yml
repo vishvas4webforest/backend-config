@@ -74,7 +74,7 @@ app:
   env:
     base-path: /home/ubuntu/webforest/env/trend
   log: 
-    path: ${LOG_PATH}
+    path: ${SOCKET_LOG_PATH}
   oauth2:
     base-url: ${SOCKET_APP_BASE_URL}
   sso:
