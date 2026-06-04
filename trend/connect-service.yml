@@ -11,6 +11,16 @@ spring:
     table: flyway_schema_history_user
     locations: classpath:db/migration
     baseline-on-migrate: false
+  thymeleaf:
+    prefix: classpath:/templates/mail/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    cache: false
+  servlet:
+    multipart:
+      max-file-size: 2000MB
+      max-request-size: 2000MB
     
 management:
   endpoints:
