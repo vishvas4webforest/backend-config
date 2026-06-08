@@ -106,9 +106,3 @@ amazonProperties:
     accessKey: ${AWS_SES_ACCESS_KEY}
     secretKey: ${AWS_SES_SECRET_KEY}
     region: ${AWS_SES_REGION}
-
-twilio:
-  enabled: ${TWILIO_ENABLED}
-  account-sid: ${TWILIO_ACCOUNT_ID}
-  auth-token: ${TWILIO_AUTH_TOKEN}
-  phone-number: ${TWILIO_PHONE_NUMBER}
