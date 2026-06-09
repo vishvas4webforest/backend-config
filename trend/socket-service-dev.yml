@@ -140,3 +140,9 @@ storage:
 hugging-face:
   apiKey: ${HUGGING_FACE_API_KEY}
   apiUrl: ${HUGGING_FACE_API_URL}
+
+twilio:
+  enabled: ${TWILIO_ENABLED}
+  account-sid: ${TWILIO_ACCOUNT_ID}
+  auth-token: ${TWILIO_AUTH_TOKEN}
+  phone-number: ${TWILIO_PHONE_NUMBER}
