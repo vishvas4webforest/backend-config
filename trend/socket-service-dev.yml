@@ -65,11 +65,6 @@ smtp:
   password: LFQ03C8bYEUo9eoHF5lU7lViac82eb4vfyiSg8pozZo=
   from: zbD3fZugprJd60HDv9kFvfrA/kP1qcLqKc0C0P5DP9o=
 
-twilio:
-  sid: ENC(5uLH/UHLUTQLNQfQNYroSv58sHfci8EDz407nl2GaQO51/BtUsnQXhijTaVCSoJo)
-  token: ENC(NtbYwl6C7C0e7nPeEbJ161nuS3xVuYvkWCFJvJAPa55VYmnPNnm+L38okoPKaM2a)
-  sender: ENC(CMsOpIf2vtbV4F2tP8bcOA==)
-
 app:
   env:
     base-path: /home/ubuntu/webforest/env/trend
