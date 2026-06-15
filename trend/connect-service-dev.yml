@@ -117,3 +117,11 @@ connect:
   chat:
     expiry:
       days: 15
+  we-met:
+    lookback:
+      days: 30
+    mutual:
+      days:
+        threshold: 15
+    popup:
+      max-dismissals: 1
