@@ -121,7 +121,7 @@ twilio:
 connect:
   chat:
     expiry:
-      days: 15
+      days: 10
   we-met:
     lookback:
       days: 30
