@@ -88,3 +88,11 @@ aws:
     region: eu-west-2
     access-key: AKIAV3OZC4PBMDRN3AKF
     secret-key: 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
+
+connect:
+  new-connections:
+    match:
+      expiry:
+        days: 10
+      expiring-soon:
+        day: 9
