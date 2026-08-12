@@ -1,0 +1,12 @@
+server:
+  port: 9094
+
+app:
+  log:
+    path: ${SOCKET_LOG_PATH:/home/ubuntu/webforest/logs/socket-green}
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:green:9094
+    metadata-map:
+      color: green
