@@ -1,0 +1,12 @@
+server:
+  port: 8084
+
+app:
+  log:
+    path: ${SOCKET_LOG_PATH:/home/ubuntu/webforest/logs/socket-blue}
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:blue:8084
+    metadata-map:
+      color: blue
