@@ -1,0 +1,12 @@
+server:
+  port: 9093
+
+app:
+  log:
+    path: ${CONNECT_LOG_PATH:/home/ubuntu/webforest/logs/connect-green}
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:green:9093
+    metadata-map:
+      color: green
