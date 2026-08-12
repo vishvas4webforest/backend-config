@@ -1,0 +1,12 @@
+server:
+  port: 8082
+
+app:
+  log:
+    path: ${USER_LOG_PATH:/home/ubuntu/webforest/logs/user-blue}
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:blue:8082
+    metadata-map:
+      color: blue
