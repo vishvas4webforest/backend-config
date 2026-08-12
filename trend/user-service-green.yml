@@ -1,0 +1,12 @@
+server:
+  port: 9092
+
+app:
+  log:
+    path: ${USER_LOG_PATH:/home/ubuntu/webforest/logs/user-green}
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:green:9092
+    metadata-map:
+      color: green
