@@ -222,3 +222,15 @@ iap:
   google:
     package-name: ${IAP_GOOGLE_PACKAGE_NAME:}     # e.g. com.trend.app
     service-account-json: ${IAP_GOOGLE_SA_JSON:}  # path to service-account.json
+
+# ── STOMP broker (websockets) ─────────────────────────────
+# enabled: false = in-memory broker (single instance, current behavior)
+# enabled: true  = relay via RabbitMQ STOMP plugin (required for 2+ instances)
+# Flip + restart the service. RabbitMQ must be running when true.
+stomp:
+  relay:
+    enabled: ${STOMP_RELAY_ENABLED:false}
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_STOMP_PORT:61613}
+    login: ${RABBITMQ_USER:guest}
+    passcode: ${RABBITMQ_PASS:guest}
