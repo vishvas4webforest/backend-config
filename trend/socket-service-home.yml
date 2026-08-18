@@ -146,3 +146,11 @@ stomp:
     port: ${RABBITMQ_STOMP_PORT:61613}
     login: ${RABBITMQ_USER:guest}
     passcode: ${RABBITMQ_PASS:guest}
+
+connect:
+  re-engagement:
+    enabled: true
+    inactive-days: 7                 # no app open for N days → candidate
+    cooldown-days: 14                # min gap between two nudges to the same user
+    batch-size: 2000                 # max users per run
+    cron: "0 0 10 * * ?"             # daily 10:00 server time (ConnectReEngagementScheduler)
