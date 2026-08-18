@@ -138,3 +138,14 @@ connect:
     cooldown-days: 14
     batch-size: 2000
     cron: "0 0 10 * * ?"
+  match:
+    expiry:
+      hours: 24                      # match with no chat is deleted after this (existing 24h, now configurable)
+      remind-before-hours: 4         # "Your match is waiting for you." fires this many hours before deletion
+      remind-cron: "0 30 * * * *"    # hourly at :30 (ConnectMatchExpiryScheduler.remindExpiringMatches)
+  new-connections:
+    match:
+      expiry:
+        days: 10                     # existing
+      expiring-soon:
+        day: 9                       # existing
