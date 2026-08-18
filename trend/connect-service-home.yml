@@ -122,6 +122,8 @@ connect:
   chat:
     expiry:
       days: 10
+      warn-before-days: 1            # "Don't miss your chance to connect with <Name>." fires this many days before expiry (→ day 9)
+      warn-cron: "0 0 11 * * *"      # daily 11:00 server time
   we-met:
     lookback:
       days: 30
