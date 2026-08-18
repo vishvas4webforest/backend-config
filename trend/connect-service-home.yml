@@ -130,3 +130,9 @@ connect:
         threshold: 15
     popup:
       max-dismissals: 1
+  re-engagement:
+    enabled: true
+    inactive-days: 7
+    cooldown-days: 14
+    batch-size: 2000
+    cron: "0 0 10 * * ?"
