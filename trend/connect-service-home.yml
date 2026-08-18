@@ -149,3 +149,7 @@ connect:
         days: 10                     # existing
       expiring-soon:
         day: 9                       # existing
+  credits:
+    low-balance-threshold: 2
+    low-balance-push:
+      enabled: true
