@@ -61,6 +61,7 @@ smtp:
   googlePlayImageUrl: https://play.google.com/store/apps/details?id=ch.sft.sftplatform
   appleStoreImageUrl: https://apps.apple.com/in/app/sft-social-trading/id1633240152
   appLogoUrl: https://sft-prod.s3.eu-west-3.amazonaws.com/AppLogo.png
+  adminInviteEmailSubject: "You've been invited to the Trend Admin Panel"
 
 maxSize:
   mb:
