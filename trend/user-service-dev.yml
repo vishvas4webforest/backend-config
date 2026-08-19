@@ -241,5 +241,3 @@ admin:
   panel-url: https://admin.trendapp.uk/            # shown in the email as "sign in at…"
   invite:
     expiry-hours: 72
-smtp:
-  adminInviteEmailSubject: "You've been invited to the Trend Admin Panel"
