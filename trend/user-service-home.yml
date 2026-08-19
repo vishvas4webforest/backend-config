@@ -234,3 +234,12 @@ stomp:
     port: ${RABBITMQ_STOMP_PORT:61613}
     login: ${RABBITMQ_USER:guest}
     passcode: ${RABBITMQ_PASS:guest}
+
+
+admin:
+  invite-link-prefix: https://admin.trendapp.uk/   # base for the set-password link; falls back to app.prefix-link-for-email
+  panel-url: https://admin.trendapp.uk/            # shown in the email as "sign in at…"
+  invite:
+    expiry-hours: 72
+smtp:
+  adminInviteEmailSubject: "You've been invited to the Trend Admin Panel"
