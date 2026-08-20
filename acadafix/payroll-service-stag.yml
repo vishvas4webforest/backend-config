@@ -84,7 +84,8 @@ feign:
 
 hmrc:
   gateway:
-    url: https://test-transaction-engine.tax.service.gov.uk/submissions
+    url: https://test-transaction-engine.tax.service.gov.uk/submission   # ⚠️ FIXED — you have /submissions (plural), which is wrong
+    test: true  
 
   oauth:
     token-url: https://test-api.service.hmrc.gov.uk/oauth/token
@@ -93,7 +94,19 @@ hmrc:
     id: e9WomnRnFlmT3WizVPIYOfnlFksV
     secret: bc34ff99-7433-4fce-aa15-a16c794b610b
 
-  sandbox: true
+  sender:                         # ✅ NEW — missing entirely; FPS builder NPEs without it
+    id: ISV635
+    password: fGuR34fAOEJf
+
+  product:                        # ✅ NEW — explicit, so nothing else can override to 9293
+    code: Acadafix
+
+  employer:                       # ✅ NEW — missing entirely; FPS builder NPEs without it
+    office-no: 635
+    paye-ref: A635
+    accounts-office-ref: 635PA12345678
+    
+  sandbox: false                  # ✅ CHANGED — real payroll-run data for the scenario
 
   timeouts:
     connect: 30
