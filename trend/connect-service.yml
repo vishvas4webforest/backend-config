@@ -1,11 +1,21 @@
 server:
   port: 8085
+  shutdown: graceful
 
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+  client:
+    registry-fetch-interval-seconds: 5
+    
 swagger:
   ui-path: /swagger-ui.html
   api-docs: /v3/api-docs
 
 spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
   flyway:
     enabled: true
     table: flyway_schema_history_user
