@@ -220,6 +220,8 @@ iap:
   apple:
     shared-secret: ${IAP_APPLE_SHARED_SECRET:}   # set in env or config server
     sandbox: ${IAP_APPLE_SANDBOX:false}           # true for dev/staging
+    webhook:
+      verify-signature: ${IAP_APPLE_WEBHOOK_VERIFY:true}
   google:
     package-name: ${IAP_GOOGLE_PACKAGE_NAME:}     # e.g. com.trend.app
     service-account-json: ${IAP_GOOGLE_SA_JSON:}  # path to service-account.json
