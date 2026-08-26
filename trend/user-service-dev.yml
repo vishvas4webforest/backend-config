@@ -225,6 +225,10 @@ iap:
   google:
     package-name: ${IAP_GOOGLE_PACKAGE_NAME:}     # e.g. com.trend.app
     service-account-json: ${IAP_GOOGLE_SA_JSON:}  # path to service-account.json
+    webhook:
+      verify-token: ${IAP_GOOGLE_WEBHOOK_VERIFY:true}
+      audience: ${IAP_GOOGLE_WEBHOOK_AUDIENCE:}
+      service-account-email: ${IAP_GOOGLE_WEBHOOK_SA_EMAIL:}   
 
 # ── STOMP broker (websockets) ─────────────────────────────
 # enabled: false = in-memory broker (single instance, current behavior)
