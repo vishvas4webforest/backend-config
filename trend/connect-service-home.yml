@@ -153,3 +153,5 @@ connect:
     low-balance-threshold: 2
     low-balance-push:
       enabled: true
+  referral:
+    max-per-user: ${CONNECT_REFERRAL_MAX_PER_USER}
