@@ -162,3 +162,7 @@ social:
   linkedinUrl: ${SOCIAL_LINKEDIN_URL:https://linkedin.com/company/trendapp}
   instagramUrl: ${SOCIAL_INSTAGRAM_URL:https://instagram.com/trendapp}
   youtubeUrl: ${SOCIAL_YOUTUBE_URL:https://youtube.com/@trendapp}
+
+video:
+  job-threads: ${VIDEO_JOB_THREADS:2}
+  job-queue: ${VIDEO_JOB_QUEUE:500}
