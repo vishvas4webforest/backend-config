@@ -254,3 +254,10 @@ smtp:
   googlePlayImageUrl: ${GOOGLE_PLAY_IMAGE_URL:https://play.google.com/store/apps/details?id=com.test.trend}
 
 visitNow: ${VISIT_NOW:https://trendapp.uk}
+
+
+social:
+  facebookUrl: ${SOCIAL_FACEBOOK_URL:https://facebook.com/trendapp}
+  linkedinUrl: ${SOCIAL_LINKEDIN_URL:https://linkedin.com/company/trendapp}
+  instagramUrl: ${SOCIAL_INSTAGRAM_URL:https://instagram.com/trendapp}
+  youtubeUrl: ${SOCIAL_YOUTUBE_URL:https://youtube.com/@trendapp}
