@@ -154,7 +154,7 @@ app:
     token-expiry-minutes: 30
     otp-resend-cooldown-seconds: 60
     email-subject: Reset your password
-  prefix-link-for-email: https://dev.trendapp.io/
+  prefix-link-for-email: ${WEBSITE_PREFIX_LINK_FOR_EMAIL:https://dev.trendapp.io/}
     
 feign:
   client:
@@ -247,3 +247,5 @@ smtp:
   googlePlayImageUrl: ${GOOGLE_PLAY_IMAGE_URL:https://play.google.com/store/apps/details?id=com.test.trend}
 
 visitNow: ${VISIT_NOW:https://trendapp.uk}
+
+
