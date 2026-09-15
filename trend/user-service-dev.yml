@@ -248,3 +248,9 @@ admin:
   panel-url: https://admin.trendapp.uk/            # shown in the email as "sign in at…"
   invite:
     expiry-hours: 72
+
+smtp:
+  appleStoreImageUrl: ${APPLE_STORE_IMAGE_URL:https://apps.apple.com/app/id<YOUR_APP_ID>}
+  googlePlayImageUrl: ${GOOGLE_PLAY_IMAGE_URL:https://play.google.com/store/apps/details?id=com.test.trend}
+
+visitNow: ${VISIT_NOW:https://trendapp.uk}
