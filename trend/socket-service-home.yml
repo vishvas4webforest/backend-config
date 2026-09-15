@@ -160,3 +160,13 @@ smtp:
   googlePlayImageUrl: ${GOOGLE_PLAY_IMAGE_URL:https://play.google.com/store/apps/details?id=com.test.trend}
 
 visitNow: ${VISIT_NOW:https://trendapp.uk}
+
+video:
+  job-threads: ${VIDEO_JOB_THREADS:2}
+  job-queue: ${VIDEO_JOB_QUEUE:500}
+  upload-threads: ${VIDEO_UPLOAD_THREADS:8}
+  upload-attempts: ${VIDEO_UPLOAD_ATTEMPTS:3}
+  ffmpeg-timeout-minutes: ${VIDEO_FFMPEG_TIMEOUT_MINUTES:30}
+  encoder: ${VIDEO_ENCODER:libx264}
+  encoder-preset: ${VIDEO_ENCODER_PRESET:veryfast}
+  hls-segment-seconds: ${VIDEO_HLS_SEGMENT_SECONDS:2}
