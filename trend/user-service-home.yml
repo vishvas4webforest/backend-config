@@ -237,10 +237,10 @@ stomp:
 
 
 admin:
-  invite-link-prefix: https://admin.trendapp.uk/   # base for the set-password link; falls back to app.prefix-link-for-email
-  panel-url: https://admin.trendapp.uk/            # shown in the email as "sign in at…"
+  invite-link-prefix: ${ADMIN_PANEL_INVITE_LINK_PREFIX:https://trend-admin-panel.onrender.com/}   # base for the set-password link; falls back to app.prefix-link-for-email
+  panel-url: ${ADMIN_PANEL_URL:https://trend-admin-panel.onrender.com/}            # shown in the email as "sign in at…"
   invite:
-    expiry-hours: 72
+    expiry-hours: ${ADMIN_PANEL_INVITE_EXPIRY_HOURS:72}  
 
 smtp:
   appleStoreImageUrl: ${APPLE_STORE_IMAGE_URL:https://apps.apple.com/app/id<YOUR_APP_ID>}
