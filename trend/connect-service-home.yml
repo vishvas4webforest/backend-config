@@ -155,3 +155,10 @@ connect:
       enabled: true
   referral:
     max-per-user: ${CONNECT_REFERRAL_MAX_PER_USER}
+
+# application.yml (config repo — shared by all services)
+smtp:
+  appleStoreImageUrl: ${APPLE_STORE_IMAGE_URL:https://apps.apple.com/app/id<YOUR_APP_ID>}
+  googlePlayImageUrl: ${GOOGLE_PLAY_IMAGE_URL:https://play.google.com/store/apps/details?id=com.test.trend}
+
+visitNow: ${VISIT_NOW:https://trendapp.uk}
