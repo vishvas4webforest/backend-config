@@ -154,3 +154,9 @@ connect:
     cooldown-days: 14                # min gap between two nudges to the same user
     batch-size: 2000                 # max users per run
     cron: "0 0 10 * * ?"             # daily 10:00 server time (ConnectReEngagementScheduler)
+
+smtp:
+  appleStoreImageUrl: ${APPLE_STORE_IMAGE_URL:https://apps.apple.com/app/id<YOUR_APP_ID>}
+  googlePlayImageUrl: ${GOOGLE_PLAY_IMAGE_URL:https://play.google.com/store/apps/details?id=com.test.trend}
+
+visitNow: ${VISIT_NOW:https://trendapp.uk}
