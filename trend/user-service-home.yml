@@ -254,3 +254,12 @@ social:
   instagramUrl: ${SOCIAL_INSTAGRAM_URL:https://instagram.com/trendapp}
   youtubeUrl: ${SOCIAL_YOUTUBE_URL:https://youtube.com/@trendapp}
 
+video:
+  job-threads: ${VIDEO_JOB_THREADS:2}
+  job-queue: ${VIDEO_JOB_QUEUE:500}
+  upload-threads: ${VIDEO_UPLOAD_THREADS:8}
+  upload-attempts: ${VIDEO_UPLOAD_ATTEMPTS:3}
+  ffmpeg-timeout-minutes: ${VIDEO_FFMPEG_TIMEOUT_MINUTES:30}
+  encoder: ${VIDEO_ENCODER:libx264}
+  encoder-preset: ${VIDEO_ENCODER_PRESET:veryfast}
+  hls-segment-seconds: ${VIDEO_HLS_SEGMENT_SECONDS:2}
