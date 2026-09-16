@@ -271,3 +271,8 @@ video:
   encoder: ${VIDEO_ENCODER:libx264}
   encoder-preset: ${VIDEO_ENCODER_PRESET:veryfast}
   hls-segment-seconds: ${VIDEO_HLS_SEGMENT_SECONDS:2}
+
+moderation:
+  auto-ban:
+    enabled: ${MODERATION_AUTO_BAN_ENABLED:false}
+    report-threshold: ${MODERATION_AUTO_BAN_REPORT_THRESHOLD:3}
