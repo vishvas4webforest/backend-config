@@ -268,3 +268,11 @@ moderation:
   auto-ban:
     enabled: ${MODERATION_AUTO_BAN_ENABLED:false}
     report-threshold: ${MODERATION_AUTO_BAN_REPORT_THRESHOLD:3}
+
+connect:
+  chat:
+    expiry:
+      days: ${CONNECT_CHAT_EXPIRY_DAYS:10}
+      popup-after-days: ${CONNECT_CHAT_EXPIRY_POPUP_AFTER_DAYS:7}
+      warn-before-days: ${CONNECT_WARN_BEFORE_DAYS:1}               # "Don't miss your chance to connect with <Name>." fires this many days before expiry (→ day 9)
+      warn-cron: ${CONNECT_CHAT_EXPIRY_WARN_CRON:0 0 11 * * *}      # daily 11:00 server time
