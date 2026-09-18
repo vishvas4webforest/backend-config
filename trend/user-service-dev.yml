@@ -263,6 +263,7 @@ social:
   youtubeUrl: ${SOCIAL_YOUTUBE_URL:https://youtube.com/@trendapp}
 
 video:
+  processing-mode: ${VIDEO_PROCESSING_MODE:FFMPEG}
   job-threads: ${VIDEO_JOB_THREADS:2}
   job-queue: ${VIDEO_JOB_QUEUE:500}
   upload-threads: ${VIDEO_UPLOAD_THREADS:8}
