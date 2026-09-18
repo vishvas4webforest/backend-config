@@ -121,9 +121,10 @@ twilio:
 connect:
   chat:
     expiry:
-      days: 10
+      days: ${CONNECT_CHAT_EXPIRY_DAYS:10}
+      popup-after-days: ${CONNECT_CHAT_EXPIRY_POPUP_AFTER_DAYS:7}
       warn-before-days: 1            # "Don't miss your chance to connect with <Name>." fires this many days before expiry (→ day 9)
-      warn-cron: "0 0 11 * * *"      # daily 11:00 server time
+      warn-cron: ${CONNECT_CHAT_EXPIRY_WARN_CRON:0 0 11 * * *}      # daily 11:00 server time
   we-met:
     lookback:
       days: 30
