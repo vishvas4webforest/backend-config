@@ -1,5 +1,5 @@
 server:
-  base-url: http://localhost:8081/payroll
+  base-url: ${PAYROLL_APP_BASE_URL}
 
 eureka:
   instance:
@@ -8,10 +8,10 @@ eureka:
     
 spring:
   datasource:
-    host: localhost
-    port: 5433   # ✅ Add this line
-    username: postgres
-    password: Test@123
+    host: ${DB_HOST:localhost}
+    port: ${DB_PORT:5433}   # ✅ Add this line
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:Test@123}
     url: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/acadafix
     hikari:
       maximum-pool-size: 2
@@ -24,10 +24,10 @@ spring:
     show-sql: true
 
 jwt:
-  secret: ofz8Tz+1GJEJ5efPxvqkTACLqdIGUoreFguLAixE/KI=
-  expiration: 3600000           # 1 hour
-  refresh-expiration: 2592000000 # 30 days
-  remember-expiration: 604800000 # 7 days
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION}           # 1 hour
+  refresh-expiration: ${JWT_REFRESH_EXPIRATION} # 30 days
+  remember-expiration: ${JWT_REMEMBER_EXPIRATION} # 7 days
 
 logging:
   level:
@@ -53,27 +53,12 @@ logging:
     # Suppress Spring framework debug logs
     org.springframework: INFO
 
-
-smtp:
-  host: smtp.gmail.com
-  port: 587
-  username: zbD3fZugprJd60HDv9kFvfrA/kP1qcLqKc0C0P5DP9o=
-  password: LFQ03C8bYEUo9eoHF5lU7lViac82eb4vfyiSg8pozZo=
-  from: zbD3fZugprJd60HDv9kFvfrA/kP1qcLqKc0C0P5DP9o=
-
-twilio:
-  sid: ENC(5uLH/UHLUTQLNQfQNYroSv58sHfci8EDz407nl2GaQO51/BtUsnQXhijTaVCSoJo)
-  token: ENC(NtbYwl6C7C0e7nPeEbJ161nuS3xVuYvkWCFJvJAPa55VYmnPNnm+L38okoPKaM2a)
-  sender: ENC(CMsOpIf2vtbV4F2tP8bcOA==)
-
 app:
-  env:
-    base-path: D:/git/webforest/acadafix
   oauth2:
-    base-url: http://localhost:8081/payroll
+    base-url: ${PAYROLL_APP_BASE_URL}
   sso:
-    error-page-url: https://yourdomain.com/error
-    token-expiry-minutes: 2
+    error-page-url: ${SSO_ERROR_PAGE_URL}
+    token-expiry-minutes: ${SSO_TOKEN_EXPIRY_MINUES:2}
   config-source: this is payroll-service-home.yml
   
 feign:
@@ -85,29 +70,29 @@ feign:
 
 hmrc:
   oauth:
-    token-url: https://test-api.service.hmrc.gov.uk/oauth/token
+    token-url: ${HMRC_OAUTH_TOKEN_URL}
 
   client:
-    id: e9WomnRnFlmT3WizVPIYOfnlFksV
-    secret: bc34ff99-7433-4fce-aa15-a16c794b610b
+    id: ${HMRC_CLIENT_ID}
+    secret: ${HMRC_CLIENT_SECRET}
 
   gateway:
-    url: https://test-transaction-engine.tax.service.gov.uk/submission
+    url: ${HMRC_GATEWAY_URL}
 
   sender:
-    id: ISV635
-    password: fGuR34fAOEJf
+    id: ${HMRC_SENDER_ID}
+    password: ${HMRC_PASSWORD}
 
   product:
-    code: 9293
+    code: ${HMRC_PRODUCT_CODE}
 
   employer:   # ✅ ADD THIS
-    office-no: 635
-    paye-ref: A635
-    accounts-office-ref: 635PA12345678
+    office-no: ${HMRC_EMPLOYER_OFFICE_NO}
+    paye-ref: ${HMRC_EMPLOYER_PAY_REF}
+    accounts-office-ref: ${HMRC_EMPLOYER_ACCOUNT_OFFICE_REF}
 
-  sandbox: true
+  sandbox: ${HMRC_SANDBOX:true}
 
   timeouts:
-    connect: 30
-    read: 60
+    connect: ${HMRC_TIMEOUT_CONNECT:30}
+    read: ${HMRC_TIMEOUT_READ:60}
