@@ -1,5 +1,5 @@
 server:
-  base-url: http://localhost:8081/hr
+  base-url: ${HR_APP_BASE_URL}
 
 eureka:
   instance:
@@ -8,10 +8,10 @@ eureka:
     
 spring:
   datasource:
-    host: localhost
-    port: 5433   # ✅ Add this line
-    username: postgres
-    password: Test@123
+    host: ${DB_HOST:localhost}
+    port: ${DB_PORT:5433}   # ✅ Add this line
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:Test@123}
     url: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/acadafix
     hikari:
       maximum-pool-size: 2
@@ -31,10 +31,10 @@ spring:
         batch_versioned_data: true
 
 jwt:
-  secret: ofz8Tz+1GJEJ5efPxvqkTACLqdIGUoreFguLAixE/KI=
-  expiration: 3600000           # 1 hour
-  refresh-expiration: 2592000000 # 30 days
-  remember-expiration: 604800000 # 7 days
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION}           # 1 hour
+  refresh-expiration: ${JWT_REFRESH_EXPIRATION} # 30 days
+  remember-expiration: ${JWT_REMEMBER_EXPIRATION} # 7 days
 
 logging:
   level:
@@ -60,27 +60,12 @@ logging:
     # Suppress Spring framework debug logs
     org.springframework: INFO
 
-
-smtp:
-  host: smtp.gmail.com
-  port: 587
-  username: zbD3fZugprJd60HDv9kFvfrA/kP1qcLqKc0C0P5DP9o=
-  password: LFQ03C8bYEUo9eoHF5lU7lViac82eb4vfyiSg8pozZo=
-  from: zbD3fZugprJd60HDv9kFvfrA/kP1qcLqKc0C0P5DP9o=
-
-twilio:
-  sid: ENC(5uLH/UHLUTQLNQfQNYroSv58sHfci8EDz407nl2GaQO51/BtUsnQXhijTaVCSoJo)
-  token: ENC(NtbYwl6C7C0e7nPeEbJ161nuS3xVuYvkWCFJvJAPa55VYmnPNnm+L38okoPKaM2a)
-  sender: ENC(CMsOpIf2vtbV4F2tP8bcOA==)
-
 app:
-  env:
-    base-path: D:/git/webforest/acadafix
   oauth2:
-    base-url: http://localhost:8081/hr
+    base-url: ${HR_APP_BASE_URL}
   sso:
-    error-page-url: https://yourdomain.com/error
-    token-expiry-minutes: 2
+    error-page-url: ${SSO_ERROR_PAGE_URL}
+    token-expiry-minutes: ${SSO_TOKEN_EXPIRY_MINUES:2}
   config-source: this is hr-service-home.yml
   
 feign:
@@ -92,10 +77,10 @@ feign:
 
 aws:
   s3:
-    bucket: acadafix-bucket-london
-    region: eu-west-2
-    access-key: AKIAV3OZC4PBD5SFCJEO
-    secret-key: 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
+    bucket: ${AWS_S3_BUCKET:acadafix-bucket-london}
+    region: ${AWS_S3_REGION:eu-west-2}
+    access-key: ${AWS_S3_ACCESS_KEY}
+    secret-key: ${AWS_S3_SECRET_KEY}
 
 connect:
   new-connections:
