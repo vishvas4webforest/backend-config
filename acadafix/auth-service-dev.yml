@@ -1,5 +1,5 @@
 server:
-  base-url: http://16.60.15.40:8081/auth
+  base-url: ${AUTH_APP_BASE_URL}
 
 eureka:
   instance:
@@ -8,10 +8,10 @@ eureka:
     
 spring:
   datasource:
-    host: acadafix.cnc4uia2cfwa.eu-west-2.rds.amazonaws.com
-    port: 5432   # ✅ Add this line
-    username: postgres
-    password: AcadafixWebforest$123
+    host: ${DB_HOST}
+    port: ${DB_PORT}   # ✅ Add this line
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     url: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/acadafix
     hikari:
       maximum-pool-size: 2
@@ -27,64 +27,31 @@ spring:
       client:
         registration:
           google:
-            client-id: YOUR_GOOGLE_CLIENT
-            client-secret: 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
-            redirect-uri: "{baseUrl}/v1/oauth2/callback/{registrationId}"
-            client-authentication-method: client_secret_basic
-            authorization-grant-type: authorization_code
-            scope:
-              - openid
-              - email
-              - profile
-          apple:
-            client-id: com.bigopia
-            client-secret: M3A44R9956  # generated dynamically
-            scope:
-              - email
-              - profile
-            authorization-grant-type: authorization_code
-            redirect-uri: "{baseUrl}/v1/oauth2/callback/apple"
-          linkedin:
-            client-id: 78eboxtwqq091t
-            client-secret: YOUR_LINKEDIN_CLIENT
-            redirect-uri: "{baseUrl}/v1/oauth2/callback/linkedin"
-            authorization-grant-type: authorization_code
-            scope:
-              - r_liteprofile
-              - r_emailaddress
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope: openid,profile,email
           facebook:
-            client-id: YOUR_FACEBOOK_APP_ID
-            client-secret: YOUR_FACEBOOK_APP_SECRET
-            redirect-uri: "{baseUrl}/v1/oauth2/callback/facebook"
-            scope:
-              - email
-              - public_profile
+            client-id: ${FACEBOOK_CLIENT_ID}
+            client-secret: ${FACEBOOK_CLIENT_SECRET}
+            scope: public_profile,email
+          linkedin:
+            client-id: ${LINKEDIN_CLIENT_ID}
+            client-secret: ${LINKEDIN_CLIENT_SECRET}
+            scope: openid,profile,email
             authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
         provider:
-          google:
-            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
-            token-uri: https://oauth2.googleapis.com/token
-            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
-            user-name-attribute: sub
-          apple:
-            authorization-uri: https://appleid.apple.com/auth/authorize
-            token-uri: https://appleid.apple.com/auth/token
-            user-name-attribute: email
           linkedin:
             authorization-uri: https://www.linkedin.com/oauth/v2/authorization
             token-uri: https://www.linkedin.com/oauth/v2/accessToken
-            user-info-uri: https://api.linkedin.com/v2/me
-            user-name-attribute: id
-          facebook:
-            authorization-uri: https://www.facebook.com/v17.0/dialog/oauth
-            token-uri: https://graph.facebook.com/v17.0/oauth/access_token
-            user-info-uri: https://graph.facebook.com/me?fields=id,name,email
-            user-name-attribute: id
+            user-info-uri: https://api.linkedin.com/v2/userinfo
+            user-name-attribute: sub
+            
 jwt:
-  secret: ofz8Tz+1GJEJ5efPxvqkTACLqdIGUoreFguLAixE/KI=
-  expiration: 3600000           # 1 hour
-  refresh-expiration: 2592000000 # 30 days
-  remember-expiration: 604800000 # 7 days
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION}           # 1 hour
+  refresh-expiration: ${JWT_REFRESH_EXPIRATION} # 30 days
+  remember-expiration: ${JWT_REMEMBER_EXPIRATION} # 7 days
 
 logging:
   level:
@@ -110,26 +77,13 @@ logging:
     # Suppress Spring framework debug logs
     org.springframework: INFO
 
-
-smtp:
-  host: smtp.gmail.com
-  port: 587
-  username: zbD3fZugprJd60HDv9kFvfrA/kP1qcLqKc0C0P5DP9o=
-  password: LFQ03C8bYEUo9eoHF5lU7lViac82eb4vfyiSg8pozZo=
-  from: zbD3fZugprJd60HDv9kFvfrA/kP1qcLqKc0C0P5DP9o=
-
-twilio:
-  sid: ENC(5uLH/UHLUTQLNQfQNYroSv58sHfci8EDz407nl2GaQO51/BtUsnQXhijTaVCSoJo)
-  token: ENC(NtbYwl6C7C0e7nPeEbJ161nuS3xVuYvkWCFJvJAPa55VYmnPNnm+L38okoPKaM2a)
-  sender: ENC(CMsOpIf2vtbV4F2tP8bcOA==)
-
 app:
   oauth2:
-    base-url: http://localhost:8081/auth
-  sso:
-    error-page-url: https://yourdomain.com/error
-    token-expiry-minutes: 2
+    base-url: ${AUTH_APP_BASE_URL}
   config-source: this is auth-service-home.yml
+  sso:
+    error-page-url: ${SSO_ERROR_PAGE_URL}
+    token-expiry-minutes: ${SSO_TOKEN_EXPIRY_MINUES:2}
   frontend:
     email-verification-url: https://yourdomain.com/verify
     lost-phone-login-url: https://yourdomain.com/lost
@@ -141,17 +95,17 @@ app:
     token-expiry-minutes: 30
     email-subject: Restore your password
   google:
-    sign-in-redirect-url: http://localhost:8081/auth/v1/oauth2/test/google/sign-in
-    sign-up-redirect-url: http://localhost:8081/auth/v1/oauth2/test/google/sign-up
+    sign-in-redirect-url: ${GOOGLE_SIGN_IN_REDIRECT_URL}
+    sign-up-redirect-url: ${GOOGLE_SIGN_UP_REDIRECT_URL}
   apple:
-    sign-in-redirect-url: https://frontend-parent.bigopia.com/auth/sign-in/apple/
-    sign-up-redirect-url: https://frontend-parent.bigopia.com/auth/sign-up/apple/
+    sign-in-redirect-url: ${APPLE_SIGN_IN_REDIRECT_URL}
+    sign-up-redirect-url: ${APPLE_SIGN_UP_REDIRECT_URL}
   linkedin:
-    sign-in-redirect-url: https://frontend-parent.bigopia.com/auth/sign-in/linkedin/
-    sign-up-redirect-url: https://frontend-parent.bigopia.com/auth/sign-up/linkedin/
+    sign-in-redirect-url: ${LINKED_IN_SIGN_IN_REDIRECT_URL}
+    sign-up-redirect-url: ${LINKED_IN_SIGN_UP_REDIRECT_URL}
   facebook:
-    sign-in-redirect-url: https://frontend-parent.bigopia.com/auth/sign-in/facebook/
-    sign-up-redirect-url: https://frontend-parent.bigopia.com/auth/sign-up/facebook/
+    sign-in-redirect-url: ${FACEBOOK_SIGN_IN_REDIRECT_URL}
+    sign-up-redirect-url: ${FACEBOOK_IN_SIGN_UP_REDIRECT_URL}
   login-otp:
     expiry-minutes: 5
   password-reset: 
@@ -160,28 +114,27 @@ app:
     otp-resend-cooldown-seconds: 60
     email-subject: Reset your password
   
-
-apple:
-  team-id: APPLE_TEAM_ID
-  client-id: APPLE_CLIENT_ID
-  key-id: APPLE_KEY_ID
-  private-key: APPLE_PRIVATE_KEY
-google:
-  client-id: YOUR_GOOGLE_CLIENT_ID
-  client-secret: YOUR_GOOGLE_CLIENT_SECRET
-  recaptcha.secret: YOUR_SECRET
-  recaptcha.verify-url: YOUR_URL
-  recaptcha.threshold: 0.5
-linkedin:
-  client-id: YOUR_LINKEDIN_CLIENT_ID
-  client-secret: YOUR_LINKEDIN_CLIENT_SECRET
-facebook:
-  client-id: YOUR_FACEBOOK_CLIENT_ID
-  client-secret: YOUR_FACEBOOK_CLIENT_SECRET
-  
 feign:
   client:
     config:
       default:
         connectTimeout: 5000
         readTimeout: 5000
+
+apple:
+  team-id: ${APPLE_TEAM_ID}
+  client-id: ${APPLE_CLIENT_ID}
+  key-id: ${APPLE_KEY_ID}
+  private-key: ${APPLE_PRIVATE_KEY}
+google:
+  client-id: ${GOOGLE_CLIENT_ID}
+  client-secret: ${GOOGLE_CLIENT_SECRET}
+  recaptcha.secret: ${GOOGLE_SECRET}
+  recaptcha.verify-url: ${GOOGLE_VERIFY_URL}
+  recaptcha.threshold: ${GOOGLE_THRESHOLD:0.5}
+linkedin:
+  client-id: ${LINKEDIN_CLIENT_ID}
+  client-secret: ${LINKEDIN_CLIENT_SECRET}
+facebook:
+  client-id: ${FACEBOOK_CLIENT_ID}
+  client-secret: ${FACEBOOK_CLIENT_SECRET}
