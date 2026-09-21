@@ -57,6 +57,9 @@ app:
   oauth2:
     base-url: ${AUTH_APP_BASE_URL}
   config-source: this is auth-service-home.yml
+  sso:
+    error-page-url: https://yourdomain.com/error
+    token-expiry-minutes: 2
   frontend:
     email-verification-url: https://yourdomain.com/verify
     lost-phone-login-url: https://yourdomain.com/lost
