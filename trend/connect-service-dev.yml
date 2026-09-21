@@ -174,7 +174,7 @@ video:
   encoder: ${VIDEO_ENCODER:libx264}
   encoder-preset: ${VIDEO_ENCODER_PRESET:veryfast}
   hls-segment-seconds: ${VIDEO_HLS_SEGMENT_SECONDS:2}
-    mediaconvert:
+  mediaconvert:
     role-arn: ${MEDIACONVERT_ROLE_ARN:}
     region: ${MEDIACONVERT_REGION:eu-west-1}
     queue: ${MEDIACONVERT_QUEUE:}
