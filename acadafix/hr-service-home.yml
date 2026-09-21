@@ -74,6 +74,8 @@ twilio:
   sender: ENC(CMsOpIf2vtbV4F2tP8bcOA==)
 
 app:
+  env:
+    base-path: D:/git/webforest/acadafix
   oauth2:
     base-url: http://localhost:8081/hr
   sso:
