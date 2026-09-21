@@ -71,17 +71,17 @@ app:
     token-expiry-minutes: 30
     email-subject: Restore your password
   google:
-    sign-in-redirect-url: http://localhost:8081/auth/v1/oauth2/test/google/sign-in
-    sign-up-redirect-url: http://localhost:8081/auth/v1/oauth2/test/google/sign-up
+    sign-in-redirect-url: ${GOOGLE_SIGN_IN_REDIRECT_URL}
+    sign-up-redirect-url: ${GOOGLE_SIGN_UP_REDIRECT_URL}
   apple:
-    sign-in-redirect-url: https://frontend-parent.bigopia.com/auth/sign-in/apple/
-    sign-up-redirect-url: https://frontend-parent.bigopia.com/auth/sign-up/apple/
+    sign-in-redirect-url: ${APPLE_SIGN_IN_REDIRECT_URL}
+    sign-up-redirect-url: ${APPLE_SIGN_UP_REDIRECT_URL}
   linkedin:
-    sign-in-redirect-url: https://frontend-parent.bigopia.com/auth/sign-in/linkedin/
-    sign-up-redirect-url: https://frontend-parent.bigopia.com/auth/sign-up/linkedin/
+    sign-in-redirect-url: ${LINKED_IN_SIGN_IN_REDIRECT_URL}
+    sign-up-redirect-url: ${LINKED_IN_SIGN_UP_REDIRECT_URL}
   facebook:
-    sign-in-redirect-url: https://frontend-parent.bigopia.com/auth/sign-in/facebook/
-    sign-up-redirect-url: https://frontend-parent.bigopia.com/auth/sign-up/facebook/
+    sign-in-redirect-url: ${FACEBOOK_SIGN_IN_REDIRECT_URL}
+    sign-up-redirect-url: ${FACEBOOK_IN_SIGN_UP_REDIRECT_URL}
   login-otp:
     expiry-minutes: 5
   password-reset: 
@@ -96,3 +96,21 @@ feign:
       default:
         connectTimeout: 5000
         readTimeout: 5000
+
+apple:
+  team-id: ${APPLE_TEAM_ID}
+  client-id: ${APPLE_CLIENT_ID}
+  key-id: ${APPLE_KEY_ID}
+  private-key: ${APPLE_PRIVATE_KEY}
+google:
+  client-id: ${GOOGLE_CLIENT_ID}
+  client-secret: ${GOOGLE_CLIENT_SECRET}
+  recaptcha.secret: ${GOOGLE_SECRET}
+  recaptcha.verify-url: ${GOOGLE_VERIFY_URL}
+  recaptcha.threshold: ${GOOGLE_THRESHOLD:0.5}
+linkedin:
+  client-id: ${LINKEDIN_CLIENT_ID}
+  client-secret: ${LINKEDIN_CLIENT_SECRET}
+facebook:
+  client-id: ${FACEBOOK_CLIENT_ID}
+  client-secret: ${FACEBOOK_CLIENT_SECRET}
