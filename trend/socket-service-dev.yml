@@ -180,3 +180,9 @@ video:
     role-arn: ${MEDIACONVERT_ROLE_ARN:}
     region: ${MEDIACONVERT_REGION:eu-west-1}
     queue: ${MEDIACONVERT_QUEUE:}
+
+moderation:
+  strikes:
+    enabled: ${MODERATION_STRIKES_ENABLED:true}
+    max: ${MODERATION_STRIKE_MAX:3}
+    window-days: ${MODERATION_STRIKE_WINDOW_DAYS:0}
