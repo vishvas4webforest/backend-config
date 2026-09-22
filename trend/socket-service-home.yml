@@ -170,3 +170,9 @@ video:
   encoder: ${VIDEO_ENCODER:libx264}
   encoder-preset: ${VIDEO_ENCODER_PRESET:veryfast}
   hls-segment-seconds: ${VIDEO_HLS_SEGMENT_SECONDS:2}
+
+moderation:
+  strikes:
+    enabled: ${MODERATION_STRIKES_ENABLED:true}
+    max: ${MODERATION_STRIKE_MAX:3}
+    window-days: ${MODERATION_STRIKE_WINDOW_DAYS:0}
