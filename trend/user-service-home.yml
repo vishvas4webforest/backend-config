@@ -269,6 +269,10 @@ moderation:
   auto-ban:
     enabled: ${MODERATION_AUTO_BAN_ENABLED:false}
     report-threshold: ${MODERATION_AUTO_BAN_REPORT_THRESHOLD:3}
+  strikes:
+    enabled: ${MODERATION_STRIKES_ENABLED:true}
+    max: ${MODERATION_STRIKE_MAX:3}
+    window-days: ${MODERATION_STRIKE_WINDOW_DAYS:0}
 
 connect:
   chat:
