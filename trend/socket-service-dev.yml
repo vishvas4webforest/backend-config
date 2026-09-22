@@ -186,3 +186,7 @@ moderation:
     enabled: ${MODERATION_STRIKES_ENABLED:true}
     max: ${MODERATION_STRIKE_MAX:3}
     window-days: ${MODERATION_STRIKE_WINDOW_DAYS:0}
+
+share:
+  playstore-url: ${SHARE_PLAYSTORE_URL:https://play.google.com/store/apps/details?id=com.app.sftexch}
+  appstore-url: ${SHARE_APPSTORE_URL:https://apps.apple.com/app/id<YOUR_APP_ID>}
