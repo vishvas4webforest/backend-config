@@ -88,3 +88,26 @@ legal:
 
 consent:
   valid-months: ${CONSENT_VALID_MONTHS:3}
+
+retention:
+  enabled: ${RETENTION_ENABLED:false}          # false for first deploy — see below
+  cron: ${RETENTION_CRON:0 0 3 * * *}
+
+  viewing-history-days: ${RETENTION_VIEWING_HISTORY_DAYS:365}
+  ranking-signal-days:  ${RETENTION_RANKING_SIGNAL_DAYS:365}
+  analytics-days:       ${RETENTION_ANALYTICS_DAYS:426}
+  report-days:          ${RETENTION_REPORT_DAYS:730}
+
+  dm-metadata-days:     ${RETENTION_DM_METADATA_DAYS:90}
+  dm-metadata-enabled:  ${RETENTION_DM_METADATA_ENABLED:false}
+
+  inactive-account:
+    enabled:           ${RETENTION_INACTIVE_ACCOUNT_ENABLED:true}
+    months:            ${RETENTION_INACTIVE_ACCOUNT_MONTHS:24}
+    warn-days-before:  ${RETENTION_INACTIVE_WARN_DAYS_BEFORE:30}
+    batch-size:        ${RETENTION_INACTIVE_BATCH_SIZE:200}
+
+  dormant-dating:
+    enabled:       ${RETENTION_DORMANT_DATING_ENABLED:false}   # false for first deploy
+    hide-months:   ${RETENTION_DORMANT_HIDE_MONTHS:6}
+    delete-months: ${RETENTION_DORMANT_DELETE_MONTHS:12}
