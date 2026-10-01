@@ -40,3 +40,10 @@ management:
 
 smtp:
   from: Trend <no-reply@trendapp.uk>
+
+legal:
+  terms-version: ${LEGAL_TERMS_VERSION:2026-10-01}
+  terms-gate-enabled: ${LEGAL_TERMS_GATE_ENABLED:false}
+
+consent:
+  valid-months: ${CONSENT_VALID_MONTHS:3}
