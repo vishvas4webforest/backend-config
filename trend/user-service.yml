@@ -81,3 +81,10 @@ maxSize:
     userProfileCoverErrorMsg: The uploaded cover image exceeds the maximum allowed size of 50 MB. Please upload an image within the size limit.
     ageVerification: 50
     ageVerificationErrorMsg: The uploaded image exceeds the maximum allowed size of 50 MB. Please upload an image within the size limit. 
+
+legal:
+  terms-version: ${LEGAL_TERMS_VERSION:2026-10-01}
+  terms-gate-enabled: ${LEGAL_TERMS_GATE_ENABLED:false}
+
+consent:
+  valid-months: ${CONSENT_VALID_MONTHS:3}
