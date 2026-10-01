@@ -48,9 +48,9 @@ management:
 
 
 smtp:
-  from: Trend <no-reply@trendapp.uk>
+  from: Trend <no-reply@trendapp.io>
   fromName: Trend
-  contactUsEmail: Trend <support@trendapp.uk>
+  contactUsEmail: Trend <support@trendapp.io>
   fromMario: Mario di Marko <mariodimarko@trendapp.uk>
   username: AKIAWDRY7TQZ73636CPU   #Paris
   password: BD0YZmyJKsnmw8CbMH/JXW25H1EEAcNsQdsTnvPVUjNN   #Paris
