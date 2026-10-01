@@ -56,3 +56,10 @@ maxSize:
     groupImageErrorMsg: The uploaded file exceeds the maximum allowed size of 50 MB. Please upload an image within the size limit.
     groupMessage: 1000
     groupMessageErrorMsg: The uploaded video exceeds the maximum allowed size of 1 GB. Please upload an video within the size limit.
+
+legal:
+  terms-version: ${LEGAL_TERMS_VERSION:2026-10-01}
+  terms-gate-enabled: ${LEGAL_TERMS_GATE_ENABLED:false}
+
+consent:
+  valid-months: ${CONSENT_VALID_MONTHS:3}
