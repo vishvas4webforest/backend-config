@@ -34,11 +34,7 @@ spring:
       
 app:
   registration-token:
-    expiry-minutes: 30
-  phone-verification-token:
-    expiry-minutes: 30
-  email:
-    signup-confirmation-subject: "Confirm your Trend account"
+    expiry-minutes: ${APP_REGISTRATION_TOKEN_EXPIRY_MINUTES:30}
 
 management:
   endpoints:
