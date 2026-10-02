@@ -70,12 +70,28 @@ smtp:
 
 maxSize:
   mb:
-    userProfile: 50
-    userProfileErrorMsg: The uploaded image exceeds the maximum allowed size of 50 MB. Please upload an image within the size limit. 
-    userProfileCover: 50
-    userProfileCoverErrorMsg: The uploaded cover image exceeds the maximum allowed size of 50 MB. Please upload an image within the size limit.
-    ageVerification: 50
-    ageVerificationErrorMsg: The uploaded image exceeds the maximum allowed size of 50 MB. Please upload an image within the size limit. 
+    userProfile: ${MAXSIZE_USER_PROFILE:50}
+    userProfileErrorMsg: ${MAXSIZE_USER_PROFILE_ERROR:The uploaded image exceeds the maximum allowed size of 50 MB. Please upload an image within the size limit.}
+    ageVerification: ${MAXSIZE_AGE_VERIFICATION:50}
+    ageVerificationErrorMsg: ${MAXSIZE_AGE_VERIFICATION_ERROR:The uploaded image exceeds the maximum allowed size of 50 MB. Please upload an image within the size limit.}
+    post: ${MAXSIZE_POST:50}
+    postErrorMsg: ${MAXSIZE_POST_ERROR:The uploaded post exceeds the maximum allowed size of 50 MB.}
+    postCover: ${MAXSIZE_POST_COVER:50}
+    postCoverErrorMsg: ${MAXSIZE_POST_COVER_ERROR:The uploaded cover exceeds the maximum allowed size of 50 MB.}
+    clip: ${MAXSIZE_CLIP:50}
+    clipErrorMsg: ${MAXSIZE_CLIP_ERROR:The uploaded clip exceeds the maximum allowed size of 50 MB.}
+    clipCover: ${MAXSIZE_CLIP_COVER:50}
+    clipCoverErrorMsg: ${MAXSIZE_CLIP_COVER_ERROR:The uploaded cover exceeds the maximum allowed size of 50 MB.}
+    commonPostComment: ${MAXSIZE_COMMENT:50}
+    commonPostCommentErrorMsg: ${MAXSIZE_COMMENT_ERROR:The uploaded attachment exceeds the maximum allowed size of 50 MB.}
+    commonPostCommentCover: ${MAXSIZE_COMMENT_COVER:50}
+    commonPostCommentCoverErrorMsg: ${MAXSIZE_COMMENT_COVER_ERROR:The uploaded cover exceeds the maximum allowed size of 50 MB.}
+    groupImage: ${MAXSIZE_GROUP_IMAGE:50}
+    groupImageErrorMsg: ${MAXSIZE_GROUP_IMAGE_ERROR:The uploaded image exceeds the maximum allowed size of 50 MB.}
+    groupMessage: ${MAXSIZE_GROUP_MESSAGE:50}
+    groupMessageErrorMsg: ${MAXSIZE_GROUP_MESSAGE_ERROR:The uploaded attachment exceeds the maximum allowed size of 50 MB.}
+    oneToOneChat: ${MAXSIZE_ONE_TO_ONE_CHAT:50}
+    oneToOneChatErrorMsg: ${MAXSIZE_ONE_TO_ONE_CHAT_ERROR:The uploaded attachment exceeds the maximum allowed size of 50 MB.}
 
 legal:
   terms-version: ${LEGAL_TERMS_VERSION:2026-10-01}
