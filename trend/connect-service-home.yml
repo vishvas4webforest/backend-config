@@ -76,6 +76,7 @@ feign:
 
 firebase:
   json: firebase-service-account-dev.json
+  credentials-path: ${FIREBASE_CREDENTIALS_PATH:}
   bigQueryJson: trend-ac139-f7b80bd1df0f.json
   enable: true
   projectName: Trend
