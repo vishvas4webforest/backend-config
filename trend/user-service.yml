@@ -48,30 +48,25 @@ management:
 
 
 smtp:
-  from: Trend <no-reply@trendapp.io>
-  fromName: Trend
-  contactUsEmail: Trend <support@trendapp.io>
-  fromMario: Mario di Marko <mariodimarko@trendapp.uk>
-  username: AKIAWDRY7TQZ73636CPU   #Paris
-  password: BD0YZmyJKsnmw8CbMH/JXW25H1EEAcNsQdsTnvPVUjNN   #Paris
-  port: 587
-  host: email-smtp.eu-west-3.amazonaws.com
-  contactUsSubject: Contact us
-  restoreAccountEmailSubject: Account Deletion Confirmation - Restore Available
-  verifyEmailSubject: Verify Your Email
-  verifyEmailSuccessSubject : Email is verified
-  forgotEmailSubject: Reset Your Password
-  downloadAppSubject: Download the SFT App
-  loginAlertSubject: New Login Detected on Your Account
-  regardsName: Trend Team
-  headerImageUrl:  https://sft-prod.s3.eu-west-3.amazonaws.com/sft-header.png
-  footerImageUrl: https://sft-prod.s3.eu-west-3.amazonaws.com/sft-footer-latest2.png
-  coverImageUrl: https://sft-prod.s3.eu-west-3.amazonaws.com/sft-cover.png
-  mariodimarkoProfileImageUrl: https://sft-prod.s3.eu-west-3.amazonaws.com/Mariodimarko.png
-  googlePlayImageUrl: https://play.google.com/store/apps/details?id=ch.sft.sftplatform
-  appleStoreImageUrl: https://apps.apple.com/in/app/sft-social-trading/id1633240152
-  appLogoUrl: https://sft-prod.s3.eu-west-3.amazonaws.com/AppLogo.png
-  adminInviteEmailSubject: "You've been invited to the Trend Admin Panel"
+  from: ${SMTP_FROM:Trend <no-reply@trendapp.io>}
+  contactUsEmail: ${SMTP_CONTACT_US_EMAIL:support@trendapp.io}
+  supportEmail: ${SMTP_SUPPORT_EMAIL:support@trendapp.io}
+  contactUsSubject: ${SMTP_CONTACT_US_SUBJECT:Contact us}
+  restoreAccountEmailSubject: ${SMTP_RESTORE_ACCOUNT_SUBJECT:Account Deletion Confirmation - Restore Available}
+  verifyEmailSubject: ${SMTP_VERIFY_EMAIL_SUBJECT:Verify Your Email}
+  verifyEmailSuccessSubject : ${SMTP_VERIFY_EMAIL_SUCCESS_SUBJECT:Email is verified}
+  forgotEmailSubject: ${SMTP_FORGOT_EMAIL_SUBJECT:Reset Your Password}
+  loginAlertSubject: ${SMTP_LOGIN_ALERT_SUBJECT:New Login Detected on Your Account}
+  regardsName: ${SMTP_REGARDS_NAME:Trend Team}
+  headerImageUrl:  ${SMTP_HEADER_IMAGE_URL:https://sft-prod.s3.eu-west-3.amazonaws.com/sft-header.png}
+  footerImageUrl: ${SMTP_FOOTER_IMAGE_URL:https://sft-prod.s3.eu-west-3.amazonaws.com/sft-footer-latest2.png}
+  coverImageUrl: ${SMTP_COVER_IMAGE_URL:https://sft-prod.s3.eu-west-3.amazonaws.com/sft-cover.png}
+  googlePlayImageUrl: ${SMTP_GOOGLE_PLAY_IMAGE_URL:https://play.google.com/store/apps/details?id=ch.sft.sftplatform}
+  appleStoreImageUrl: ${SMTP_APPLE_STORE_IMAGE_URL:https://apps.apple.com/in/app/sft-social-trading/id1633240152}
+  appLogoUrl: ${SMTP_APP_LOGO_URL:https://sft-prod.s3.eu-west-3.amazonaws.com/AppLogo.png}
+  adminInviteEmailSubject: ${SMTP_ADMIN_INVITE_SUBJECT:You've been invited to the Trend Admin Panel}
+  adminOtpEmailSubject: ${SMTP_ADMIN_OTP_SUBJECT:Your admin verification code}
+  inactivityWarningEmailSubject: ${SMTP_INACTIVITY_WARNING_SUBJECT:Your Trend account is about to be closed}
 
 maxSize:
   mb:
