@@ -166,6 +166,7 @@ feign:
 
 firebase:
   json: ${FIREBASE_JSON}
+  credentials-path: ${FIREBASE_CREDENTIALS_PATH:}
   bigQueryJson: ${FIREBASE_BIGQUERY_JSON}
   enable: ${FIREBASE_ENABLE}
   projectName: ${FIREBASE_PROJECT_NAME}
