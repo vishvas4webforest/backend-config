@@ -191,3 +191,9 @@ moderation:
 share:
   playstore-url: ${SHARE_PLAYSTORE_URL:https://play.google.com/store/apps/details?id=com.app.sftexch}
   appstore-url: ${SHARE_APPSTORE_URL:https://apps.apple.com/app/id<YOUR_APP_ID>}
+
+chat:
+  message-request:
+    # true  = today's rule: a message from someone you follow goes to the inbox
+    # false = the client's rule: the first message from anybody is a request
+    like-instagram: ${MESSAGE_REQUEST_LIKE_INSTAGRAM:false}
