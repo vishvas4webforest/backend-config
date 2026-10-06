@@ -282,3 +282,16 @@ connect:
       popup-after-days: ${CONNECT_CHAT_EXPIRY_POPUP_AFTER_DAYS:7}
       warn-before-days: ${CONNECT_WARN_BEFORE_DAYS:1}               # "Don't miss your chance to connect with <Name>." fires this many days before expiry (→ day 9)
       warn-cron: ${CONNECT_CHAT_EXPIRY_WARN_CRON:0 0 11 * * *}      # daily 11:00 server time
+
+
+google:
+  places:
+    key: ${GOOGLE_PLACES_KEY:}
+    base-url: ${GOOGLE_PLACES_BASE_URL:https://maps.googleapis.com}
+    connect-timeout-ms: ${GOOGLE_PLACES_CONNECT_TIMEOUT_MS:3000}
+    read-timeout-ms: ${GOOGLE_PLACES_READ_TIMEOUT_MS:5000}
+    max-per-second: ${GOOGLE_PLACES_MAX_PER_SECOND:10}
+    max-per-day: ${GOOGLE_PLACES_MAX_PER_DAY:2000}
+    cache-enabled: ${GOOGLE_PLACES_CACHE_ENABLED:true}
+    autocomplete-cache-minutes: ${GOOGLE_PLACES_AUTOCOMPLETE_CACHE_MINUTES:10}
+    details-cache-hours: ${GOOGLE_PLACES_DETAILS_CACHE_HOURS:24}
