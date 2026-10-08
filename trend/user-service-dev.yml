@@ -306,3 +306,7 @@ google:
     cache-enabled: ${GOOGLE_PLACES_CACHE_ENABLED:true}
     autocomplete-cache-minutes: ${GOOGLE_PLACES_AUTOCOMPLETE_CACHE_MINUTES:10}
     details-cache-hours: ${GOOGLE_PLACES_DETAILS_CACHE_HOURS:24}
+
+legal:
+  terms-version: ${LEGAL_TERMS_VERSION:2026-10-01}
+  terms-gate-enabled: ${LEGAL_TERMS_GATE_ENABLED:false}
