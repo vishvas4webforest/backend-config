@@ -218,6 +218,7 @@ twilio:
   phone-number: ${TWILIO_PHONE_NUMBER}
 
 iap:
+  dating-membership-required: ${IAP_DATING_MEMBERSHIP_REQUIRED:true}  
   apple:
     shared-secret: ${IAP_APPLE_SHARED_SECRET:}   # set in env or config server
     sandbox: ${IAP_APPLE_SANDBOX:false}           # true for dev/staging
