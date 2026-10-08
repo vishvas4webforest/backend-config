@@ -310,3 +310,10 @@ google:
 legal:
   terms-version: ${LEGAL_TERMS_VERSION:2026-10-01}
   terms-gate-enabled: ${LEGAL_TERMS_GATE_ENABLED:false}
+
+consent:
+  valid-months: ${CONSENT_VALID_MONTHS:3}
+  text-version:
+    location-screen: ${CONSENT_TEXT_VERSION_LOCATION:location-all-v1}
+    settings: ${CONSENT_TEXT_VERSION_SETTINGS:settings-location-v1}
+    analytics: ${CONSENT_TEXT_VERSION_ANALYTICS:analytics-v1}
