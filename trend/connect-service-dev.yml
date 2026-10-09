@@ -121,8 +121,6 @@ connect:
     purge-after-days: ${CONNECT_LEAVE_DATING_PURGE_AFTER_DAYS:15}
     purge-batch: ${CONNECT_LEAVE_DATING_PURGE_BATCH:200}
     purge-cron: ${CONNECT_LEAVE_DATING_PURGE_CRON:0 20 3 * * *}
-  reapply:
-    min-photos: ${CONNECT_REAPPLY_MIN_PHOTOS:6}
   chat:
     expiry:
       days: ${CONNECT_CHAT_EXPIRY_DAYS:10}
