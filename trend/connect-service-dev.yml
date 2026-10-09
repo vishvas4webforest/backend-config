@@ -115,6 +115,8 @@ twilio:
   phone-number: ${TWILIO_PHONE_NUMBER}
 
 connect:
+  reapply:
+    min-photos: ${CONNECT_REAPPLY_MIN_PHOTOS:6}
   chat:
     expiry:
       days: ${CONNECT_CHAT_EXPIRY_DAYS:10}
