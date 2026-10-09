@@ -218,6 +218,10 @@ twilio:
 
 iap:
   dating-membership-required: ${IAP_DATING_MEMBERSHIP_REQUIRED:true}  
+  trial-reminder-days-before: ${IAP_TRIAL_REMINDER_DAYS_BEFORE:3}
+  withdrawal-window-days: ${IAP_WITHDRAWAL_WINDOW_DAYS:14}
+  cancellation-notice-countries: ${IAP_CANCELLATION_NOTICE_COUNTRIES:US}
+  cancellation-notice-text: ${IAP_CANCELLATION_NOTICE_TEXT:}
   apple:
     shared-secret: ${IAP_APPLE_SHARED_SECRET:}   # set in env or config server
     sandbox: ${IAP_APPLE_SANDBOX:false}           # true for dev/staging
@@ -314,3 +318,12 @@ consent:
     location-screen: ${CONSENT_TEXT_VERSION_LOCATION:location-all-v1}
     settings: ${CONSENT_TEXT_VERSION_SETTINGS:settings-location-v1}
     analytics: ${CONSENT_TEXT_VERSION_ANALYTICS:analytics-v1}
+    marketing: ${CONSENT_TEXT_VERSION_MARKETING:marketing-v1}
+
+signup:
+  age-gate:
+    enabled: ${SIGNUP_AGE_GATE_ENABLED:true}
+    retry-lock-hours: ${SIGNUP_AGE_GATE_RETRY_LOCK_HOURS:24}
+
+age-proof:
+  response-days: ${AGE_PROOF_RESPONSE_DAYS:7}
