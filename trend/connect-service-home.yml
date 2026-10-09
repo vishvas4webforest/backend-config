@@ -163,6 +163,8 @@ connect:
       enabled: true
   referral:
     max-per-user: ${CONNECT_REFERRAL_MAX_PER_USER}
+  travel:
+    city-radius-km: ${CONNECT_TRAVEL_CITY_RADIUS_KM:50}
 
 # application.yml (config repo — shared by all services)
 smtp:
