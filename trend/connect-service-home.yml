@@ -165,6 +165,9 @@ connect:
     max-per-user: ${CONNECT_REFERRAL_MAX_PER_USER}
   travel:
     city-radius-km: ${CONNECT_TRAVEL_CITY_RADIUS_KM:50}
+  location:
+    stale-after-hours: ${CONNECT_LOCATION_STALE_AFTER_HOURS:12}
+    require-consent: ${CONNECT_LOCATION_REQUIRE_CONSENT:false}
 
 # application.yml (config repo — shared by all services)
 smtp:
