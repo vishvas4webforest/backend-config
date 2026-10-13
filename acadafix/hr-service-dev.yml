@@ -89,3 +89,7 @@ connect:
         days: 10
       expiring-soon:
         day: 9
+
+google:
+  maps:
+    api-key: ${GOOGLE_MAPS_API_KEY:}
