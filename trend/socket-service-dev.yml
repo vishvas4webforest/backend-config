@@ -197,3 +197,10 @@ chat:
     # true  = today's rule: a message from someone you follow goes to the inbox
     # false = the client's rule: the first message from anybody is a request
     like-instagram: ${MESSAGE_REQUEST_LIKE_INSTAGRAM:false}
+  push:
+    wake-app: ${CHAT_PUSH_WAKE_APP:true}
+    ios-mutable-content: ${CHAT_PUSH_IOS_MUTABLE_CONTENT:true}
+  read-receipts:
+    enforce: ${CHAT_READ_RECEIPTS_ENFORCE:true}
+    apply-to-groups: ${CHAT_READ_RECEIPTS_APPLY_TO_GROUPS:false}
+  delivered-only-on-ack: ${CHAT_DELIVERED_ONLY_ON_ACK:true}
