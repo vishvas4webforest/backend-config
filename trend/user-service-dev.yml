@@ -331,3 +331,7 @@ signup:
 
 age-proof:
   response-days: ${AGE_PROOF_RESPONSE_DAYS:7}
+
+chat:
+  message-request:
+    like-instagram: ${MESSAGE_REQUEST_LIKE_INSTAGRAM:false}
