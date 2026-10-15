@@ -69,7 +69,7 @@ smtp:
 
 app:
   env:
-    base-path: /home/ubuntu/webforest/env/trend
+    base-path: D:/git/webforest/trend-backend/trend
   log: 
     path: ${SOCKET_LOG_PATH:/home/ubuntu/webforest/logs/socket}
   oauth2:
