@@ -187,6 +187,34 @@ moderation:
     enabled: ${MODERATION_STRIKES_ENABLED:true}
     max: ${MODERATION_STRIKE_MAX:3}
     window-days: ${MODERATION_STRIKE_WINDOW_DAYS:0}
+  # ── checklist v3 settings (already in the deployed code; defaults shown) ──
+  enabled: ${MODERATION_ENABLED:true}                                  # row 48
+  aws-region: ${MODERATION_AWS_REGION:eu-west-1}                       # row 48
+  min-confidence: ${MODERATION_MIN_CONFIDENCE:60}                      # row 48
+  flag-categories: ${MODERATION_FLAG_CATEGORIES:Explicit Nudity,Explicit,Sexual Activity,Graphic Violence,Visually Disturbing,Hate Symbols}   # row 48
+  text:
+    enabled: ${MODERATION_TEXT_ENABLED:true}                           # row 48
+    min-score: ${MODERATION_TEXT_MIN_SCORE:0.75}                       # row 48
+    flag-categories: ${MODERATION_TEXT_FLAG_CATEGORIES:SEXUAL,HATE_SPEECH,VIOLENCE_OR_THREAT,HARASSMENT_OR_ABUSE}   # row 48
+    threat-hold:
+      enabled: ${MODERATION_TEXT_THREAT_HOLD_ENABLED:true}             # row 60
+      score: ${MODERATION_TEXT_THREAT_HOLD_SCORE:0.9}                  # row 60
+  video:
+    pre-check:
+      enabled: ${MODERATION_VIDEO_PRE_CHECK_ENABLED:true}              # row 48
+      frames: ${MODERATION_VIDEO_PRE_CHECK_FRAMES:3}                   # row 48
+      timeout-seconds: ${MODERATION_VIDEO_PRE_CHECK_TIMEOUT_SECONDS:15}   # row 48
+  ban-registry:
+    enabled: ${MODERATION_BAN_REGISTRY_ENABLED:true}                   # row 24
+    pepper: ${MODERATION_BAN_REGISTRY_PEPPER:}                         # row 24 - SECRET: same value as the user service
+  report:
+    first-decision-hours: ${MODERATION_REPORT_FIRST_DECISION_HOURS:24}   # row 63
+  # ── NEW 15 Oct (not deployed yet) ──
+  report-hold:
+    enabled: ${MODERATION_REPORT_HOLD_ENABLED:false}                   # row 64 - keep false
+    reports: ${MODERATION_REPORT_HOLD_REPORTS:3}                       # row 64
+    window-hours: ${MODERATION_REPORT_HOLD_WINDOW_HOURS:24}            # row 64
+    review-hours: ${MODERATION_REPORT_HOLD_REVIEW_HOURS:24}            # row 64
 
 share:
   playstore-url: ${SHARE_PLAYSTORE_URL:https://play.google.com/store/apps/details?id=com.app.sftexch}
@@ -197,6 +225,7 @@ chat:
     # true  = today's rule: a message from someone you follow goes to the inbox
     # false = the client's rule: the first message from anybody is a request
     like-instagram: ${MESSAGE_REQUEST_LIKE_INSTAGRAM:false}
+    blur-media: ${CHAT_MESSAGE_REQUEST_BLUR_MEDIA:false}               # row 56 - NEW 15 Oct
   push:
     wake-app: ${CHAT_PUSH_WAKE_APP:true}
     ios-mutable-content: ${CHAT_PUSH_IOS_MUTABLE_CONTENT:true}
@@ -204,3 +233,39 @@ chat:
     enforce: ${CHAT_READ_RECEIPTS_ENFORCE:true}
     apply-to-groups: ${CHAT_READ_RECEIPTS_APPLY_TO_GROUPS:false}
   delivered-only-on-ack: ${CHAT_DELIVERED_ONLY_ON_ACK:true}
+  group:
+    max-members: ${GROUP_MAX_MEMBERS:256}                              # row 54
+    invites-per-day: ${GROUP_INVITES_PER_DAY:50}                       # row 54
+    invitation-days: ${CHAT_GROUP_INVITATION_DAYS:7}                   # row 53 - NEW 15 Oct
+    invitation-expiry-cron: ${CHAT_GROUP_INVITATION_EXPIRY_CRON:0 10 * * * *}   # row 53 - NEW 15 Oct
+
+# ════════════════════════════════════════════════════════════════════
+# Checklist v3 settings. Every value is the code default.
+# ════════════════════════════════════════════════════════════════════
+
+legal:
+  terms-version: ${LEGAL_TERMS_VERSION:2026-10-01}                     # row 19
+  terms-gate-enabled: ${LEGAL_TERMS_GATE_ENABLED:false}                # row 19
+  terms-hash: ${LEGAL_TERMS_HASH:}                                     # row 19 - NEW 15 Oct
+
+# NEW 15 Oct (row 40)
+messaging:
+  mass-flag:
+    enabled: ${MESSAGING_MASS_FLAG_ENABLED:true}
+    window-minutes: ${MESSAGING_MASS_FLAG_WINDOW_MINUTES:60}
+    stranger-threshold: ${MESSAGING_MASS_FLAG_THRESHOLD:20}
+    pause-enabled: ${MESSAGING_MASS_FLAG_PAUSE_ENABLED:false}
+    pause-hours: ${MESSAGING_MASS_FLAG_PAUSE_HOURS:24}
+
+media:
+  metadata:
+    strip:
+      enabled: ${MEDIA_METADATA_STRIP_ENABLED:true}                    # row 51
+    refuse-unstrippable: ${MEDIA_METADATA_REFUSE_UNSTRIPPABLE:true}    # row 51
+    ffmpeg-timeout-seconds: ${MEDIA_METADATA_FFMPEG_TIMEOUT_SECONDS:120}   # row 51
+  clip:
+    max-seconds: ${MEDIA_CLIP_MAX_SECONDS:90}                          # row 122 - NEW 15 Oct
+
+interaction:
+  enabled: ${INTERACTION_ENABLED:true}                                 # row 123
+  record-messages: ${INTERACTION_RECORD_MESSAGES:false}                # row 123
