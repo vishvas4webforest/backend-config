@@ -1,5 +1,5 @@
 server:
-  base-url: ${USER_APP_BASE_URL:https://apidev.trendapp.uk/user}
+  base-url: ${USER_APP_BASE_URL:http://localhost:8081/user}
   forward-headers-strategy: framework  # CRITICAL: Tell Spring to trust Nginx headers
 
 eureka:
