@@ -117,7 +117,7 @@ logging:
 
 app:
   env:
-    base-path: /home/ubuntu/webforest/env/trend
+    base-path: D:/git/webforest/trend-backend/trend
   log: 
     path: ${USER_LOG_PATH:/home/ubuntu/webforest/logs/user}
   oauth2:
