@@ -1,5 +1,5 @@
 server:
-  base-url: ${SOCKET_APP_BASE_URL:http://localhost:8081/socket}
+  base-url: ${SOCKET_APP_BASE_URL:https://apidev.trendapp.uk/socket}
 
 eureka:
   instance:
@@ -8,16 +8,16 @@ eureka:
     
 spring:
   datasource:
-    host: ${DB_HOST:localhost}
-    port: ${DB_PORT:5433}
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:Test@123}
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5433}/${DB_NAME:trenddb}
+    host: ${DB_HOST}
+    port: ${DB_PORT}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME:trenddb}
     hikari:
       maximum-pool-size: 2
   redis:
-    host: ${REDIS_HOST:localhost}
-    port: ${REDIS_PORT:6379}
+    host: ${REDIS_HOST}
+    port: ${REDIS_PORT}
   jpa:
     hibernate:
       ddl-auto: validate
@@ -57,18 +57,27 @@ logging:
     # Suppress Spring framework debug logs
     org.springframework: INFO
 
+
+smtp:
+  host: smtp.gmail.com
+  port: 587
+  username: zbD3fZugprJd60HDv9kFvfrA/kP1qcLqKc0C0P5DP9o=
+  password: LFQ03C8bYEUo9eoHF5lU7lViac82eb4vfyiSg8pozZo=
+  from: zbD3fZugprJd60HDv9kFvfrA/kP1qcLqKc0C0P5DP9o=
+  appleStoreImageUrl: ${APPLE_STORE_IMAGE_URL:https://apps.apple.com/app/id<YOUR_APP_ID>}
+  googlePlayImageUrl: ${GOOGLE_PLAY_IMAGE_URL:https://play.google.com/store/apps/details?id=com.test.trend}
+
 app:
   env:
-    base-path: D:/git/webforest/trend-backend/trend
+    base-path: /home/ubuntu/webforest/env/trend
   log: 
-    path: ${SOCKET_LOG_PATH:D:/vishvas/logs/socket}
+    path: ${SOCKET_LOG_PATH:/home/ubuntu/webforest/logs/socket}
   oauth2:
     base-url: ${SOCKET_APP_BASE_URL}
   sso:
     error-page-url: https://yourdomain.com/error
     token-expiry-minutes: 2
   config-source: this is socket-service-home.yml
-
   
 feign:
   client:
@@ -88,33 +97,33 @@ amazonProperties:
   bucketName:
     post: ${AWS_BUCKET}
     userProfile: ${AWS_BUCKET}
-    oneToOneChat: ${AWS_BUCKET}
+    oneToOneChat: ${AWS_BUCKET} 
     groupChat: ${AWS_BUCKET}
     globalGroupChat: ${AWS_BUCKET}
     groupProfile: ${AWS_BUCKET} 
     globalGroupProfile: ${AWS_BUCKET}
-    globalGroupVerification: ${AWS_BUCKET}
-    subGlobalGroupProfile: ${AWS_BUCKET}
-    subGlobalGroupChat: ${AWS_BUCKET} 
+    globalGroupVerification: ${AWS_BUCKET} 
+    subGlobalGroupProfile: ${AWS_BUCKET} 
+    subGlobalGroupChat: ${AWS_BUCKET}
     learnToTradeChat: ${AWS_BUCKET}
-    tradingEventChat: ${AWS_BUCKET} 
-    tradingEventProfile: ${AWS_BUCKET} 
+    tradingEventChat: ${AWS_BUCKET}
+    tradingEventProfile: ${AWS_BUCKET}
     signalGroupChat: ${AWS_BUCKET}
     signalGroupProfile: ${AWS_BUCKET}
     userStory: ${AWS_BUCKET}
     advertisement: ${AWS_BUCKET}
-    clip: ${AWS_BUCKET} 
+    clip: ${AWS_BUCKET}
     commonPostComment: ${AWS_BUCKET}
     commonPostCommentCover: ${AWS_BUCKET}
   accessKey: ${AWS_ACCESS_KEY}
-  secretKey: ${AWS_SECRET_KEY}
+  secretKey:  ${AWS_SECRET_KEY}
   region: ${AWS_REGION}
   ses:
     accessKey: ${AWS_SES_ACCESS_KEY}
     secretKey: ${AWS_SES_SECRET_KEY}
     region: ${AWS_SES_REGION}
 
-serviceName: ${SOCKET_SERVICE_NAME:socket}
+serviceName: ${SOCKET_SERVICE_NAME:user}
 
 link:
   commonPostShareLink: ${LINK_COMMON_POST_SHARE}
@@ -129,7 +138,7 @@ storage:
 hugging-face:
   apiKey: ${HUGGING_FACE_API_KEY}
   apiUrl: ${HUGGING_FACE_API_URL}
-  
+
 twilio:
   enabled: ${TWILIO_ENABLED}
   account-sid: ${TWILIO_ACCOUNT_ID}
@@ -156,13 +165,10 @@ connect:
     batch-size: 2000                 # max users per run
     cron: "0 0 10 * * ?"             # daily 10:00 server time (ConnectReEngagementScheduler)
 
-smtp:
-  appleStoreImageUrl: ${APPLE_STORE_IMAGE_URL:https://apps.apple.com/app/id<YOUR_APP_ID>}
-  googlePlayImageUrl: ${GOOGLE_PLAY_IMAGE_URL:https://play.google.com/store/apps/details?id=com.test.trend}
-
 visitNow: ${VISIT_NOW:https://trendapp.uk}
 
 video:
+  processing-mode: ${VIDEO_PROCESSING_MODE:FFMPEG}
   job-threads: ${VIDEO_JOB_THREADS:2}
   job-queue: ${VIDEO_JOB_QUEUE:500}
   upload-threads: ${VIDEO_UPLOAD_THREADS:8}
@@ -171,13 +177,45 @@ video:
   encoder: ${VIDEO_ENCODER:libx264}
   encoder-preset: ${VIDEO_ENCODER_PRESET:veryfast}
   hls-segment-seconds: ${VIDEO_HLS_SEGMENT_SECONDS:2}
+  mediaconvert:
+    role-arn: ${MEDIACONVERT_ROLE_ARN:}
+    region: ${MEDIACONVERT_REGION:eu-west-1}
+    queue: ${MEDIACONVERT_QUEUE:}
 
 moderation:
   strikes:
     enabled: ${MODERATION_STRIKES_ENABLED:true}
     max: ${MODERATION_STRIKE_MAX:3}
     window-days: ${MODERATION_STRIKE_WINDOW_DAYS:0}
-    
+  # ── checklist v3 settings (already in the deployed code; defaults shown) ──
+  enabled: ${MODERATION_ENABLED:true}                                  # row 48
+  aws-region: ${MODERATION_AWS_REGION:eu-west-1}                       # row 48
+  min-confidence: ${MODERATION_MIN_CONFIDENCE:60}                      # row 48
+  flag-categories: ${MODERATION_FLAG_CATEGORIES:Explicit Nudity,Explicit,Sexual Activity,Graphic Violence,Visually Disturbing,Hate Symbols}   # row 48
+  text:
+    enabled: ${MODERATION_TEXT_ENABLED:true}                           # row 48
+    min-score: ${MODERATION_TEXT_MIN_SCORE:0.75}                       # row 48
+    flag-categories: ${MODERATION_TEXT_FLAG_CATEGORIES:SEXUAL,HATE_SPEECH,VIOLENCE_OR_THREAT,HARASSMENT_OR_ABUSE}   # row 48
+    threat-hold:
+      enabled: ${MODERATION_TEXT_THREAT_HOLD_ENABLED:true}             # row 60
+      score: ${MODERATION_TEXT_THREAT_HOLD_SCORE:0.9}                  # row 60
+  video:
+    pre-check:
+      enabled: ${MODERATION_VIDEO_PRE_CHECK_ENABLED:true}              # row 48
+      frames: ${MODERATION_VIDEO_PRE_CHECK_FRAMES:3}                   # row 48
+      timeout-seconds: ${MODERATION_VIDEO_PRE_CHECK_TIMEOUT_SECONDS:15}   # row 48
+  ban-registry:
+    enabled: ${MODERATION_BAN_REGISTRY_ENABLED:true}                   # row 24
+    pepper: ${MODERATION_BAN_REGISTRY_PEPPER:}                         # row 24 - SECRET: same value as the user service
+  report:
+    first-decision-hours: ${MODERATION_REPORT_FIRST_DECISION_HOURS:24}   # row 63
+  # ── NEW 15 Oct (not deployed yet) ──
+  report-hold:
+    enabled: ${MODERATION_REPORT_HOLD_ENABLED:false}                   # row 64 - keep false
+    reports: ${MODERATION_REPORT_HOLD_REPORTS:3}                       # row 64
+    window-hours: ${MODERATION_REPORT_HOLD_WINDOW_HOURS:24}            # row 64
+    review-hours: ${MODERATION_REPORT_HOLD_REVIEW_HOURS:24}            # row 64
+
 share:
   playstore-url: ${SHARE_PLAYSTORE_URL:https://play.google.com/store/apps/details?id=com.app.sftexch}
   appstore-url: ${SHARE_APPSTORE_URL:https://apps.apple.com/app/id<YOUR_APP_ID>}
@@ -187,6 +225,7 @@ chat:
     # true  = today's rule: a message from someone you follow goes to the inbox
     # false = the client's rule: the first message from anybody is a request
     like-instagram: ${MESSAGE_REQUEST_LIKE_INSTAGRAM:false}
+    blur-media: ${CHAT_MESSAGE_REQUEST_BLUR_MEDIA:false}               # row 56 - NEW 15 Oct
   push:
     wake-app: ${CHAT_PUSH_WAKE_APP:true}
     ios-mutable-content: ${CHAT_PUSH_IOS_MUTABLE_CONTENT:true}
@@ -194,3 +233,39 @@ chat:
     enforce: ${CHAT_READ_RECEIPTS_ENFORCE:true}
     apply-to-groups: ${CHAT_READ_RECEIPTS_APPLY_TO_GROUPS:false}
   delivered-only-on-ack: ${CHAT_DELIVERED_ONLY_ON_ACK:true}
+  group:
+    max-members: ${GROUP_MAX_MEMBERS:256}                              # row 54
+    invites-per-day: ${GROUP_INVITES_PER_DAY:50}                       # row 54
+    invitation-days: ${CHAT_GROUP_INVITATION_DAYS:7}                   # row 53 - NEW 15 Oct
+    invitation-expiry-cron: ${CHAT_GROUP_INVITATION_EXPIRY_CRON:0 10 * * * *}   # row 53 - NEW 15 Oct
+
+# ════════════════════════════════════════════════════════════════════
+# Checklist v3 settings. Every value is the code default.
+# ════════════════════════════════════════════════════════════════════
+
+legal:
+  terms-version: ${LEGAL_TERMS_VERSION:2026-10-01}                     # row 19
+  terms-gate-enabled: ${LEGAL_TERMS_GATE_ENABLED:false}                # row 19
+  terms-hash: ${LEGAL_TERMS_HASH:}                                     # row 19 - NEW 15 Oct
+
+# NEW 15 Oct (row 40)
+messaging:
+  mass-flag:
+    enabled: ${MESSAGING_MASS_FLAG_ENABLED:true}
+    window-minutes: ${MESSAGING_MASS_FLAG_WINDOW_MINUTES:60}
+    stranger-threshold: ${MESSAGING_MASS_FLAG_THRESHOLD:20}
+    pause-enabled: ${MESSAGING_MASS_FLAG_PAUSE_ENABLED:false}
+    pause-hours: ${MESSAGING_MASS_FLAG_PAUSE_HOURS:24}
+
+media:
+  metadata:
+    strip:
+      enabled: ${MEDIA_METADATA_STRIP_ENABLED:true}                    # row 51
+    refuse-unstrippable: ${MEDIA_METADATA_REFUSE_UNSTRIPPABLE:true}    # row 51
+    ffmpeg-timeout-seconds: ${MEDIA_METADATA_FFMPEG_TIMEOUT_SECONDS:120}   # row 51
+  clip:
+    max-seconds: ${MEDIA_CLIP_MAX_SECONDS:90}                          # row 122 - NEW 15 Oct
+
+interaction:
+  enabled: ${INTERACTION_ENABLED:true}                                 # row 123
+  record-messages: ${INTERACTION_RECORD_MESSAGES:false}                # row 123
