@@ -113,6 +113,7 @@ twilio:
   account-sid: ${TWILIO_ACCOUNT_ID}
   auth-token: ${TWILIO_AUTH_TOKEN}
   phone-number: ${TWILIO_PHONE_NUMBER}
+  messaging-service-sid: ${TWILIO_MESSAGING_SERVICE_SID:}              # row 95 - NEW 15 Oct; from the Twilio console, empty = plain number (no STOP handling)
 
 connect:
   reapply:
@@ -163,6 +164,25 @@ connect:
   location:
     stale-after-hours: ${CONNECT_LOCATION_STALE_AFTER_HOURS:12}
     require-consent: ${CONNECT_LOCATION_REQUIRE_CONSENT:false}
+    min-radius-km: ${CONNECT_LOCATION_MIN_RADIUS_KM:0.25}             # row 6
+  # ── checklist v3 settings (defaults shown) ──
+  location-retention:
+    enabled: ${CONNECT_LOCATION_RETENTION_ENABLED:true}                # rows 4, 87
+    cron: ${CONNECT_LOCATION_RETENTION_CRON:0 20 * * * ?}              # rows 4, 87
+    reading-hours: ${CONNECT_LOCATION_RETENTION_READING_HOURS:48}      # rows 4, 87
+    encounter-days: ${CONNECT_LOCATION_RETENTION_ENCOUNTER_DAYS:30}    # rows 4, 87
+    notification-hours: ${CONNECT_LOCATION_RETENTION_NOTIFICATION_HOURS:24}   # rows 4, 87
+  encounter:
+    pair-cooldown-days: ${CONNECT_ENCOUNTER_PAIR_COOLDOWN_DAYS:7}      # row 6
+    checks-per-hour: ${CONNECT_ENCOUNTER_CHECKS_PER_HOUR:20}           # row 6
+  encounter-announcement:
+    enabled: ${CONNECT_ENCOUNTER_ANNOUNCEMENT_ENABLED:true}             # row 7
+    delay-hours: ${CONNECT_ENCOUNTER_ANNOUNCEMENT_DELAY_HOURS:6}       # row 7
+  crush-nearby:
+    require-per-match-opt-in: ${CONNECT_CRUSH_NEARBY_REQUIRE_PER_MATCH_OPT_IN:false}   # row 8 - NEW 15 Oct
+  dating-profile:
+    after-acceptance: ${CONNECT_DATING_PROFILE_AFTER_ACCEPTANCE:false}  # row 21 - NEW 15 Oct
+
 smtp:
   appleStoreImageUrl: ${APPLE_STORE_IMAGE_URL:https://apps.apple.com/app/id<YOUR_APP_ID>}
   googlePlayImageUrl: ${GOOGLE_PLAY_IMAGE_URL:https://play.google.com/store/apps/details?id=com.test.trend}
@@ -189,4 +209,48 @@ video:
     role-arn: ${MEDIACONVERT_ROLE_ARN:}
     region: ${MEDIACONVERT_REGION:eu-west-1}
     queue: ${MEDIACONVERT_QUEUE:}
-  
+
+# ════════════════════════════════════════════════════════════════════
+# Checklist v3 settings. Every value is the code default.
+# ════════════════════════════════════════════════════════════════════
+
+# row 51 - metadata stripping on dating photo uploads needs ffmpeg here too
+ffmpeg:
+  path: ${FFMPEG_PATH:/usr/bin/ffmpeg}
+
+moderation:
+  enabled: ${MODERATION_ENABLED:true}                                  # row 48
+  aws-region: ${MODERATION_AWS_REGION:eu-west-1}                       # row 48
+  min-confidence: ${MODERATION_MIN_CONFIDENCE:60}                      # row 48
+  flag-categories: ${MODERATION_FLAG_CATEGORIES:Explicit Nudity,Explicit,Sexual Activity,Graphic Violence,Visually Disturbing,Hate Symbols}   # row 48
+  text:
+    enabled: ${MODERATION_TEXT_ENABLED:true}                           # row 48
+    min-score: ${MODERATION_TEXT_MIN_SCORE:0.75}                       # row 48
+    flag-categories: ${MODERATION_TEXT_FLAG_CATEGORIES:SEXUAL,HATE_SPEECH,VIOLENCE_OR_THREAT,HARASSMENT_OR_ABUSE}   # row 48
+  video:
+    pre-check:
+      enabled: ${MODERATION_VIDEO_PRE_CHECK_ENABLED:true}              # row 48
+      frames: ${MODERATION_VIDEO_PRE_CHECK_FRAMES:3}                   # row 48
+      timeout-seconds: ${MODERATION_VIDEO_PRE_CHECK_TIMEOUT_SECONDS:15}   # row 48
+  profile-photos:
+    enabled: ${MODERATION_PROFILE_PHOTOS_ENABLED:true}                 # row 49
+  ban-registry:
+    enabled: ${MODERATION_BAN_REGISTRY_ENABLED:true}                   # row 24
+    pepper: ${MODERATION_BAN_REGISTRY_PEPPER:}                         # row 24 - SECRET: same value as the user and socket services
+  # ── NEW 15 Oct (not deployed yet) ──
+  report-hold:
+    enabled: ${MODERATION_REPORT_HOLD_ENABLED:false}                   # row 64 - keep false
+    reports: ${MODERATION_REPORT_HOLD_REPORTS:3}                       # row 64
+    window-hours: ${MODERATION_REPORT_HOLD_WINDOW_HOURS:24}            # row 64
+    review-hours: ${MODERATION_REPORT_HOLD_REVIEW_HOURS:24}            # row 64
+
+media:
+  metadata:
+    strip:
+      enabled: ${MEDIA_METADATA_STRIP_ENABLED:true}                    # row 51
+    refuse-unstrippable: ${MEDIA_METADATA_REFUSE_UNSTRIPPABLE:true}    # row 51
+    ffmpeg-timeout-seconds: ${MEDIA_METADATA_FFMPEG_TIMEOUT_SECONDS:120}   # row 51
+
+interaction:
+  enabled: ${INTERACTION_ENABLED:true}                                 # row 123
+  record-messages: ${INTERACTION_RECORD_MESSAGES:false}                # row 123
