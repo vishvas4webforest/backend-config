@@ -291,6 +291,44 @@ moderation:
     enabled: ${MODERATION_STRIKES_ENABLED:true}
     max: ${MODERATION_STRIKE_MAX:3}
     window-days: ${MODERATION_STRIKE_WINDOW_DAYS:0}
+  # ── checklist v3 settings (already in the deployed code; defaults shown) ──
+  enabled: ${MODERATION_ENABLED:true}                                  # row 48
+  aws-region: ${MODERATION_AWS_REGION:eu-west-1}                       # row 48
+  min-confidence: ${MODERATION_MIN_CONFIDENCE:60}                      # row 48
+  flag-categories: ${MODERATION_FLAG_CATEGORIES:Explicit Nudity,Explicit,Sexual Activity,Graphic Violence,Visually Disturbing,Hate Symbols}   # row 48
+  text:
+    enabled: ${MODERATION_TEXT_ENABLED:true}                           # row 48
+    min-score: ${MODERATION_TEXT_MIN_SCORE:0.75}                       # row 48
+    flag-categories: ${MODERATION_TEXT_FLAG_CATEGORIES:SEXUAL,HATE_SPEECH,VIOLENCE_OR_THREAT,HARASSMENT_OR_ABUSE}   # row 48
+    threat-hold:
+      enabled: ${MODERATION_TEXT_THREAT_HOLD_ENABLED:true}             # row 60
+      score: ${MODERATION_TEXT_THREAT_HOLD_SCORE:0.9}                  # row 60
+  video:
+    pre-check:
+      enabled: ${MODERATION_VIDEO_PRE_CHECK_ENABLED:true}              # row 48
+      frames: ${MODERATION_VIDEO_PRE_CHECK_FRAMES:3}                   # row 48
+      timeout-seconds: ${MODERATION_VIDEO_PRE_CHECK_TIMEOUT_SECONDS:15}   # row 48
+  profile-photos:
+    enabled: ${MODERATION_PROFILE_PHOTOS_ENABLED:true}                 # row 49
+  ban-registry:
+    enabled: ${MODERATION_BAN_REGISTRY_ENABLED:true}                   # row 24
+    pepper: ${MODERATION_BAN_REGISTRY_PEPPER:}                         # row 24 - SECRET: set a long random value before the first real ban
+  report:
+    first-decision-hours: ${MODERATION_REPORT_FIRST_DECISION_HOURS:24}   # row 63
+  copyright:
+    strike-months: ${MODERATION_COPYRIGHT_STRIKE_MONTHS:12}            # row 66
+    strikes-to-close: ${MODERATION_COPYRIGHT_STRIKES_TO_CLOSE:3}       # row 66
+    restore-business-days: ${MODERATION_COPYRIGHT_RESTORE_BUSINESS_DAYS:10}   # row 66
+  fraud-ban-notice:
+    enabled: ${MODERATION_FRAUD_BAN_NOTICE_ENABLED:true}               # row 67
+    window-hours: ${MODERATION_FRAUD_BAN_NOTICE_WINDOW_HOURS:24}       # row 67
+    cron: ${MODERATION_FRAUD_BAN_NOTICE_CRON:0 */5 * * * *}            # row 67
+  # ── NEW 15 Oct (not deployed yet) ──
+  report-hold:
+    enabled: ${MODERATION_REPORT_HOLD_ENABLED:false}                   # row 64 - keep false
+    reports: ${MODERATION_REPORT_HOLD_REPORTS:3}                       # row 64
+    window-hours: ${MODERATION_REPORT_HOLD_WINDOW_HOURS:24}            # row 64
+    review-hours: ${MODERATION_REPORT_HOLD_REVIEW_HOURS:24}            # row 64
 
 connect:
   chat:
@@ -315,6 +353,7 @@ google:
 legal:
   terms-version: ${LEGAL_TERMS_VERSION:2026-10-01}
   terms-gate-enabled: ${LEGAL_TERMS_GATE_ENABLED:false}
+  terms-hash: ${LEGAL_TERMS_HASH:}                                     # row 19 - NEW 15 Oct
 
 consent:
   valid-months: ${CONSENT_VALID_MONTHS:3}
@@ -335,3 +374,90 @@ age-proof:
 chat:
   message-request:
     like-instagram: ${MESSAGE_REQUEST_LIKE_INSTAGRAM:false}
+
+# ════════════════════════════════════════════════════════════════════
+# Checklist v3 settings. Every value is the code default.
+# ════════════════════════════════════════════════════════════════════
+
+auth:
+  direct-signup:
+    enabled: ${AUTH_DIRECT_SIGNUP_ENABLED:false}                       # row 26 - NEW 15 Oct; keep false
+  login-alerts:
+    enabled: ${AUTH_LOGIN_ALERTS_ENABLED:true}                         # row 43
+  throttle:
+    enabled: ${AUTH_THROTTLE_ENABLED:true}                             # row 42
+    window-minutes: ${AUTH_THROTTLE_WINDOW_MINUTES:15}                 # row 42
+    free-attempts: ${AUTH_THROTTLE_FREE_ATTEMPTS:3}                    # row 42
+    base-pause-seconds: ${AUTH_THROTTLE_BASE_PAUSE_SECONDS:5}          # row 42
+    max-pause-seconds: ${AUTH_THROTTLE_MAX_PAUSE_SECONDS:300}          # row 42
+    lockout-after: ${AUTH_THROTTLE_LOCKOUT_AFTER:10}                   # row 42
+    lockout-minutes: ${AUTH_THROTTLE_LOCKOUT_MINUTES:15}               # row 42
+    ip:
+      free-attempts: ${AUTH_THROTTLE_IP_FREE_ATTEMPTS:20}              # row 42
+      lockout-after: ${AUTH_THROTTLE_IP_LOCKOUT_AFTER:60}              # row 42
+
+# NEW 15 Oct (row 40)
+messaging:
+  mass-flag:
+    enabled: ${MESSAGING_MASS_FLAG_ENABLED:true}
+    window-minutes: ${MESSAGING_MASS_FLAG_WINDOW_MINUTES:60}
+    stranger-threshold: ${MESSAGING_MASS_FLAG_THRESHOLD:20}
+    pause-enabled: ${MESSAGING_MASS_FLAG_PAUSE_ENABLED:false}
+    pause-hours: ${MESSAGING_MASS_FLAG_PAUSE_HOURS:24}
+
+media:
+  metadata:
+    strip:
+      enabled: ${MEDIA_METADATA_STRIP_ENABLED:true}                    # row 51
+    refuse-unstrippable: ${MEDIA_METADATA_REFUSE_UNSTRIPPABLE:true}    # row 51
+    ffmpeg-timeout-seconds: ${MEDIA_METADATA_FFMPEG_TIMEOUT_SECONDS:120}   # row 51
+
+legal-hold:
+  deputy-admin-ids: ${LEGAL_HOLD_DEPUTY_ADMIN_IDS:}                    # row 69
+
+# NEW 15 Oct (row 71)
+police-notices:
+  working-days: ${POLICE_NOTICES_WORKING_DAYS:2}
+  reminder-hours: ${POLICE_NOTICES_REMINDER_HOURS:12}
+  reminder-cron: ${POLICE_NOTICES_REMINDER_CRON:0 5 * * * *}
+  bank-holidays: ${POLICE_NOTICES_BANK_HOLIDAYS:2026-01-01,2026-04-03,2026-04-06,2026-05-04,2026-05-25,2026-08-31,2026-12-25,2026-12-28,2027-01-01,2027-03-26,2027-03-29,2027-05-03,2027-05-31,2027-08-30,2027-12-27,2027-12-28}
+
+retention:
+  enabled: ${RETENTION_ENABLED:true}                                   # row 87
+  cron: ${RETENTION_CRON:0 0 3 * * *}                                  # row 87
+  viewing-history-days: ${RETENTION_VIEWING_HISTORY_DAYS:365}          # row 87
+  ranking-signal-days: ${RETENTION_RANKING_SIGNAL_DAYS:365}            # row 87
+  message-interaction-days: ${RETENTION_MESSAGE_INTERACTION_DAYS:90}   # row 87 - NEW 15 Oct
+  analytics-days: ${RETENTION_ANALYTICS_DAYS:426}                      # row 87
+  report-days: ${RETENTION_REPORT_DAYS:730}                            # row 87
+  dm-metadata-enabled: ${RETENTION_DM_METADATA_ENABLED:true}           # row 87
+  dm-metadata-days: ${RETENTION_DM_METADATA_DAYS:90}                   # row 87
+  login-history-days: ${RETENTION_LOGIN_HISTORY_DAYS:90}               # rows 87, 88
+  authority-request-years: ${RETENTION_AUTHORITY_REQUEST_YEARS:6}      # row 143
+  inactive-account:
+    enabled: ${RETENTION_INACTIVE_ACCOUNT_ENABLED:true}                # row 87
+    months: ${RETENTION_INACTIVE_ACCOUNT_MONTHS:24}                    # row 87
+    warn-days-before: ${RETENTION_INACTIVE_ACCOUNT_WARN_DAYS_BEFORE:30}   # row 87
+    batch-size: ${RETENTION_INACTIVE_ACCOUNT_BATCH_SIZE:200}           # row 87
+  dormant-dating:
+    enabled: ${RETENTION_DORMANT_DATING_ENABLED:true}                  # row 87
+    hide-months: ${RETENTION_DORMANT_DATING_HIDE_MONTHS:6}             # row 87
+    delete-months: ${RETENTION_DORMANT_DATING_DELETE_MONTHS:12}        # row 87
+
+interaction:
+  enabled: ${INTERACTION_ENABLED:true}                                 # row 123
+  record-messages: ${INTERACTION_RECORD_MESSAGES:false}                # row 123
+
+# NEW 15 Oct (row 91)
+data-export:
+  reminder-days: ${DATA_EXPORT_REMINDER_DAYS:7}
+  reminder-cron: ${DATA_EXPORT_REMINDER_CRON:0 30 8 * * *}
+
+# NEW 15 Oct (row 142) - bucket empty = no copies until the AWS bucket exists
+held-store:
+  bucket: ${HELD_STORE_BUCKET:}
+  region: ${HELD_STORE_REGION:eu-west-3}
+
+authority-requests:
+  notice-reminder-days: ${AUTHORITY_REQUESTS_NOTICE_REMINDER_DAYS:3}   # row 146
+  notice-cron: ${AUTHORITY_REQUESTS_NOTICE_CRON:0 0 8 * * *}           # row 146
