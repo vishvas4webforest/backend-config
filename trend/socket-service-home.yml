@@ -1,5 +1,5 @@
 server:
-  base-url: ${SOCKET_APP_BASE_URL:https://apidev.trendapp.uk/socket}
+  base-url: ${SOCKET_APP_BASE_URL:http://localhost:8081/socket}
 
 eureka:
   instance:
