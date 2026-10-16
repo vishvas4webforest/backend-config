@@ -461,3 +461,8 @@ held-store:
 authority-requests:
   notice-reminder-days: ${AUTHORITY_REQUESTS_NOTICE_REMINDER_DAYS:3}   # row 146
   notice-cron: ${AUTHORITY_REQUESTS_NOTICE_CRON:0 0 8 * * *}           # row 146
+
+device-integrity:
+  block-enabled: ${DEVICE_INTEGRITY_BLOCK_ENABLED:true}
+  complaint-url: ${DEVICE_INTEGRITY_COMPLAINT_URL:https://trendapp.io/safety}
+  complaint-email: ${DEVICE_INTEGRITY_COMPLAINT_EMAIL:safety@trendapp.io}
