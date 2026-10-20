@@ -183,6 +183,8 @@ connect:
     delay-minutes: ${CONNECT_CRUSH_NEARBY_DELAY_MINUTES:0}
   dating-profile:
     after-acceptance: ${CONNECT_DATING_PROFILE_AFTER_ACCEPTANCE:false}  # row 21 - NEW 15 Oct
+  default-mode:
+    crush-nearby-enabled: ${CONNECT_DEFAULT_MODE_CRUSH_NEARBY_ENABLED:false}
 
 smtp:
   appleStoreImageUrl: ${APPLE_STORE_IMAGE_URL:https://apps.apple.com/app/id<YOUR_APP_ID>}
