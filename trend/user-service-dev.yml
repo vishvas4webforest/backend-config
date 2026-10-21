@@ -466,3 +466,7 @@ device-integrity:
   block-enabled: ${DEVICE_INTEGRITY_BLOCK_ENABLED:true}
   complaint-url: ${DEVICE_INTEGRITY_COMPLAINT_URL:https://trendapp.io/safety}
   complaint-email: ${DEVICE_INTEGRITY_COMPLAINT_EMAIL:safety@trendapp.io}
+
+amazon-location:
+  enabled: ${AMAZON_LOCATION_ENABLED:true}
+  region: ${AMAZON_LOCATION_REGION:eu-west-1}
