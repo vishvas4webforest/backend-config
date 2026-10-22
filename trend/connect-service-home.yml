@@ -257,3 +257,12 @@ media:
 interaction:
   enabled: ${INTERACTION_ENABLED:true}                                 # row 123
   record-messages: ${INTERACTION_RECORD_MESSAGES:false}                # row 123
+
+veriff:
+  enabled: ${VERIFF_ENABLED:false}
+  base-url: ${VERIFF_BASE_URL:https://stationapi.veriff.com}
+  api-key: ${VERIFF_API_KEY:}
+  shared-secret: ${VERIFF_SHARED_SECRET:}
+  callback-url: ${VERIFF_CALLBACK_URL:}
+  session-reuse-days: ${VERIFF_SESSION_REUSE_DAYS:6}
+  consent-text-version: ${VERIFF_CONSENT_TEXT_VERSION:id-check-biometric-v1}
