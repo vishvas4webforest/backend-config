@@ -467,6 +467,13 @@ device-integrity:
   complaint-url: ${DEVICE_INTEGRITY_COMPLAINT_URL:https://trendapp.io/safety}
   complaint-email: ${DEVICE_INTEGRITY_COMPLAINT_EMAIL:safety@trendapp.io}
 
+message-counting:
+  enabled: ${MESSAGE_COUNTING_ENABLED:true}
+  default-on-countries: ${MESSAGE_COUNTING_DEFAULT_ON:United Kingdom,GB,UK,United States,US,USA}
+  ask-countries: ${MESSAGE_COUNTING_ASK:...EU/EEA + Switzerland list...}
+  text-version:
+    popup: message-counts-popup-v1
+    settings: message-counts-settings-v1
 amazon-location:
   enabled: ${AMAZON_LOCATION_ENABLED:true}
   region: ${AMAZON_LOCATION_REGION:eu-west-1}
