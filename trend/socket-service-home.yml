@@ -270,7 +270,3 @@ interaction:
   enabled: ${INTERACTION_ENABLED:true}                                 # row 123
   record-messages: ${INTERACTION_RECORD_MESSAGES:false}                # row 123
 
-socket:
-  stomp:
-    auth:
-      mode: ${SOCKET_STOMP_AUTH_MODE:LOG}   # LOG or OFF
