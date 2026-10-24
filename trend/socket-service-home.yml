@@ -266,6 +266,9 @@ media:
   clip:
     max-seconds: ${MEDIA_CLIP_MAX_SECONDS:90}                          # row 122 - NEW 15 Oct
 
+feed:
+  not-interested:
+    days: ${FEED_NOT_INTERESTED_DAYS:30}
 interaction:
   enabled: ${INTERACTION_ENABLED:true}                                 # row 123
   record-messages: ${INTERACTION_RECORD_MESSAGES:false}                # row 123
