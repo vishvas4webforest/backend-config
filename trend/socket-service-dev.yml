@@ -269,3 +269,7 @@ media:
 interaction:
   enabled: ${INTERACTION_ENABLED:true}                                 # row 123
   record-messages: ${INTERACTION_RECORD_MESSAGES:false}                # row 123
+
+feed:
+  not-interested:
+    days: ${FEED_NOT_INTERESTED_DAYS:30}
