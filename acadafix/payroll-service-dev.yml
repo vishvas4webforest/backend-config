@@ -78,6 +78,7 @@ hmrc:
 
   gateway:
     url: ${HMRC_GATEWAY_URL}
+    test: ${HMRC_GATEWAY_TEST:true}
 
   sender:
     id: ${HMRC_SENDER_ID}
