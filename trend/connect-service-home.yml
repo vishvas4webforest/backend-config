@@ -268,3 +268,8 @@ veriff:
   callback-url: ${VERIFF_CALLBACK_URL:}
   session-reuse-days: ${VERIFF_SESSION_REUSE_DAYS:6}
   consent-text-version: ${VERIFF_CONSENT_TEXT_VERSION:id-check-biometric-v1}
+
+signup:
+  state-gate:
+    enabled: ${SIGNUP_STATE_GATE_ENABLED:true}
+    blocked-us-states: ${SIGNUP_BLOCKED_US_STATES:Mississippi,Tennessee,Nebraska}
