@@ -273,3 +273,11 @@ interaction:
 feed:
   not-interested:
     days: ${FEED_NOT_INTERESTED_DAYS:30}
+
+# a member's post / Clip delete: hidden at once, restorable, erased nightly (row 85 pattern)
+posts:
+  soft-delete:
+    enabled: ${POSTS_SOFT_DELETE_ENABLED:true}
+    keep-days: ${POSTS_SOFT_DELETE_KEEP_DAYS:30}
+    purge-batch: ${POSTS_SOFT_DELETE_PURGE_BATCH:500}
+    purge-cron: ${POSTS_SOFT_DELETE_PURGE_CRON:0 40 3 * * *}
