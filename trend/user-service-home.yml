@@ -367,7 +367,12 @@ signup:
   age-gate:
     enabled: ${SIGNUP_AGE_GATE_ENABLED:true}
     retry-lock-hours: ${SIGNUP_AGE_GATE_RETRY_LOCK_HOURS:24}
-
+  disposable-email:
+    enabled: ${SIGNUP_DISPOSABLE_EMAIL_ENABLED:true}
+    list-file: ${SIGNUP_DISPOSABLE_EMAIL_LIST_FILE:}
+    extra-domains: ${SIGNUP_DISPOSABLE_EMAIL_EXTRA_DOMAINS:}
+    mx-check: ${SIGNUP_DISPOSABLE_EMAIL_MX_CHECK:false}
+    
 age-proof:
   response-days: ${AGE_PROOF_RESPONSE_DAYS:7}
 
