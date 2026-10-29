@@ -477,3 +477,10 @@ message-counting:
 amazon-location:
   enabled: ${AMAZON_LOCATION_ENABLED:true}
   region: ${AMAZON_LOCATION_REGION:eu-west-1}
+
+stories:
+  retention:
+    enabled: ${STORIES_RETENTION_ENABLED:true}
+    days: ${STORIES_RETENTION_DAYS:30}
+    batch: ${STORIES_RETENTION_BATCH:500}
+    cron: ${STORIES_RETENTION_CRON:0 50 3 * * *}
