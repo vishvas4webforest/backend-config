@@ -273,3 +273,10 @@ interaction:
   enabled: ${INTERACTION_ENABLED:true}                                 # row 123
   record-messages: ${INTERACTION_RECORD_MESSAGES:false}                # row 123
 
+# a member's post / Clip delete: hidden at once, restorable, erased nightly (row 85 pattern)
+posts:
+  soft-delete:
+    enabled: ${POSTS_SOFT_DELETE_ENABLED:true}
+    keep-days: ${POSTS_SOFT_DELETE_KEEP_DAYS:30}
+    purge-batch: ${POSTS_SOFT_DELETE_PURGE_BATCH:500}
+    purge-cron: ${POSTS_SOFT_DELETE_PURGE_CRON:0 40 3 * * *}
