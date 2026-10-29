@@ -362,6 +362,8 @@ consent:
     settings: ${CONSENT_TEXT_VERSION_SETTINGS:settings-location-v1}
     analytics: ${CONSENT_TEXT_VERSION_ANALYTICS:analytics-v1}
     marketing: ${CONSENT_TEXT_VERSION_MARKETING:marketing-v1}
+    dating-features: ${CONSENT_TEXT_VERSION_DATING_FEATURES:dating-features-v1}
+    crush-nearby-screen: ${CONSENT_TEXT_VERSION_CRUSH_NEARBY_SCREEN:crush-nearby-screen-v1}
 
 signup:
   age-gate:
