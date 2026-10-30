@@ -491,3 +491,10 @@ stories:
     days: ${STORIES_RETENTION_DAYS:30}
     batch: ${STORIES_RETENTION_BATCH:500}
     cron: ${STORIES_RETENTION_CRON:0 50 3 * * *}
+
+ranking:
+  interest:
+    half-life-days: ${RANKING_INTEREST_HALF_LIFE_DAYS:14}
+    refresh-minutes: ${RANKING_INTEREST_REFRESH_MINUTES:10}
+  stories:
+    fresh-half-life-hours: ${RANKING_STORIES_FRESH_HALF_LIFE_HOURS:8}
