@@ -289,3 +289,23 @@ ranking:
       url: ${RANKING_DETECTOR_PYTHON_URL:}
       token: ${RANKING_DETECTOR_PYTHON_TOKEN:}
     stories: ${RANKING_DETECTOR_STORIES:false}
+  weights:
+    viewer: ${RANKING_WEIGHT_VIEWER:2}
+    like: ${RANKING_WEIGHT_LIKE:5}
+    comment: ${RANKING_WEIGHT_COMMENT:10}
+    share: ${RANKING_WEIGHT_SHARE:15}
+    save: ${RANKING_WEIGHT_SAVE:7}
+    trending-press: ${RANKING_WEIGHT_TRENDING_PRESS:7}
+    watch-second: ${RANKING_WEIGHT_WATCH_SECOND:1}
+    report: ${RANKING_WEIGHT_REPORT:20}
+    age-hour: ${RANKING_WEIGHT_AGE_HOUR:0.4}
+    recent-1h: ${RANKING_WEIGHT_RECENT_1H:3}
+    recent-24h: ${RANKING_WEIGHT_RECENT_24H:1}
+  feed:
+    candidate-days: ${RANKING_FEED_CANDIDATE_DAYS:14}
+    explore-share: ${RANKING_FEED_EXPLORE_SHARE:0.2}
+    seen-factor: ${RANKING_FEED_SEEN_FACTOR:0.4}
+    max-same-author-in-row: ${RANKING_FEED_MAX_SAME_AUTHOR_IN_ROW:2}
+  interest:
+    half-life-days: ${RANKING_INTEREST_HALF_LIFE_DAYS:14}
+    refresh-minutes: ${RANKING_INTEREST_REFRESH_MINUTES:10}
