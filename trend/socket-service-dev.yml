@@ -281,3 +281,11 @@ posts:
     keep-days: ${POSTS_SOFT_DELETE_KEEP_DAYS:30}
     purge-batch: ${POSTS_SOFT_DELETE_PURGE_BATCH:500}
     purge-cron: ${POSTS_SOFT_DELETE_PURGE_CRON:0 40 3 * * *}
+
+ranking:
+  detector:
+    provider: ${RANKING_DETECTOR_PROVIDER:NONE}     # NONE | REKOGNITION | PYTHON
+    python:
+      url: ${RANKING_DETECTOR_PYTHON_URL:}
+      token: ${RANKING_DETECTOR_PYTHON_TOKEN:}
+    stories: ${RANKING_DETECTOR_STORIES:false}
