@@ -284,6 +284,10 @@ video:
     queue: ${MEDIACONVERT_QUEUE:}
 
 moderation:
+  account-review:
+    enabled: ${MODERATION_ACCOUNT_REVIEW_ENABLED:false}
+    reports: ${MODERATION_ACCOUNT_REVIEW_REPORTS:3}
+    window-days: ${MODERATION_ACCOUNT_REVIEW_WINDOW_DAYS:7}
   auto-ban:
     enabled: ${MODERATION_AUTO_BAN_ENABLED:false}
     report-threshold: ${MODERATION_AUTO_BAN_REPORT_THRESHOLD:3}
