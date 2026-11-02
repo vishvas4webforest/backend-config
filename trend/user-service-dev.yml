@@ -284,6 +284,8 @@ video:
     queue: ${MEDIACONVERT_QUEUE:}
 
 moderation:
+  ban-safety-alert:
+    enabled: ${MODERATION_BAN_SAFETY_ALERT_ENABLED:true}
   account-review:
     enabled: ${MODERATION_ACCOUNT_REVIEW_ENABLED:false}
     reports: ${MODERATION_ACCOUNT_REVIEW_REPORTS:3}
