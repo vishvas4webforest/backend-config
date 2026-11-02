@@ -164,7 +164,11 @@ connect:
     cooldown-days: 14                # min gap between two nudges to the same user
     batch-size: 2000                 # max users per run
     cron: "0 0 10 * * ?"             # daily 10:00 server time (ConnectReEngagementScheduler)
-
+  profile-view-nudge:
+    inactive-days: ${CONNECT_PROFILE_VIEW_NUDGE_INACTIVE_DAYS:7}     # 7 days away; 0 = off
+    cooldown-days: ${CONNECT_PROFILE_VIEW_NUDGE_COOLDOWN_DAYS:7}
+    cron: ${CONNECT_PROFILE_VIEW_NUDGE_CRON:0 30 10 * * ?}
+    
 visitNow: ${VISIT_NOW:https://trendapp.uk}
 
 video:
