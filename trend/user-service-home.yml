@@ -505,6 +505,9 @@ ranking:
     refresh-minutes: ${RANKING_INTEREST_REFRESH_MINUTES:10}
   stories:
     fresh-half-life-hours: ${RANKING_STORIES_FRESH_HALF_LIFE_HOURS:8}
+    trending-first:
+      count: ${RANKING_STORIES_TRENDING_FIRST_COUNT:3}
+      min-score: ${RANKING_STORIES_TRENDING_FIRST_MIN_SCORE:0}
   region-rule:
     us-states-from: ${RANKING_REGION_RULE_US_STATES_FROM:California=2027-01-01}
    
