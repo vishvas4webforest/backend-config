@@ -335,7 +335,12 @@ moderation:
     reports: ${MODERATION_REPORT_HOLD_REPORTS:3}                       # row 64
     window-hours: ${MODERATION_REPORT_HOLD_WINDOW_HOURS:24}            # row 64
     review-hours: ${MODERATION_REPORT_HOLD_REVIEW_HOURS:24}            # row 64
-
+  rules:
+    # Policy page. Each rule's "Read in full" link = this URL + #rule-anchor (e.g. #nudity).
+    policy-url: ${COMMUNITY_GUIDELINES_URL:https://trendapp.io/community-guidelines}
+    # "Find support" / "Get help" button on the rule screen.
+    support-url: ${SAFETY_SUPPORT_URL:https://trendapp.io/safety}
+    
 connect:
   chat:
     expiry:
