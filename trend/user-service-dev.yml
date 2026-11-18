@@ -456,7 +456,8 @@ retention:
     enabled: ${RETENTION_DORMANT_DATING_ENABLED:true}                  # row 87
     hide-months: ${RETENTION_DORMANT_DATING_HIDE_MONTHS:6}             # row 87
     delete-months: ${RETENTION_DORMANT_DATING_DELETE_MONTHS:12}        # row 87
-
+  deleted-account-report-days: ${RETENTION_DELETED_ACCOUNT_REPORT_DAYS:2190}
+  
 interaction:
   enabled: ${INTERACTION_ENABLED:true}                                 # row 123
   record-messages: ${INTERACTION_RECORD_MESSAGES:false}                # row 123
@@ -504,3 +505,36 @@ ranking:
     refresh-minutes: ${RANKING_INTEREST_REFRESH_MINUTES:10}
   stories:
     fresh-half-life-hours: ${RANKING_STORIES_FRESH_HALF_LIFE_HOURS:8}
+  region-rule:
+    us-states-from: ${RANKING_REGION_RULE_US_STATES_FROM:California=2027-01-01}
+    
+# Row 70 - terror removal orders
+removal-orders:
+  deadline-minutes: ${REMOVAL_ORDERS_DEADLINE_MINUTES:60}
+  reminder-minutes: ${REMOVAL_ORDERS_REMINDER_MINUTES:20}
+  hold-months: ${REMOVAL_ORDERS_HOLD_MONTHS:6}
+  reminder-cron: ${REMOVAL_ORDERS_REMINDER_CRON:0 */5 * * * *}
+  provider:
+    name: ${REMOVAL_ORDERS_PROVIDER_NAME:QOQ Design Ltd, trading as Trend}
+    legal-representative: ${REMOVAL_ORDERS_PROVIDER_LEGAL_REPRESENTATIVE:}
+    member-state: ${REMOVAL_ORDERS_PROVIDER_MEMBER_STATE:}
+    contact-email: ${REMOVAL_ORDERS_PROVIDER_CONTACT_EMAIL:legal@trendapp.io}
+
+# Row 75 - sanctions (off by default)
+sanctions:
+  enabled: ${SANCTIONS_ENABLED:false}
+  refusal-message: ${SANCTIONS_REFUSAL_MESSAGE:You can't publish on Trend at the moment. Contact support if you think this is a mistake.}
+
+# Row 145 - authority export routes
+authority-export:
+  routes:
+    uk:
+      account: ${AUTHORITY_EXPORT_UK_ACCOUNT:WRITTEN_REQUEST,STATUTORY_NOTICE,COURT_ORDER,WARRANT}
+      purchases: ${AUTHORITY_EXPORT_UK_PURCHASES:STATUTORY_NOTICE,COURT_ORDER,WARRANT}
+      logs: ${AUTHORITY_EXPORT_UK_LOGS:STATUTORY_NOTICE,COURT_ORDER,WARRANT}
+      location: ${AUTHORITY_EXPORT_UK_LOCATION:STATUTORY_NOTICE,COURT_ORDER,WARRANT}
+      content: ${AUTHORITY_EXPORT_UK_CONTENT:COURT_ORDER,WARRANT}
+      messages: ${AUTHORITY_EXPORT_UK_MESSAGES:COURT_ORDER,WARRANT}
+    eu-eea: ${AUTHORITY_EXPORT_EU_EEA:MLA_REQUEST,DSA_ORDER_DATAREP}
+    us: ${AUTHORITY_EXPORT_US:MLA_REQUEST,UK_US_DAA}
+    other: ${AUTHORITY_EXPORT_OTHER:MLA_REQUEST}
