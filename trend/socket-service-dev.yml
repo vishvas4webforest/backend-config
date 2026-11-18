@@ -310,12 +310,22 @@ ranking:
     explore-share: ${RANKING_FEED_EXPLORE_SHARE:0.2}
     seen-factor: ${RANKING_FEED_SEEN_FACTOR:0.4}
     max-same-author-in-row: ${RANKING_FEED_MAX_SAME_AUTHOR_IN_ROW:2}
+    trending-first:
+      count: ${RANKING_FEED_TRENDING_FIRST_COUNT:3}
+      min-score: ${RANKING_FEED_TRENDING_FIRST_MIN_SCORE:0}
+    popularity: ${RANKING_FEED_POPULARITY:CONTENT}
   interest:
     half-life-days: ${RANKING_INTEREST_HALF_LIFE_DAYS:14}
     refresh-minutes: ${RANKING_INTEREST_REFRESH_MINUTES:10}
   region-rule:
     us-states-from: ${RANKING_REGION_RULE_US_STATES_FROM:California=2027-01-01}
-    
+  content-score:
+    weights:
+      view: ${RANKING_CONTENT_SCORE_VIEW:1}
+      like: ${RANKING_CONTENT_SCORE_LIKE:5}
+      comment: ${RANKING_CONTENT_SCORE_COMMENT:10}
+      share: ${RANKING_CONTENT_SCORE_SHARE:15}
+      age-hour: ${RANKING_CONTENT_SCORE_AGE_HOUR:0.5}
 # Row 75 - sanctions (off by default)
 sanctions:
   enabled: ${SANCTIONS_ENABLED:false}
