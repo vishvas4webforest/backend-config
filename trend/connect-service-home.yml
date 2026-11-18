@@ -165,6 +165,9 @@ connect:
     stale-after-hours: ${CONNECT_LOCATION_STALE_AFTER_HOURS:12}
     require-consent: ${CONNECT_LOCATION_REQUIRE_CONSENT:false}
     min-radius-km: ${CONNECT_LOCATION_MIN_RADIUS_KM:0.25}             # row 6
+    rate:
+      min-interval-seconds: ${CONNECT_LOCATION_MIN_INTERVAL_SECONDS:300}
+      tolerance-seconds: ${CONNECT_LOCATION_INTERVAL_TOLERANCE_SECONDS:30}
   # ── checklist v3 settings (defaults shown) ──
   location-retention:
     enabled: ${CONNECT_LOCATION_RETENTION_ENABLED:true}                # rows 4, 87
@@ -273,3 +276,9 @@ signup:
   state-gate:
     enabled: ${SIGNUP_STATE_GATE_ENABLED:true}
     blocked-us-states: ${SIGNUP_BLOCKED_US_STATES:Mississippi,Tennessee,Nebraska}
+
+# Row 85 - deletion requests to outside vendors
+vendor-deletion:
+  cron: ${VENDOR_DELETION_CRON:0 30 * * * *}
+  max-attempts: ${VENDOR_DELETION_MAX_ATTEMPTS:10}
+  batch: ${VENDOR_DELETION_BATCH:50}
