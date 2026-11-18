@@ -312,3 +312,10 @@ ranking:
   interest:
     half-life-days: ${RANKING_INTEREST_HALF_LIFE_DAYS:14}
     refresh-minutes: ${RANKING_INTEREST_REFRESH_MINUTES:10}
+  region-rule:
+    us-states-from: ${RANKING_REGION_RULE_US_STATES_FROM:California=2027-01-01}
+
+# Row 75 - sanctions (off by default)
+sanctions:
+  enabled: ${SANCTIONS_ENABLED:false}
+  refusal-message: ${SANCTIONS_REFUSAL_MESSAGE:You can't publish on Trend at the moment. Contact support if you think this is a mistake.}
