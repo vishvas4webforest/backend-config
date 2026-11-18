@@ -190,6 +190,8 @@ connect:
     crush-nearby-enabled: ${CONNECT_DEFAULT_MODE_CRUSH_NEARBY_ENABLED:false}
   dating-consent:
     required: ${CONNECT_DATING_CONSENT_REQUIRED:false}
+  id-check:
+    required-for-approval: ${CONNECT_ID_CHECK_REQUIRED_FOR_APPROVAL:true}
     
 smtp:
   appleStoreImageUrl: ${APPLE_STORE_IMAGE_URL:https://apps.apple.com/app/id<YOUR_APP_ID>}
@@ -271,6 +273,8 @@ veriff:
   callback-url: ${VERIFF_CALLBACK_URL:}
   session-reuse-days: ${VERIFF_SESSION_REUSE_DAYS:6}
   consent-text-version: ${VERIFF_CONSENT_TEXT_VERSION:id-check-biometric-v1}
+  consent-required: ${VERIFF_CONSENT_REQUIRED:false}
+
 
 signup:
   state-gate:
