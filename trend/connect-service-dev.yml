@@ -267,7 +267,7 @@ interaction:
 
 veriff:
   enabled: ${VERIFF_ENABLED:false}
-  base-url: ${VERIFF_BASE_URL:https://stationapi.veriff.com}
+  base-url: ${VERIFF_BASE_URL:https://api-saas.veriff.com}
   api-key: ${VERIFF_API_KEY:}
   shared-secret: ${VERIFF_SHARED_SECRET:}
   callback-url: ${VERIFF_CALLBACK_URL:}
