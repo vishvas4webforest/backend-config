@@ -291,3 +291,10 @@ vendor-deletion:
   cron: ${VENDOR_DELETION_CRON:0 30 * * * *}
   max-attempts: ${VENDOR_DELETION_MAX_ATTEMPTS:10}
   batch: ${VENDOR_DELETION_BATCH:50}
+
+ip-location:
+  provider: ${IP_LOCATION_PROVIDER:DBIP}
+  fallback-to-ip-api: ${IP_LOCATION_FALLBACK_TO_IP_API:true}
+  dbip:
+    dir: ${IP_LOCATION_DBIP_DIR:}
+    auto-download: ${IP_LOCATION_DBIP_AUTO_DOWNLOAD:true}
