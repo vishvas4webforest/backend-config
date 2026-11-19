@@ -546,3 +546,10 @@ authority-export:
     eu-eea: ${AUTHORITY_EXPORT_EU_EEA:MLA_REQUEST,DSA_ORDER_DATAREP}
     us: ${AUTHORITY_EXPORT_US:MLA_REQUEST,UK_US_DAA}
     other: ${AUTHORITY_EXPORT_OTHER:MLA_REQUEST}
+
+ip-location:
+  provider: ${IP_LOCATION_PROVIDER:DBIP}
+  fallback-to-ip-api: ${IP_LOCATION_FALLBACK_TO_IP_API:true}
+  dbip:
+    dir: ${IP_LOCATION_DBIP_DIR:}
+    auto-download: ${IP_LOCATION_DBIP_AUTO_DOWNLOAD:true}
