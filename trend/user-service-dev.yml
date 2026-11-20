@@ -553,3 +553,13 @@ ip-location:
   dbip:
     dir: ${IP_LOCATION_DBIP_DIR:}
     auto-download: ${IP_LOCATION_DBIP_AUTO_DOWNLOAD:true}
+
+tcap:
+  enabled: ${TCAP_ENABLED:false}
+  base-url: ${TCAP_BASE_URL:https://app.terrorismanalytics.org}
+  username: ${TCAP_USERNAME:}
+  password: ${TCAP_PASSWORD:}
+  ideology: ${TCAP_IDEOLOGY:}
+  pdq-confidence: ${TCAP_PDQ_CONFIDENCE:0.9}
+  pdq-min-quality: ${TCAP_PDQ_MIN_QUALITY:50}
+  max-file-mb: ${TCAP_MAX_FILE_MB:100}
