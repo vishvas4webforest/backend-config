@@ -337,3 +337,17 @@ ranking:
 sanctions:
   enabled: ${SANCTIONS_ENABLED:false}
   refusal-message: ${SANCTIONS_REFUSAL_MESSAGE:You can't publish on Trend at the moment. Contact support if you think this is a mistake.}
+
+tcap:
+  enabled: ${TCAP_ENABLED:false}
+  base-url: ${TCAP_BASE_URL:https://app.terrorismanalytics.org}
+  username: ${TCAP_USERNAME:}
+  password: ${TCAP_PASSWORD:}
+  ideology: ${TCAP_IDEOLOGY:}
+  pdq-confidence: ${TCAP_PDQ_CONFIDENCE:0.9}
+  pdq-min-quality: ${TCAP_PDQ_MIN_QUALITY:50}
+  max-file-mb: ${TCAP_MAX_FILE_MB:100}
+  alerts:
+    enabled: ${TCAP_ALERTS_ENABLED:true}
+    cron: ${TCAP_ALERTS_CRON:0 20 * * * *}
+    link-prefixes: ${TCAP_ALERTS_LINK_PREFIXES:}
