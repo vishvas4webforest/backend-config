@@ -279,7 +279,7 @@ veriff:
   session-reuse-days: ${VERIFF_SESSION_REUSE_DAYS:6}
   consent-text-version: ${VERIFF_CONSENT_TEXT_VERSION:id-check-biometric-v1}
   consent-required: ${VERIFF_CONSENT_REQUIRED:false}
-
+  send-date-of-birth: ${VERIFF_SEND_DATE_OF_BIRTH:true}
 
 signup:
   state-gate:
