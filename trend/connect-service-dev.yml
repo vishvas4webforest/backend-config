@@ -1,119 +1,8 @@
 server:
   base-url: ${CONNECT_APP_BASE_URL:https://apidev.trendapp.uk/connect}
 
-eureka:
-  instance:
-    hostname: localhost
-    prefer-ip-address: false
-    
-spring:
-  datasource:
-    host: ${DB_HOST}
-    port: ${DB_PORT}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME:trenddb}
-    hikari:
-      maximum-pool-size: 10
-  redis:
-    host: ${REDIS_HOST}
-    port: ${REDIS_PORT}
-  jpa:
-    hibernate:
-      ddl-auto: validate
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        jdbc: 
-          time_zone: UTC
-
-jwt:
-  secret: ${JWT_SECRET}
-  expiration: ${JWT_EXPIRATION}
-  refresh-expiration: ${JWT_REFRESH_EXPIRATION}
-  remember-expiration: ${JWT_REMEMBER_EXPIRATION}
-
-logging:
-  level:
-    # Keep Flyway migration logs in DEBUG (optional, useful for DB migrations)
-    org.flywaydb.core: DEBUG
-
-    # Suppress all Apache HTTP client debug logs
-    org.apache.hc.client5.http: WARN
-    org.apache.hc.core5.http: WARN
-
-    # Suppress Eureka / Netflix Discovery verbose logs
-    com.netflix.discovery: WARN
-
-    # Suppress Spring RestTemplate HTTP DEBUG logs
-    org.springframework.web.client.RestTemplate: WARN
-
-    # Suppress Hikari connection pool debug logs
-    com.zaxxer.hikari: WARN
-
-    # Keep your own application logs at INFO
-    com.acadafix: INFO
-
-    # Suppress Spring framework debug logs
-    org.springframework: INFO
-
-app:
-  env:
-    base-path: /home/ubuntu/webforest/env/trend
-  log: 
-    path: ${CONNECT_LOG_PATH:/home/ubuntu/webforest/logs/connect}
-    
-feign:
-  client:
-    config:
-      default:
-        connectTimeout: 5000
-        readTimeout: 5000
-
-firebase:
-  json: ${FIREBASE_JSON}
-  credentials-path: ${FIREBASE_CREDENTIALS_PATH:}
-  bigQueryJson: ${FIREBASE_BIGQUERY_JSON}
-  enable: ${FIREBASE_ENABLE}
-  projectName: ${FIREBASE_PROJECT_NAME}
-
-amazonProperties:
-  bucketName:
-    post: ${AWS_BUCKET}
-    userProfile: ${AWS_BUCKET}
-    oneToOneChat: ${AWS_BUCKET}
-    groupChat: ${AWS_BUCKET}
-    globalGroupChat: ${AWS_BUCKET} 
-    groupProfile: ${AWS_BUCKET} 
-    globalGroupProfile: ${AWS_BUCKET}
-    globalGroupVerification: ${AWS_BUCKET}
-    subGlobalGroupProfile: ${AWS_BUCKET}
-    subGlobalGroupChat: ${AWS_BUCKET}
-    learnToTradeChat: ${AWS_BUCKET}
-    tradingEventChat: ${AWS_BUCKET}
-    tradingEventProfile: ${AWS_BUCKET}
-    signalGroupChat: ${AWS_BUCKET}
-    signalGroupProfile: ${AWS_BUCKET} 
-    userStory: ${AWS_BUCKET} 
-    advertisement: ${AWS_BUCKET} 
-    clip: ${AWS_BUCKET}
-    commonPostComment: ${AWS_BUCKET}
-    commonPostCommentCover: ${AWS_BUCKET}
-  accessKey: ${AWS_ACCESS_KEY}
-  secretKey: ${AWS_SECRET_KEY}
-  region: ${AWS_REGION}
-  ses:
-    accessKey: ${AWS_SES_ACCESS_KEY}
-    secretKey: ${AWS_SES_SECRET_KEY}
-    region: ${AWS_SES_REGION}
-
 twilio:
-  enabled: ${TWILIO_ENABLED}
-  account-sid: ${TWILIO_ACCOUNT_ID}
-  auth-token: ${TWILIO_AUTH_TOKEN}
-  phone-number: ${TWILIO_PHONE_NUMBER}
-  messaging-service-sid: ${TWILIO_MESSAGING_SERVICE_SID:}              # row 95 - NEW 15 Oct; from the Twilio console, empty = plain number (no STOP handling)
+  messaging-service-sid: ${TWILIO_MESSAGING_SERVICE_SID:}
 
 connect:
   reapply:
@@ -126,37 +15,12 @@ connect:
     expiry:
       days: ${CONNECT_CHAT_EXPIRY_DAYS:10}
       popup-after-days: ${CONNECT_CHAT_EXPIRY_POPUP_AFTER_DAYS:7}
-      warn-before-days: ${CONNECT_WARN_BEFORE_DAYS:1}               # "Don't miss your chance to connect with <Name>." fires this many days before expiry (→ day 9)
-      warn-cron: ${CONNECT_CHAT_EXPIRY_WARN_CRON:0 0 11 * * *}      # daily 11:00 server time
-  we-met:
-    lookback:
-      days: 30
-    mutual:
-      days:
-        threshold: 15
-    popup:
-      max-dismissals: 1
-  re-engagement:
-    enabled: true
-    inactive-days: 7
-    cooldown-days: 14
-    batch-size: 2000
-    cron: "0 0 10 * * ?"
+      warn-before-days: ${CONNECT_WARN_BEFORE_DAYS:1}
+      warn-cron: ${CONNECT_CHAT_EXPIRY_WARN_CRON:0 0 11 * * *}
   match:
     expiry:
-      hours: ${CONNECT_MATCH_EXPIRY_HOURS:24}                      # match with no chat is deleted after this (existing 24h, now configurable)
-      remind-before-hours: ${CONNECT_MATCH_EXPIRY_REMIND_BEFORE_HOURS:4}         # "Your match is waiting for you." fires this many hours before deletion
-      remind-cron: "0 30 * * * *"    # hourly at :30 (ConnectMatchExpiryScheduler.remindExpiringMatches)
-  new-connections:
-    match:
-      expiry:
-        days: 10                     # existing
-      expiring-soon:
-        day: 9                       # existing
-  credits:
-    low-balance-threshold: 2
-    low-balance-push:
-      enabled: true
+      hours: ${CONNECT_MATCH_EXPIRY_HOURS:24}
+      remind-before-hours: ${CONNECT_MATCH_EXPIRY_REMIND_BEFORE_HOURS:4}
   referral:
     max-per-user: ${CONNECT_REFERRAL_MAX_PER_USER}
   travel:
@@ -164,111 +28,87 @@ connect:
   location:
     stale-after-hours: ${CONNECT_LOCATION_STALE_AFTER_HOURS:12}
     require-consent: ${CONNECT_LOCATION_REQUIRE_CONSENT:false}
-    min-radius-km: ${CONNECT_LOCATION_MIN_RADIUS_KM:0.25}             # row 6
+    min-radius-km: ${CONNECT_LOCATION_MIN_RADIUS_KM:0.25}
     rate:
       min-interval-seconds: ${CONNECT_LOCATION_MIN_INTERVAL_SECONDS:300}
       tolerance-seconds: ${CONNECT_LOCATION_INTERVAL_TOLERANCE_SECONDS:30}
-  # ── checklist v3 settings (defaults shown) ──
+    spoof:
+      max-speed-kmh: ${CONNECT_LOCATION_MAX_SPEED_KMH:1000}
+      min-jump-km: ${CONNECT_LOCATION_MIN_JUMP_KM:2}
+      several-devices-window-minutes: ${CONNECT_LOCATION_SEVERAL_DEVICES_WINDOW_MINUTES:5}
   location-retention:
-    enabled: ${CONNECT_LOCATION_RETENTION_ENABLED:true}                # rows 4, 87
-    cron: ${CONNECT_LOCATION_RETENTION_CRON:0 20 * * * ?}              # rows 4, 87
-    reading-hours: ${CONNECT_LOCATION_RETENTION_READING_HOURS:48}      # rows 4, 87
-    encounter-days: ${CONNECT_LOCATION_RETENTION_ENCOUNTER_DAYS:30}    # rows 4, 87
-    notification-hours: ${CONNECT_LOCATION_RETENTION_NOTIFICATION_HOURS:24}   # rows 4, 87
+    enabled: ${CONNECT_LOCATION_RETENTION_ENABLED:true}
+    cron: ${CONNECT_LOCATION_RETENTION_CRON:0 20 * * * ?}
+    reading-hours: ${CONNECT_LOCATION_RETENTION_READING_HOURS:48}
+    encounter-days: ${CONNECT_LOCATION_RETENTION_ENCOUNTER_DAYS:30}
+    notification-hours: ${CONNECT_LOCATION_RETENTION_NOTIFICATION_HOURS:24}
   encounter:
-    pair-cooldown-days: ${CONNECT_ENCOUNTER_PAIR_COOLDOWN_DAYS:7}      # row 6
-    checks-per-hour: ${CONNECT_ENCOUNTER_CHECKS_PER_HOUR:20}           # row 6
+    pair-cooldown-days: ${CONNECT_ENCOUNTER_PAIR_COOLDOWN_DAYS:7}
+    checks-per-hour: ${CONNECT_ENCOUNTER_CHECKS_PER_HOUR:20}
   encounter-announcement:
-    enabled: ${CONNECT_ENCOUNTER_ANNOUNCEMENT_ENABLED:true}             # row 7
-    delay-hours: ${CONNECT_ENCOUNTER_ANNOUNCEMENT_DELAY_HOURS:6}       # row 7
+    enabled: ${CONNECT_ENCOUNTER_ANNOUNCEMENT_ENABLED:true}
+    delay-hours: ${CONNECT_ENCOUNTER_ANNOUNCEMENT_DELAY_HOURS:6}
   crush-nearby:
-    require-per-match-opt-in: ${CONNECT_CRUSH_NEARBY_REQUIRE_PER_MATCH_OPT_IN:false}   # row 8 - NEW 15 Oct
+    require-per-match-opt-in: ${CONNECT_CRUSH_NEARBY_REQUIRE_PER_MATCH_OPT_IN:false}
     delay-minutes: ${CONNECT_CRUSH_NEARBY_DELAY_MINUTES:0}
   dating-profile:
-    after-acceptance: ${CONNECT_DATING_PROFILE_AFTER_ACCEPTANCE:false}  # row 21 - NEW 15 Oct
+    after-acceptance: ${CONNECT_DATING_PROFILE_AFTER_ACCEPTANCE:false}
   default-mode:
     crush-nearby-enabled: ${CONNECT_DEFAULT_MODE_CRUSH_NEARBY_ENABLED:false}
   dating-consent:
     required: ${CONNECT_DATING_CONSENT_REQUIRED:false}
   id-check:
     required-for-approval: ${CONNECT_ID_CHECK_REQUIRED_FOR_APPROVAL:true}
-    
-smtp:
-  appleStoreImageUrl: ${APPLE_STORE_IMAGE_URL:https://apps.apple.com/app/id<YOUR_APP_ID>}
-  googlePlayImageUrl: ${GOOGLE_PLAY_IMAGE_URL:https://play.google.com/store/apps/details?id=com.test.trend}
-
-visitNow: ${VISIT_NOW:https://trendapp.uk}
-
-social:
-  facebookUrl: ${SOCIAL_FACEBOOK_URL:https://facebook.com/trendapp}
-  linkedinUrl: ${SOCIAL_LINKEDIN_URL:https://linkedin.com/company/trendapp}
-  instagramUrl: ${SOCIAL_INSTAGRAM_URL:https://instagram.com/trendapp}
-  youtubeUrl: ${SOCIAL_YOUTUBE_URL:https://youtube.com/@trendapp}
 
 video:
   processing-mode: ${VIDEO_PROCESSING_MODE:FFMPEG}
-  job-threads: ${VIDEO_JOB_THREADS:2}
-  job-queue: ${VIDEO_JOB_QUEUE:500}
-  upload-threads: ${VIDEO_UPLOAD_THREADS:8}
-  upload-attempts: ${VIDEO_UPLOAD_ATTEMPTS:3}
-  ffmpeg-timeout-minutes: ${VIDEO_FFMPEG_TIMEOUT_MINUTES:30}
-  encoder: ${VIDEO_ENCODER:libx264}
-  encoder-preset: ${VIDEO_ENCODER_PRESET:veryfast}
-  hls-segment-seconds: ${VIDEO_HLS_SEGMENT_SECONDS:2}
   mediaconvert:
     role-arn: ${MEDIACONVERT_ROLE_ARN:}
-    region: ${MEDIACONVERT_REGION:eu-west-1}
-    queue: ${MEDIACONVERT_QUEUE:}
 
-# ════════════════════════════════════════════════════════════════════
-# Checklist v3 settings. Every value is the code default.
-# ════════════════════════════════════════════════════════════════════
-
-# row 51 - metadata stripping on dating photo uploads needs ffmpeg here too
 ffmpeg:
   path: ${FFMPEG_PATH:/usr/bin/ffmpeg}
 
 moderation:
-  enabled: ${MODERATION_ENABLED:true}                                  # row 48
-  aws-region: ${MODERATION_AWS_REGION:eu-west-1}                       # row 48
-  min-confidence: ${MODERATION_MIN_CONFIDENCE:60}                      # row 48
-  flag-categories: ${MODERATION_FLAG_CATEGORIES:Explicit Nudity,Explicit,Sexual Activity,Graphic Violence,Visually Disturbing,Hate Symbols}   # row 48
+  enabled: ${MODERATION_ENABLED:true}
+  aws-region: ${MODERATION_AWS_REGION:eu-west-1}
+  min-confidence: ${MODERATION_MIN_CONFIDENCE:60}
+  flag-categories: ${MODERATION_FLAG_CATEGORIES:Explicit Nudity,Explicit,Sexual Activity,Explicit Sexual Activity,Suggestive,Graphic Violence,Blood & Gore,Weapons,Weapon Violence,Self Harm,Visually Disturbing,Hate Symbols,Drugs,Drugs & Tobacco,Tobacco,Alcohol,Gambling}
   text:
-    enabled: ${MODERATION_TEXT_ENABLED:true}                           # row 48
-    min-score: ${MODERATION_TEXT_MIN_SCORE:0.75}                       # row 48
-    flag-categories: ${MODERATION_TEXT_FLAG_CATEGORIES:SEXUAL,HATE_SPEECH,VIOLENCE_OR_THREAT,HARASSMENT_OR_ABUSE}   # row 48
+    enabled: ${MODERATION_TEXT_ENABLED:true}
+    min-score: ${MODERATION_TEXT_MIN_SCORE:0.75}
+    flag-categories: ${MODERATION_TEXT_FLAG_CATEGORIES:SEXUAL,HATE_SPEECH,VIOLENCE_OR_THREAT,HARASSMENT_OR_ABUSE}
   video:
     pre-check:
-      enabled: ${MODERATION_VIDEO_PRE_CHECK_ENABLED:true}              # row 48
-      frames: ${MODERATION_VIDEO_PRE_CHECK_FRAMES:3}                   # row 48
-      timeout-seconds: ${MODERATION_VIDEO_PRE_CHECK_TIMEOUT_SECONDS:15}   # row 48
+      enabled: ${MODERATION_VIDEO_PRE_CHECK_ENABLED:true}
+      frames: ${MODERATION_VIDEO_PRE_CHECK_FRAMES:3}
+      timeout-seconds: ${MODERATION_VIDEO_PRE_CHECK_TIMEOUT_SECONDS:15}
   profile-photos:
-    enabled: ${MODERATION_PROFILE_PHOTOS_ENABLED:true}                 # row 49
+    enabled: ${MODERATION_PROFILE_PHOTOS_ENABLED:true}
   ban-registry:
-    enabled: ${MODERATION_BAN_REGISTRY_ENABLED:true}                   # row 24
-    pepper: ${MODERATION_BAN_REGISTRY_PEPPER:}                         # row 24 - SECRET: same value as the user and socket services
-  # ── NEW 15 Oct (not deployed yet) ──
+    enabled: ${MODERATION_BAN_REGISTRY_ENABLED:true}
+    pepper: ${MODERATION_BAN_REGISTRY_PEPPER:}
   report-hold:
-    enabled: ${MODERATION_REPORT_HOLD_ENABLED:false}                   # row 64 - keep false
-    reports: ${MODERATION_REPORT_HOLD_REPORTS:3}                       # row 64
-    window-hours: ${MODERATION_REPORT_HOLD_WINDOW_HOURS:24}            # row 64
-    review-hours: ${MODERATION_REPORT_HOLD_REVIEW_HOURS:24}            # row 64
+    enabled: ${MODERATION_REPORT_HOLD_ENABLED:false}
+    reports: ${MODERATION_REPORT_HOLD_REPORTS:3}
+    window-hours: ${MODERATION_REPORT_HOLD_WINDOW_HOURS:24}
+    review-hours: ${MODERATION_REPORT_HOLD_REVIEW_HOURS:24}
+  review:
+    keep-days: ${MODERATION_REVIEW_KEEP_DAYS:30}
+    founder-only-categories: ${MODERATION_REVIEW_FOUNDER_ONLY_CATEGORIES:}
   rules:
-    # Policy page. Each rule's "Read in full" link = this URL + #rule-anchor (e.g. #nudity).
     policy-url: ${COMMUNITY_GUIDELINES_URL:https://trendapp.io/community-guidelines}
-    # "Find support" / "Get help" button on the rule screen.
     support-url: ${SAFETY_SUPPORT_URL:https://trendapp.io/safety}
-    
+
 media:
   metadata:
     strip:
-      enabled: ${MEDIA_METADATA_STRIP_ENABLED:true}                    # row 51
-    refuse-unstrippable: ${MEDIA_METADATA_REFUSE_UNSTRIPPABLE:true}    # row 51
-    ffmpeg-timeout-seconds: ${MEDIA_METADATA_FFMPEG_TIMEOUT_SECONDS:120}   # row 51
+      enabled: ${MEDIA_METADATA_STRIP_ENABLED:true}
+    refuse-unstrippable: ${MEDIA_METADATA_REFUSE_UNSTRIPPABLE:true}
+    ffmpeg-timeout-seconds: ${MEDIA_METADATA_FFMPEG_TIMEOUT_SECONDS:120}
 
 interaction:
-  enabled: ${INTERACTION_ENABLED:true}                                 # row 123
-  record-messages: ${INTERACTION_RECORD_MESSAGES:false}                # row 123
+  enabled: ${INTERACTION_ENABLED:true}
+  record-messages: ${INTERACTION_RECORD_MESSAGES:false}
 
 veriff:
   enabled: ${VERIFF_ENABLED:false}
@@ -281,17 +121,22 @@ veriff:
   consent-required: ${VERIFF_CONSENT_REQUIRED:false}
   send-date-of-birth: ${VERIFF_SEND_DATE_OF_BIRTH:true}
 
-
 signup:
   state-gate:
     enabled: ${SIGNUP_STATE_GATE_ENABLED:true}
-    blocked-us-states: ${SIGNUP_BLOCKED_US_STATES:Mississippi,Tennessee,Nebraska}
+    blocked-us-states: ${SIGNUP_BLOCKED_US_STATES:Mississippi,Tennessee,Nebraska,Utah}
 
-# Row 85 - deletion requests to outside vendors
 vendor-deletion:
   cron: ${VENDOR_DELETION_CRON:0 30 * * * *}
   max-attempts: ${VENDOR_DELETION_MAX_ATTEMPTS:10}
   batch: ${VENDOR_DELETION_BATCH:50}
+
+encounter-preservation:
+  keep-days: ${ENCOUNTER_PRESERVATION_KEEP_DAYS:365}
+
+held-store:
+  bucket: ${HELD_STORE_BUCKET:}
+  region: ${HELD_STORE_REGION:eu-west-3}
 
 ip-location:
   provider: ${IP_LOCATION_PROVIDER:DBIP}
