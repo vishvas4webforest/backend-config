@@ -5,7 +5,7 @@ eureka:
   instance:
     hostname: localhost
     prefer-ip-address: false
-    
+
 spring:
   datasource:
     host: ${DB_HOST}
@@ -57,7 +57,6 @@ logging:
     # Suppress Spring framework debug logs
     org.springframework: INFO
 
-
 smtp:
   host: smtp.gmail.com
   port: 587
@@ -70,7 +69,7 @@ smtp:
 app:
   env:
     base-path: D:/git/webforest/trend-backend/trend
-  log: 
+  log:
     path: ${SOCKET_LOG_PATH:/home/ubuntu/webforest/logs/socket}
   oauth2:
     base-url: ${SOCKET_APP_BASE_URL}
@@ -78,7 +77,7 @@ app:
     error-page-url: https://yourdomain.com/error
     token-expiry-minutes: 2
   config-source: this is socket-service-home.yml
-  
+
 feign:
   client:
     config:
@@ -97,13 +96,13 @@ amazonProperties:
   bucketName:
     post: ${AWS_BUCKET}
     userProfile: ${AWS_BUCKET}
-    oneToOneChat: ${AWS_BUCKET} 
+    oneToOneChat: ${AWS_BUCKET}
     groupChat: ${AWS_BUCKET}
     globalGroupChat: ${AWS_BUCKET}
-    groupProfile: ${AWS_BUCKET} 
+    groupProfile: ${AWS_BUCKET}
     globalGroupProfile: ${AWS_BUCKET}
-    globalGroupVerification: ${AWS_BUCKET} 
-    subGlobalGroupProfile: ${AWS_BUCKET} 
+    globalGroupVerification: ${AWS_BUCKET}
+    subGlobalGroupProfile: ${AWS_BUCKET}
     subGlobalGroupChat: ${AWS_BUCKET}
     learnToTradeChat: ${AWS_BUCKET}
     tradingEventChat: ${AWS_BUCKET}
@@ -134,7 +133,7 @@ ffmpeg:
 
 storage:
   video-dir: ${STORAGE_VIDEO_DIR}
-  
+
 hugging-face:
   apiKey: ${HUGGING_FACE_API_KEY}
   apiUrl: ${HUGGING_FACE_API_URL}
@@ -170,7 +169,7 @@ connect:
     cron: ${CONNECT_PROFILE_VIEW_NUDGE_CRON:0 30 10 * * ?}
   id-check:
     required-for-approval: ${CONNECT_ID_CHECK_REQUIRED_FOR_APPROVAL:true}
-    
+
 visitNow: ${VISIT_NOW:https://trendapp.uk}
 
 video:
@@ -197,7 +196,7 @@ moderation:
   enabled: ${MODERATION_ENABLED:true}                                  # row 48
   aws-region: ${MODERATION_AWS_REGION:eu-west-1}                       # row 48
   min-confidence: ${MODERATION_MIN_CONFIDENCE:60}                      # row 48
-  flag-categories: ${MODERATION_FLAG_CATEGORIES:Explicit Nudity,Explicit,Sexual Activity,Graphic Violence,Visually Disturbing,Hate Symbols}   # row 48
+  flag-categories: ${MODERATION_FLAG_CATEGORIES:Explicit Nudity,Explicit,Sexual Activity,Explicit Sexual Activity,Suggestive,Graphic Violence,Blood & Gore,Weapons,Weapon Violence,Self Harm,Visually Disturbing,Hate Symbols,Drugs,Drugs & Tobacco,Tobacco,Alcohol,Gambling}   # row 48
   text:
     enabled: ${MODERATION_TEXT_ENABLED:true}                           # row 48
     min-score: ${MODERATION_TEXT_MIN_SCORE:0.75}                       # row 48
@@ -221,12 +220,15 @@ moderation:
     reports: ${MODERATION_REPORT_HOLD_REPORTS:3}                       # row 64
     window-hours: ${MODERATION_REPORT_HOLD_WINDOW_HOURS:24}            # row 64
     review-hours: ${MODERATION_REPORT_HOLD_REVIEW_HOURS:24}            # row 64
+  review:
+    keep-days: ${MODERATION_REVIEW_KEEP_DAYS:30}                       # row 50
+    founder-only-categories: ${MODERATION_REVIEW_FOUNDER_ONLY_CATEGORIES:}   # row 50
   rules:
     # Policy page. Each rule's "Read in full" link = this URL + #rule-anchor (e.g. #nudity).
     policy-url: ${COMMUNITY_GUIDELINES_URL:https://trendapp.io/community-guidelines}
     # "Find support" / "Get help" button on the rule screen.
     support-url: ${SAFETY_SUPPORT_URL:https://trendapp.io/safety}
-    
+
 share:
   playstore-url: ${SHARE_PLAYSTORE_URL:https://play.google.com/store/apps/details?id=com.app.sftexch}
   appstore-url: ${SHARE_APPSTORE_URL:https://apps.apple.com/app/id<YOUR_APP_ID>}
@@ -259,6 +261,10 @@ legal:
   terms-gate-enabled: ${LEGAL_TERMS_GATE_ENABLED:false}                # row 19
   terms-hash: ${LEGAL_TERMS_HASH:}                                     # row 19 - NEW 15 Oct
 
+consent:
+  text-version:
+    dating-features: ${CONSENT_TEXT_VERSION_DATING_FEATURES:dating-features-v1}   # row 21
+
 # NEW 15 Oct (row 40)
 messaging:
   mass-flag:
@@ -280,6 +286,7 @@ media:
 feed:
   not-interested:
     days: ${FEED_NOT_INTERESTED_DAYS:30}
+
 interaction:
   enabled: ${INTERACTION_ENABLED:true}                                 # row 123
   record-messages: ${INTERACTION_RECORD_MESSAGES:false}                # row 123
@@ -320,11 +327,30 @@ ranking:
       count: ${RANKING_FEED_TRENDING_FIRST_COUNT:3}
       min-score: ${RANKING_FEED_TRENDING_FIRST_MIN_SCORE:0}
     popularity: ${RANKING_FEED_POPULARITY:CONTENT}
+  popular:
+    enabled: ${RANKING_POPULAR_ENABLED:true}                           # row 112
+    size: ${RANKING_POPULAR_SIZE:300}                                  # row 112
+    days: ${RANKING_POPULAR_DAYS:14}                                   # row 112
+    interval-ms: ${RANKING_POPULAR_INTERVAL_MS:900000}                 # row 112
+  activity:
+    enabled: ${RANKING_ACTIVITY_ENABLED:true}                          # row 114
+    max-events: ${RANKING_ACTIVITY_MAX_EVENTS:500}                     # row 114
+    max-batches-per-minute: ${RANKING_ACTIVITY_MAX_BATCHES_PER_MINUTE:20}   # row 114
+    purge-cron: ${RANKING_ACTIVITY_PURGE_CRON:0 20 4 * * ?}            # row 114
+    search-opened-weight: ${RANKING_ACTIVITY_SEARCH_OPENED_WEIGHT:2}   # row 120
   interest:
     half-life-days: ${RANKING_INTEREST_HALF_LIFE_DAYS:14}
     refresh-minutes: ${RANKING_INTEREST_REFRESH_MINUTES:10}
   region-rule:
+    countries: ${RANKING_REGION_RULE_COUNTRIES:}                       # row 118
+    us-states: ${RANKING_REGION_RULE_US_STATES:}                       # row 118
     us-states-from: ${RANKING_REGION_RULE_US_STATES_FROM:California=2027-01-01}
+    delete-after-days: ${RANKING_REGION_RULE_DELETE_AFTER_DAYS:30}     # row 118
+  retention:
+    enabled: ${RANKING_RETENTION_ENABLED:true}                         # row 118
+    cron: ${RANKING_RETENTION_CRON:0 40 4 * * ?}                       # row 118
+    seen-days: ${RANKING_RETENTION_SEEN_DAYS:90}                       # row 137
+    feed-shown-days: ${RANKING_RETENTION_FEED_SHOWN_DAYS:30}           # row 137
   content-score:
     weights:
       view: ${RANKING_CONTENT_SCORE_VIEW:1}
@@ -332,7 +358,7 @@ ranking:
       comment: ${RANKING_CONTENT_SCORE_COMMENT:10}
       share: ${RANKING_CONTENT_SCORE_SHARE:15}
       age-hour: ${RANKING_CONTENT_SCORE_AGE_HOUR:0.5}
-      
+
 # Row 75 - sanctions (off by default)
 sanctions:
   enabled: ${SANCTIONS_ENABLED:false}
