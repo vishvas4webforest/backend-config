@@ -5,7 +5,7 @@ eureka:
   instance:
     hostname: localhost
     prefer-ip-address: false
-    
+
 spring:
   datasource:
     host: ${DB_HOST}
@@ -25,7 +25,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        jdbc: 
+        jdbc:
           time_zone: UTC
 
 jwt:
@@ -61,9 +61,9 @@ logging:
 app:
   env:
     base-path: D:/git/webforest/trend-backend/trend
-  log: 
+  log:
     path: ${CONNECT_LOG_PATH:/home/ubuntu/webforest/logs/connect}
-    
+
 feign:
   client:
     config:
@@ -84,8 +84,8 @@ amazonProperties:
     userProfile: ${AWS_BUCKET}
     oneToOneChat: ${AWS_BUCKET}
     groupChat: ${AWS_BUCKET}
-    globalGroupChat: ${AWS_BUCKET} 
-    groupProfile: ${AWS_BUCKET} 
+    globalGroupChat: ${AWS_BUCKET}
+    groupProfile: ${AWS_BUCKET}
     globalGroupProfile: ${AWS_BUCKET}
     globalGroupVerification: ${AWS_BUCKET}
     subGlobalGroupProfile: ${AWS_BUCKET}
@@ -94,9 +94,9 @@ amazonProperties:
     tradingEventChat: ${AWS_BUCKET}
     tradingEventProfile: ${AWS_BUCKET}
     signalGroupChat: ${AWS_BUCKET}
-    signalGroupProfile: ${AWS_BUCKET} 
-    userStory: ${AWS_BUCKET} 
-    advertisement: ${AWS_BUCKET} 
+    signalGroupProfile: ${AWS_BUCKET}
+    userStory: ${AWS_BUCKET}
+    advertisement: ${AWS_BUCKET}
     clip: ${AWS_BUCKET}
     commonPostComment: ${AWS_BUCKET}
     commonPostCommentCover: ${AWS_BUCKET}
@@ -168,6 +168,10 @@ connect:
     rate:
       min-interval-seconds: ${CONNECT_LOCATION_MIN_INTERVAL_SECONDS:300}
       tolerance-seconds: ${CONNECT_LOCATION_INTERVAL_TOLERANCE_SECONDS:30}
+    spoof:
+      max-speed-kmh: ${CONNECT_LOCATION_MAX_SPEED_KMH:1000}              # row 14
+      min-jump-km: ${CONNECT_LOCATION_MIN_JUMP_KM:2}                     # row 14
+      several-devices-window-minutes: ${CONNECT_LOCATION_SEVERAL_DEVICES_WINDOW_MINUTES:5}   # row 14
   # ── checklist v3 settings (defaults shown) ──
   location-retention:
     enabled: ${CONNECT_LOCATION_RETENTION_ENABLED:true}                # rows 4, 87
@@ -192,7 +196,7 @@ connect:
     required: ${CONNECT_DATING_CONSENT_REQUIRED:false}
   id-check:
     required-for-approval: ${CONNECT_ID_CHECK_REQUIRED_FOR_APPROVAL:true}
-    
+
 smtp:
   appleStoreImageUrl: ${APPLE_STORE_IMAGE_URL:https://apps.apple.com/app/id<YOUR_APP_ID>}
   googlePlayImageUrl: ${GOOGLE_PLAY_IMAGE_URL:https://play.google.com/store/apps/details?id=com.test.trend}
@@ -232,7 +236,7 @@ moderation:
   enabled: ${MODERATION_ENABLED:true}                                  # row 48
   aws-region: ${MODERATION_AWS_REGION:eu-west-1}                       # row 48
   min-confidence: ${MODERATION_MIN_CONFIDENCE:60}                      # row 48
-  flag-categories: ${MODERATION_FLAG_CATEGORIES:Explicit Nudity,Explicit,Sexual Activity,Graphic Violence,Visually Disturbing,Hate Symbols}   # row 48
+  flag-categories: ${MODERATION_FLAG_CATEGORIES:Explicit Nudity,Explicit,Sexual Activity,Explicit Sexual Activity,Suggestive,Graphic Violence,Blood & Gore,Weapons,Weapon Violence,Self Harm,Visually Disturbing,Hate Symbols,Drugs,Drugs & Tobacco,Tobacco,Alcohol,Gambling}   # row 48
   text:
     enabled: ${MODERATION_TEXT_ENABLED:true}                           # row 48
     min-score: ${MODERATION_TEXT_MIN_SCORE:0.75}                       # row 48
@@ -253,12 +257,15 @@ moderation:
     reports: ${MODERATION_REPORT_HOLD_REPORTS:3}                       # row 64
     window-hours: ${MODERATION_REPORT_HOLD_WINDOW_HOURS:24}            # row 64
     review-hours: ${MODERATION_REPORT_HOLD_REVIEW_HOURS:24}            # row 64
+  review:
+    keep-days: ${MODERATION_REVIEW_KEEP_DAYS:30}                       # row 50
+    founder-only-categories: ${MODERATION_REVIEW_FOUNDER_ONLY_CATEGORIES:}   # row 50
   rules:
     # Policy page. Each rule's "Read in full" link = this URL + #rule-anchor (e.g. #nudity).
     policy-url: ${COMMUNITY_GUIDELINES_URL:https://trendapp.io/community-guidelines}
     # "Find support" / "Get help" button on the rule screen.
     support-url: ${SAFETY_SUPPORT_URL:https://trendapp.io/safety}
-    
+
 media:
   metadata:
     strip:
@@ -284,7 +291,15 @@ veriff:
 signup:
   state-gate:
     enabled: ${SIGNUP_STATE_GATE_ENABLED:true}
-    blocked-us-states: ${SIGNUP_BLOCKED_US_STATES:Mississippi,Tennessee,Nebraska}
+    blocked-us-states: ${SIGNUP_BLOCKED_US_STATES:Mississippi,Tennessee,Nebraska,Utah}
+
+# Row 4 - encounter evidence kept for safety cases; bucket empty = no copies until the AWS bucket exists
+encounter-preservation:
+  keep-days: ${ENCOUNTER_PRESERVATION_KEEP_DAYS:365}
+
+held-store:
+  bucket: ${HELD_STORE_BUCKET:}
+  region: ${HELD_STORE_REGION:eu-west-3}
 
 # Row 85 - deletion requests to outside vendors
 vendor-deletion:
