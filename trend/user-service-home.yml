@@ -6,7 +6,7 @@ eureka:
   instance:
     hostname: localhost
     prefer-ip-address: false
-    
+
 spring:
   datasource:
     host: ${DB_HOST}
@@ -85,6 +85,7 @@ spring:
             token-uri: https://graph.facebook.com/v17.0/oauth/access_token
             user-info-uri: https://graph.facebook.com/me?fields=id,name,email
             user-name-attribute: id
+
 jwt:
   secret: ${JWT_SECRET}
   expiration: ${JWT_EXPIRATION}
@@ -118,7 +119,7 @@ logging:
 app:
   env:
     base-path: D:/git/webforest/trend-backend/trend
-  log: 
+  log:
     path: ${USER_LOG_PATH:/home/ubuntu/webforest/logs/user}
   oauth2:
     base-url: ${USER_APP_BASE_URL}
@@ -130,10 +131,10 @@ app:
     email-verification-url: https://yourdomain.com/verify
     lost-phone-login-url: https://yourdomain.com/lost
     password-restore-url: https://yourdomain.com/password-restore
-  lost-phone-login-token: 
+  lost-phone-login-token:
     expiry-minutes: 15
     email-subject: Access your account - Lost Phone Login
-  password-restore: 
+  password-restore:
     token-expiry-minutes: 30
     email-subject: Restore your password
   google:
@@ -150,13 +151,13 @@ app:
     sign-up-redirect-url: https://frontend-parent.bigopia.com/auth/sign-up/facebook/
   login-otp:
     expiry-minutes: 5
-  password-reset: 
+  password-reset:
     otp-expiry-minutes: 5
     token-expiry-minutes: 30
     otp-resend-cooldown-seconds: 60
     email-subject: Reset your password
   prefix-link-for-email: ${WEBSITE_PREFIX_LINK_FOR_EMAIL:https://dev.trendapp.io/}
-  
+
 feign:
   client:
     config:
@@ -175,7 +176,7 @@ amazonProperties:
   bucketName:
     post: ${AWS_BUCKET}
     userProfile: ${AWS_BUCKET}
-    oneToOneChat: ${AWS_BUCKET} 
+    oneToOneChat: ${AWS_BUCKET}
     groupChat: ${AWS_BUCKET}
     globalGroupChat: ${AWS_BUCKET}
     groupProfile: ${AWS_BUCKET}
@@ -209,7 +210,7 @@ link:
   contactSupportLink: ${LINK_CONTACT_SUPPORT}
 
 ffmpeg:
-  path: ${FFMPEG_PATH}
+  path: ${FFMPEG_PATH:/usr/bin/ffmpeg}                                 # row 51
 
 twilio:
   enabled: ${TWILIO_ENABLED}
@@ -218,7 +219,7 @@ twilio:
   phone-number: ${TWILIO_PHONE_NUMBER}
 
 iap:
-  dating-membership-required: ${IAP_DATING_MEMBERSHIP_REQUIRED:true}  
+  dating-membership-required: ${IAP_DATING_MEMBERSHIP_REQUIRED:true}
   trial-reminder-days-before: ${IAP_TRIAL_REMINDER_DAYS_BEFORE:3}
   withdrawal-window-days: ${IAP_WITHDRAWAL_WINDOW_DAYS:14}
   cancellation-notice-countries: ${IAP_CANCELLATION_NOTICE_COUNTRIES:US}
@@ -235,7 +236,7 @@ iap:
     webhook:
       verify-token: ${IAP_GOOGLE_WEBHOOK_VERIFY:true}
       audience: ${IAP_GOOGLE_WEBHOOK_AUDIENCE:}
-      service-account-email: ${IAP_GOOGLE_WEBHOOK_SA_EMAIL:}   
+      service-account-email: ${IAP_GOOGLE_WEBHOOK_SA_EMAIL:}
 
 # ── STOMP broker (websockets) ─────────────────────────────
 # enabled: false = in-memory broker (single instance, current behavior)
@@ -253,14 +254,13 @@ admin:
   invite-link-prefix: ${ADMIN_PANEL_INVITE_LINK_PREFIX:https://trend-admin-panel.onrender.com/}   # base for the set-password link; falls back to app.prefix-link-for-email
   panel-url: ${ADMIN_PANEL_URL:https://trend-admin-panel.onrender.com/}            # shown in the email as "sign in at…"
   invite:
-    expiry-hours: ${ADMIN_PANEL_INVITE_EXPIRY_HOURS:72}  
+    expiry-hours: ${ADMIN_PANEL_INVITE_EXPIRY_HOURS:72}
 
 smtp:
   appleStoreImageUrl: ${APPLE_STORE_IMAGE_URL:https://apps.apple.com/app/id<YOUR_APP_ID>}
   googlePlayImageUrl: ${GOOGLE_PLAY_IMAGE_URL:https://play.google.com/store/apps/details?id=com.test.trend}
 
 visitNow: ${VISIT_NOW:https://trendapp.uk}
-
 
 social:
   facebookUrl: ${SOCIAL_FACEBOOK_URL:https://facebook.com/trendapp}
@@ -301,7 +301,7 @@ moderation:
   enabled: ${MODERATION_ENABLED:true}                                  # row 48
   aws-region: ${MODERATION_AWS_REGION:eu-west-1}                       # row 48
   min-confidence: ${MODERATION_MIN_CONFIDENCE:60}                      # row 48
-  flag-categories: ${MODERATION_FLAG_CATEGORIES:Explicit Nudity,Explicit,Sexual Activity,Graphic Violence,Visually Disturbing,Hate Symbols}   # row 48
+  flag-categories: ${MODERATION_FLAG_CATEGORIES:Explicit Nudity,Explicit,Sexual Activity,Explicit Sexual Activity,Suggestive,Graphic Violence,Blood & Gore,Weapons,Weapon Violence,Self Harm,Visually Disturbing,Hate Symbols,Drugs,Drugs & Tobacco,Tobacco,Alcohol,Gambling}   # row 48
   text:
     enabled: ${MODERATION_TEXT_ENABLED:true}                           # row 48
     min-score: ${MODERATION_TEXT_MIN_SCORE:0.75}                       # row 48
@@ -335,12 +335,15 @@ moderation:
     reports: ${MODERATION_REPORT_HOLD_REPORTS:3}                       # row 64
     window-hours: ${MODERATION_REPORT_HOLD_WINDOW_HOURS:24}            # row 64
     review-hours: ${MODERATION_REPORT_HOLD_REVIEW_HOURS:24}            # row 64
+  review:
+    keep-days: ${MODERATION_REVIEW_KEEP_DAYS:30}                       # row 50
+    founder-only-categories: ${MODERATION_REVIEW_FOUNDER_ONLY_CATEGORIES:}   # row 50
   rules:
     # Policy page. Each rule's "Read in full" link = this URL + #rule-anchor (e.g. #nudity).
     policy-url: ${COMMUNITY_GUIDELINES_URL:https://trendapp.io/community-guidelines}
     # "Find support" / "Get help" button on the rule screen.
     support-url: ${SAFETY_SUPPORT_URL:https://trendapp.io/safety}
-    
+
 connect:
   chat:
     expiry:
@@ -348,6 +351,8 @@ connect:
       popup-after-days: ${CONNECT_CHAT_EXPIRY_POPUP_AFTER_DAYS:7}
       warn-before-days: ${CONNECT_WARN_BEFORE_DAYS:1}               # "Don't miss your chance to connect with <Name>." fires this many days before expiry (→ day 9)
       warn-cron: ${CONNECT_CHAT_EXPIRY_WARN_CRON:0 0 11 * * *}      # daily 11:00 server time
+  dating-consent:
+    required: ${CONNECT_DATING_CONSENT_REQUIRED:false}                 # row 21
 
 google:
   places:
@@ -385,7 +390,13 @@ signup:
     list-file: ${SIGNUP_DISPOSABLE_EMAIL_LIST_FILE:}
     extra-domains: ${SIGNUP_DISPOSABLE_EMAIL_EXTRA_DOMAINS:}
     mx-check: ${SIGNUP_DISPOSABLE_EMAIL_MX_CHECK:false}
-    
+  state-gate:
+    enabled: ${SIGNUP_STATE_GATE_ENABLED:true}                         # row 30
+    blocked-us-states: ${SIGNUP_BLOCKED_US_STATES:Mississippi,Tennessee,Nebraska,Utah}   # row 30
+    message: ${SIGNUP_STATE_GATE_MESSAGE:Trend isn't available in your state.}   # row 30
+    support-url: ${SIGNUP_STATE_GATE_SUPPORT_URL:https://trendapp.io/safety}     # row 30
+    support-email: ${SIGNUP_STATE_GATE_SUPPORT_EMAIL:safety@trendapp.io}         # row 30
+
 age-proof:
   response-days: ${AGE_PROOF_RESPONSE_DAYS:7}
 
@@ -462,7 +473,7 @@ retention:
     hide-months: ${RETENTION_DORMANT_DATING_HIDE_MONTHS:6}             # row 87
     delete-months: ${RETENTION_DORMANT_DATING_DELETE_MONTHS:12}        # row 87
   deleted-account-report-days: ${RETENTION_DELETED_ACCOUNT_REPORT_DAYS:2190}
-  
+
 interaction:
   enabled: ${INTERACTION_ENABLED:true}                                 # row 123
   record-messages: ${INTERACTION_RECORD_MESSAGES:false}                # row 123
@@ -477,6 +488,9 @@ held-store:
   bucket: ${HELD_STORE_BUCKET:}
   region: ${HELD_STORE_REGION:eu-west-3}
 
+encounter-preservation:
+  keep-days: ${ENCOUNTER_PRESERVATION_KEEP_DAYS:365}                   # row 4
+
 authority-requests:
   notice-reminder-days: ${AUTHORITY_REQUESTS_NOTICE_REMINDER_DAYS:3}   # row 146
   notice-cron: ${AUTHORITY_REQUESTS_NOTICE_CRON:0 0 8 * * *}           # row 146
@@ -489,10 +503,11 @@ device-integrity:
 message-counting:
   enabled: ${MESSAGE_COUNTING_ENABLED:true}
   default-on-countries: ${MESSAGE_COUNTING_DEFAULT_ON:United Kingdom,GB,UK,United States,US,USA}
-  ask-countries: ${MESSAGE_COUNTING_ASK:...EU/EEA + Switzerland list...}
+  ask-countries: ${MESSAGE_COUNTING_ASK:Austria,AT,Belgium,BE,Bulgaria,BG,Croatia,HR,Cyprus,CY,Czechia,Czech Republic,CZ,Denmark,DK,Estonia,EE,Finland,FI,France,FR,Germany,DE,Greece,GR,Hungary,HU,Ireland,IE,Italy,IT,Latvia,LV,Lithuania,LT,Luxembourg,LU,Malta,MT,Netherlands,The Netherlands,NL,Poland,PL,Portugal,PT,Romania,RO,Slovakia,SK,Slovenia,SI,Spain,ES,Sweden,SE,Iceland,IS,Liechtenstein,LI,Norway,NO,Switzerland,CH}
   text-version:
     popup: message-counts-popup-v1
     settings: message-counts-settings-v1
+
 amazon-location:
   enabled: ${AMAZON_LOCATION_ENABLED:true}
   region: ${AMAZON_LOCATION_REGION:eu-west-1}
@@ -504,6 +519,26 @@ stories:
     batch: ${STORIES_RETENTION_BATCH:500}
     cron: ${STORIES_RETENTION_CRON:0 50 3 * * *}
 
+launch:
+  purge:
+    enabled: ${LAUNCH_PURGE_ENABLED:false}                             # row 17
+  ranking-reset:
+    enabled: ${LAUNCH_RANKING_RESET_ENABLED:false}                     # row 126
+
+analytics:
+  firebase-story-sync:
+    enabled: ${FIREBASE_STORY_SYNC_ENABLED:false}                      # row 34
+
+safety:
+  identical-copies:
+    max-objects: ${SAFETY_IDENTICAL_COPIES_MAX_OBJECTS:2000000}        # row 58
+    min-bytes: ${SAFETY_IDENTICAL_COPIES_MIN_BYTES:1024}               # row 58
+
+counters:
+  mau:
+    enabled: ${COUNTERS_MAU_ENABLED:true}                              # row 77
+    cron: ${COUNTERS_MAU_CRON:0 30 0 1 * *}                            # row 77
+
 ranking:
   interest:
     half-life-days: ${RANKING_INTEREST_HALF_LIFE_DAYS:14}
@@ -513,9 +548,21 @@ ranking:
     trending-first:
       count: ${RANKING_STORIES_TRENDING_FIRST_COUNT:3}
       min-score: ${RANKING_STORIES_TRENDING_FIRST_MIN_SCORE:0}
+  note:
+    mode: ${RANKING_NOTE_MODE:ONE_BUTTON}                              # row 102
+    choice-countries: ${RANKING_NOTE_CHOICE_COUNTRIES:}                # row 118
+  detector:
+    provider: ${RANKING_DETECTOR_PROVIDER:NONE}                        # row 111 - NONE | REKOGNITION | PYTHON
+    python:
+      url: ${RANKING_DETECTOR_PYTHON_URL:}                             # row 111
+      token: ${RANKING_DETECTOR_PYTHON_TOKEN:}                         # row 111
+    stories: ${RANKING_DETECTOR_STORIES:false}                         # row 111
   region-rule:
+    countries: ${RANKING_REGION_RULE_COUNTRIES:}                       # row 118
+    us-states: ${RANKING_REGION_RULE_US_STATES:}                       # row 118
     us-states-from: ${RANKING_REGION_RULE_US_STATES_FROM:California=2027-01-01}
-   
+    delete-after-days: ${RANKING_REGION_RULE_DELETE_AFTER_DAYS:30}     # row 118
+
 # Row 70 - terror removal orders
 removal-orders:
   deadline-minutes: ${REMOVAL_ORDERS_DEADLINE_MINUTES:60}
