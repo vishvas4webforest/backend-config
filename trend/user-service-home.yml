@@ -343,7 +343,9 @@ moderation:
     policy-url: ${COMMUNITY_GUIDELINES_URL:https://trendapp.io/community-guidelines}
     # "Find support" / "Get help" button on the rule screen.
     support-url: ${SAFETY_SUPPORT_URL:https://trendapp.io/safety}
-
+  allow-labels: ${MODERATION_ALLOW_LABELS:Smoking}
+  sensitive-labels: ${MODERATION_SENSITIVE_LABELS:Weapons,Graphic Violence,Weapon Violence,Physical Violence,Blood & Gore,Explosions and Blasts}
+  
 connect:
   chat:
     expiry:
