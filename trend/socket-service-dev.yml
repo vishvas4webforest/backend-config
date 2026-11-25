@@ -377,3 +377,11 @@ tcap:
     enabled: ${TCAP_ALERTS_ENABLED:true}
     cron: ${TCAP_ALERTS_CRON:0 20 * * * *}
     link-prefixes: ${TCAP_ALERTS_LINK_PREFIXES:}
+
+link-check:
+  enabled: ${WEB_RISK_ENABLED:false}
+  web-risk:
+    api-key: ${WEB_RISK_API_KEY:}
+    base-url: ${WEB_RISK_BASE_URL:https://webrisk.googleapis.com}
+    threat-types: ${WEB_RISK_THREAT_TYPES:MALWARE,SOCIAL_ENGINEERING,UNWANTED_SOFTWARE}
+    timeout-ms: ${WEB_RISK_TIMEOUT_MS:3000}
